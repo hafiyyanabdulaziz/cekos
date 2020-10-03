@@ -1,5 +1,5 @@
-name: cekos
-description: A new Flutter project.
+name: Cekos
+description: Aplikasi pencari kos, kontrakan, dan apartement menggunakan machine learning untuk memberikan rekomendasi sesuai dengan keinginan pengguna.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
