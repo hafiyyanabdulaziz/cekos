@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "514942381790",
+    "firebase_url": "https://cekos-2b3a4.firebaseio.com",
+    "project_id": "cekos-2b3a4",
+    "storage_bucket": "cekos-2b3a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514942381790:android:de770dd01f4d77015a1c4f",
+        "android_client_info": {
+          "package_name": "com.kitahukomputer.cekos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514942381790-qurmjj7k121n9johh2gl0lt1snq5mteb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPrwQdjbsb1wIYPVRULAxdrCTYaqtWhIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514942381790-qurmjj7k121n9johh2gl0lt1snq5mteb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
