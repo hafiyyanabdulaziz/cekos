@@ -1,0 +1,1 @@
+part 'infologin.dart';
