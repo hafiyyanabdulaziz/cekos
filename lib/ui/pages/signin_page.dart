@@ -15,7 +15,19 @@ class SignInPage extends StatelessWidget {
               height: 50,
               child: SignInButton(
                 Buttons.Google,
-                onPressed: () {},
+                onPressed: () {
+                  CekosGoogleSignIn.signInWithGoogle().then((result) {
+                    if (result != null) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MainPage();
+                          },
+                        ),
+                      );
+                    }
+                  });
+                },
               ),
             ),
           ),
