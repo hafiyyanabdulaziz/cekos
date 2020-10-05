@@ -1,4 +1,4 @@
-import 'package:Cekos/ui/pages/pages.dart';
+import 'package:Cekos/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Rubik'),
       title: 'Cekos',
-      home: SignInPage(),
+      home: Wrapper(),
       debugShowCheckedModeBanner: false,
     );
   }

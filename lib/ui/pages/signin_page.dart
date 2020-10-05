@@ -18,7 +18,7 @@ class SignInPage extends StatelessWidget {
                 onPressed: () {
                   CekosGoogleSignIn.signInWithGoogle().then((result) {
                     if (result != null) {
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) {
                             return MainPage();
