@@ -42,9 +42,9 @@ class _MainPageSliderState extends State<MainPageSlider> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: dataLogin.map(
+                  children: dataMainPageSlider.map(
                     (data) {
-                      int index = dataLogin.indexOf(data);
+                      int index = dataMainPageSlider.indexOf(data);
                       return Container(
                         width: 10.0,
                         height: 10.0,
@@ -69,39 +69,73 @@ class _MainPageSliderState extends State<MainPageSlider> {
   }
 }
 
-final List<Widget> mainPageSlider = dataLogin
+final List<Widget> mainPageSlider = dataMainPageSlider
     .map(
       (item) => Stack(
         children: <Widget>[
           Image.network(item.link, fit: BoxFit.cover, width: 1000.0),
-          Positioned(
-            left: 22.0,
-            right: 22.0,
-            top: 70.00,
-            child: Container(
-              child: Text(
-                item.judul,
-                style: TextStyle(
-                  color: Colors.amber,
-                  fontSize: 35.0,
-                  fontWeight: FontWeight.bold,
+          Container(
+            margin: EdgeInsets.only(left: 22, right: 22),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  child: Text(
+                    item.judul,
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 30,
+                      color: const Color(0xffffffff),
+                      fontWeight: FontWeight.w700,
+                      shadows: [
+                        Shadow(
+                          color: const Color(0xff000000),
+                          offset: Offset(4, 4),
+                          blurRadius: 8,
+                        )
+                      ],
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 22.0,
-            right: 22.0,
-            top: 230.00,
-            child: Container(
-              child: Text(
-                item.deskripsi,
-                style: TextStyle(
-                  color: Colors.amber,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w300,
+                SizedBox(
+                  height: 20,
                 ),
-              ),
+                SizedBox(
+                  child: Text(
+                    item.deskripsi,
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 15,
+                      color: const Color(0xffffffff),
+                      shadows: [
+                        Shadow(
+                          color: const Color(0xff000000),
+                          offset: Offset(4, 4),
+                          blurRadius: 8,
+                        )
+                      ],
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                RaisedButton(
+                  onPressed: () {},
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                  color: Color(0xffaf8d19),
+                  child: Text(
+                    'Selengkapnya',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
