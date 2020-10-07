@@ -11,12 +11,12 @@ class _MainPageSliderState extends State<MainPageSlider> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2,
+      height: MediaQuery.of(context).size.height * 0.65,
       child: Stack(
         children: [
           Builder(
             builder: (context) {
-              final double height = MediaQuery.of(context).size.height;
+              final double height = MediaQuery.of(context).size.height * 0.65;
               return CarouselSlider(
                 options: CarouselOptions(
                   autoPlay: true,

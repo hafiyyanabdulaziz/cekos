@@ -6,3 +6,4 @@ import 'package:flutter/material.dart';
 part 'slider_login.dart';
 part 'wrapper.dart';
 part 'mainpage_slider.dart';
+part 'mainpage_perluaswawasan.dart';

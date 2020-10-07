@@ -32,16 +32,21 @@ class MainPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                Text(
-                  'Lihat Semua',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 15,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
+                GestureDetector(
+                  onTap: () {
+                    print('kokokoko');
+                  },
+                  child: Text(
+                    'Lihat Semua',
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 15,
+                      color: const Color(0xffffffff),
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                    ),
+                    textAlign: TextAlign.right,
                   ),
-                  textAlign: TextAlign.right,
                 ),
               ],
             ),
@@ -80,6 +85,7 @@ class MainPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
+          MainPagePerluasWawasan(),
           Text('Halooo'),
           Text('Halooo'),
           Text('Halooo'),
