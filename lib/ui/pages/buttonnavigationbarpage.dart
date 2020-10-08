@@ -16,7 +16,7 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
 
   final _widgetOptions = [
     MainPage(),
-    MainPage(),
+    CrispChatPage(),
     /* Halamantiga(),
     Halamantiga(), */
   ];
@@ -50,8 +50,8 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
 
             /// Likes
             SalomonBottomBarItem(
-              icon: Icon(Icons.person),
-              title: Text("Likes"),
+              icon: Icon(Icons.chat),
+              title: Text("Chat"),
             ),
           ],
         ),
