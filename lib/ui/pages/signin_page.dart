@@ -21,7 +21,7 @@ class SignInPage extends StatelessWidget {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) {
-                            return MainPage();
+                            return ButtonNavigationBarPage();
                           },
                         ),
                       );

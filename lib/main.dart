@@ -13,8 +13,13 @@ class MyApp extends StatelessWidget {
     /* SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     )); */
+
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Rubik'),
+      theme: ThemeData(
+        fontFamily: 'Rubik',
+        /* primarySwatch: Colors.black45,
+        canvasColor: Color(0xFF14172B), */
+      ),
       title: 'Cekos',
       home: Wrapper(),
       debugShowCheckedModeBanner: false,
