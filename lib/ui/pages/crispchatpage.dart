@@ -29,9 +29,11 @@ class _CrispChatPageState extends State<CrispChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return CrispView(
-      loadingWidget: Center(
-        child: CircularProgressIndicator(),
+    return SafeArea(
+      child: CrispView(
+        loadingWidget: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }

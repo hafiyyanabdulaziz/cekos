@@ -16,7 +16,9 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
 
   final _widgetOptions = [
     MainPage(),
+    ExplorePage(),
     CrispChatPage(),
+
     /* Halamantiga(),
     Halamantiga(), */
   ];
@@ -33,6 +35,7 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF14172B),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: Container(
         color: Color(0xff20233A),
@@ -46,6 +49,11 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
             SalomonBottomBarItem(
               icon: Icon(Icons.home),
               title: Text("Home"),
+            ),
+
+            SalomonBottomBarItem(
+              icon: Icon(Icons.beenhere),
+              title: Text("Explore"),
             ),
 
             /// Likes

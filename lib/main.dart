@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
         canvasColor: Color(0xFF14172B), */
       ),
       title: 'Cekos',
-      home: SafeArea(
-        child: Wrapper(),
-      ),
+      home: Wrapper(),
       debugShowCheckedModeBanner: false,
     );
   }
