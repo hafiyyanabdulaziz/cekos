@@ -4,6 +4,7 @@ class ModelPerluasWawasan {
   var judul;
   var deskripsi;
   var link;
+  var photo;
 
-  ModelPerluasWawasan(this.judul, this.deskripsi, this.link);
+  ModelPerluasWawasan(this.judul, this.deskripsi, this.link, this.photo);
 }

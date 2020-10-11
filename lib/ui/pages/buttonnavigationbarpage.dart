@@ -18,6 +18,7 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
     MainPage(),
     ExplorePage(),
     CrispChatPage(),
+    ProfilePage(),
 
     /* Halamantiga(),
     Halamantiga(), */
@@ -60,6 +61,11 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
             SalomonBottomBarItem(
               icon: Icon(Icons.chat),
               title: Text("Chat"),
+            ),
+
+            SalomonBottomBarItem(
+              icon: Icon(Icons.account_circle),
+              title: Text("Profile"),
             ),
           ],
         ),

@@ -14,7 +14,9 @@ class MainPagePerluasWawasan extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return PerluasWawasanWebView();
+                    return PerluasWawasanWebView(
+                      link: item.link,
+                    );
                   },
                 ),
               );
@@ -25,7 +27,7 @@ class MainPagePerluasWawasan extends StatelessWidget {
                 right: 22,
                 bottom: 10,
               ),
-              height: 150,
+              height: 220,
               child: Container(
                 margin: EdgeInsets.only(
                   left: 15,
@@ -38,6 +40,8 @@ class MainPagePerluasWawasan extends StatelessWidget {
                   children: [
                     Text(
                       item.judul,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 20,
@@ -58,6 +62,8 @@ class MainPagePerluasWawasan extends StatelessWidget {
                     ),
                     Text(
                       item.deskripsi,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 10,
@@ -79,7 +85,7 @@ class MainPagePerluasWawasan extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
                 image: DecorationImage(
-                  image: NetworkImage(item.link),
+                  image: NetworkImage(item.photo),
                   fit: BoxFit.cover,
                 ),
                 boxShadow: [
