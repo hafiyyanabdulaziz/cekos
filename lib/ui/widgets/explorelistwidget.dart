@@ -44,7 +44,9 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return PropertiDetailPage();
+                            return PropertiDetailPage(
+                              getProperti: dataProperti[i],
+                            );
                           },
                         ),
                       );

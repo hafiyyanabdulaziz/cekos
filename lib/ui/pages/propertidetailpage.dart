@@ -1,24 +1,10 @@
 part of 'pages.dart';
 
 // ignore: must_be_immutable
-class PropertiDetailPage extends StatefulWidget {
-  @override
-  _PropertiDetailPageState createState() => _PropertiDetailPageState();
-}
+class PropertiDetailPage extends StatelessWidget {
+  GetListProperti getProperti;
 
-class _PropertiDetailPageState extends State<PropertiDetailPage> {
-  GetDetailProperti getDetailProperti;
-
-  void init() {
-    GetDetailProperti.connectToAPI();
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
+  PropertiDetailPage({@required this.getProperti});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +17,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
       body: ListView(
         children: [
           Text(
-            (getDetailProperti != null) ? getDetailProperti.name : "halo",
+            (getProperti != null) ? getProperti.nama : "halo",
             style: TextStyle(
               fontFamily: 'Rubik',
               fontSize: 30,
