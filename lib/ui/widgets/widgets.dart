@@ -3,6 +3,7 @@ import 'package:Cekos/services/services.dart';
 import 'package:Cekos/ui/pages/pages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'slider_login.dart';
 part 'wrapper.dart';
