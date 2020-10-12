@@ -15,3 +15,4 @@ part 'buttonnavigationbarpage.dart';
 part 'crispchatpage.dart';
 part 'explorepage.dart';
 part 'profilepage.dart';
+part 'propertidetailpage.dart';

@@ -8,3 +8,4 @@ import 'dart:convert';
 
 part 'cekos_googlesignin.dart';
 part 'getlistproperti.dart';
+part 'getdetailpropert.dart';
