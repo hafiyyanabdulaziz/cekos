@@ -51,6 +51,9 @@ class MainPage extends StatelessWidget {
               ],
             ),
           ),
+          //MainPageRekomendasi(),
+          MainPageRekomendasi(),
+
           Container(
             margin: EdgeInsets.only(
               left: 25,

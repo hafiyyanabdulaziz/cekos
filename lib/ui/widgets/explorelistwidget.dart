@@ -8,8 +8,8 @@ class ExploreListWidget extends StatefulWidget {
 class _ExploreListWidgetState extends State<ExploreListWidget> {
   int page = 0;
   List<GetListProperti> dataProperti = new List();
-  void getDataUser() {
-    GetListProperti.connectToAPI(
+  void getDataUser() async {
+    await GetListProperti.connectToAPI(
       limit: 30,
       offset: page,
     ).then((value) {
@@ -29,7 +29,9 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
   Widget build(BuildContext context) {
     return dataProperti == null
         ? Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.amber,
+            ),
           )
         : ListView(
             children: [
