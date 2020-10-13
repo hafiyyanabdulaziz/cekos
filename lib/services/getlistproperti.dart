@@ -1,14 +1,15 @@
 part of 'services.dart';
 
 class GetListProperti {
-  GetListProperti({
-    @required this.photo,
-    @required this.tipe,
-    //@required this.penghuni,
-    @required this.harga,
-    @required this.nama,
-    @required this.id,
-  });
+  GetListProperti(
+      {@required this.photo,
+      @required this.tipe,
+      @required this.penghuni,
+      @required this.harga,
+      @required this.nama,
+      @required this.id,
+      @required this.daerah,
+      @required this.gallery});
 
   String photo =
       "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
@@ -17,15 +18,27 @@ class GetListProperti {
   String harga;
   String nama;
   String id;
+  String daerah;
+  List<String> gallery;
 
   factory GetListProperti.getData(Map<String, dynamic> object) {
+    /* List<String> gallery = List<String>.from(object['gallery']);
+    gallery.add(object['main_image']); */
+    //print("HALOOOOO " + List<String>.from(object['gallery']).toString());
+    /* List<dynamic> gallery;
+    for (var i = 0; i < object['gallery'].length; i++) {
+      gallery.add(object['gallery'][i]);
+    } */
+
     return GetListProperti(
       photo: object['main_image'],
       tipe: object['type'][0],
-      //penghuni: object[['category']],
+      penghuni: object['category'][0].toString(),
       harga: object['detail_house_price']['yearly'].toString(),
       nama: object['name'],
       id: object['id'],
+      daerah: object['address']["city"] + " - " + object['address']['village'],
+      gallery: List<String>.from(object['gallery']),
     );
   }
 

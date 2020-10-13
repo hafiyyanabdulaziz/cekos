@@ -67,78 +67,78 @@ class _MainPageSliderState extends State<MainPageSlider> {
       ),
     );
   }
-}
 
-final List<Widget> mainPageSlider = dataMainPageSlider
-    .map(
-      (item) => Stack(
-        children: <Widget>[
-          Image.network(item.link, fit: BoxFit.cover, width: 1000.0),
-          Container(
-            margin: EdgeInsets.only(left: 22, right: 22),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  child: Text(
-                    item.judul,
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 30,
-                      color: const Color(0xffffffff),
-                      fontWeight: FontWeight.w700,
-                      shadows: [
-                        Shadow(
-                          color: const Color(0xff000000),
-                          offset: Offset(4, 4),
-                          blurRadius: 8,
-                        )
-                      ],
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  child: Text(
-                    item.deskripsi,
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 15,
-                      color: const Color(0xffffffff),
-                      shadows: [
-                        Shadow(
-                          color: const Color(0xff000000),
-                          offset: Offset(4, 4),
-                          blurRadius: 8,
-                        )
-                      ],
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                RaisedButton(
-                  onPressed: () {},
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                  color: Color(0xffaf8d19),
-                  child: Text(
-                    'Selengkapnya',
-                    style: TextStyle(
-                      color: Colors.white,
+  final List<Widget> mainPageSlider = dataMainPageSlider
+      .map(
+        (item) => Stack(
+          children: <Widget>[
+            Image.network(item.link, fit: BoxFit.cover, width: 1000.0),
+            Container(
+              margin: EdgeInsets.only(left: 22, right: 22),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    child: Text(
+                      item.judul,
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 30,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w700,
+                        shadows: [
+                          Shadow(
+                            color: const Color(0xff000000),
+                            offset: Offset(4, 4),
+                            blurRadius: 8,
+                          )
+                        ],
+                      ),
+                      textAlign: TextAlign.left,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    child: Text(
+                      item.deskripsi,
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 15,
+                        color: const Color(0xffffffff),
+                        shadows: [
+                          Shadow(
+                            color: const Color(0xff000000),
+                            offset: Offset(4, 4),
+                            blurRadius: 8,
+                          )
+                        ],
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                    color: Color(0xffaf8d19),
+                    child: Text(
+                      'Selengkapnya',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    )
-    .toList();
+          ],
+        ),
+      )
+      .toList();
+}

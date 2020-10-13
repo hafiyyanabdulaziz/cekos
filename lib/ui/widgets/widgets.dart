@@ -10,3 +10,4 @@ part 'wrapper.dart';
 part 'mainpage_slider.dart';
 part 'mainpage_perluaswawasan.dart';
 part 'explorelistwidget.dart';
+part 'detailpage_slider.dart';
