@@ -37,7 +37,15 @@ class MainPage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          print('kokokoko');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                print('object');
+                                return ExplorePage(); //ButtonNavigationBarPage();
+                              },
+                            ),
+                          );
                         },
                         child: Text(
                           'Lihat Semua',
@@ -54,7 +62,7 @@ class MainPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                //MainPageRekomendasi(),
+                MainPageRekomendasi(),
                 //MainPageRekomendasi(),
 
                 Container(

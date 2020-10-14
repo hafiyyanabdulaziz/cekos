@@ -1,6 +1,9 @@
 part of 'pages.dart';
 
+// ignore: must_be_immutable
 class ButtonNavigationBarPage extends StatefulWidget {
+  int selectedIndex = 0;
+  //ButtonNavigationBarPage({this.selectedIndex});
   @override
   _ButtonNavigationBarPageState createState() =>
       _ButtonNavigationBarPageState();
@@ -12,8 +15,6 @@ class ButtonNavigationBarPage extends StatefulWidget {
 } */
 
 class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
-  int _selectedIndex = 0;
-
   final _widgetOptions = [
     MainPage(),
     ExplorePage(),
@@ -29,7 +30,7 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
   void _handleIndexChanged(int i) {
     setState(() {
       //_selectedTab = _SelectedTab.values[i];
-      _selectedIndex = i;
+      widget.selectedIndex = i;
     });
   }
 
@@ -37,14 +38,19 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF14172B),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: _widgetOptions.elementAt(widget.selectedIndex),
       bottomNavigationBar: Container(
         color: Color(0xff20233A),
         child: SalomonBottomBar(
           unselectedItemColor: Colors.white,
           selectedItemColor: Color(0xffAF8D19),
-          currentIndex: _selectedIndex,
+          currentIndex: widget.selectedIndex,
           onTap: _handleIndexChanged,
+          /* (int i) {
+            setState(() {
+              widget.selectedIndex = i;
+            });
+          }, */
           items: [
             /// Home
             SalomonBottomBarItem(
