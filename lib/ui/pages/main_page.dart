@@ -96,7 +96,14 @@ class MainPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                print('object');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SearchControlPage();
+                    },
+                  ),
+                );
               },
               child: Container(
                 margin: EdgeInsets.only(
