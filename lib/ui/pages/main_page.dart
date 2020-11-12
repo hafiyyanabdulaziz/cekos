@@ -37,12 +37,12 @@ class MainPage extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
+                          Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) {
-                                print('object');
-                                return ExplorePage(); //ButtonNavigationBarPage();
+                                return ButtonNavigationBarPage(
+                                  selectedIndex: 1,
+                                );
                               },
                             ),
                           );

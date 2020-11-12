@@ -2,8 +2,8 @@ part of 'pages.dart';
 
 // ignore: must_be_immutable
 class ButtonNavigationBarPage extends StatefulWidget {
-  int selectedIndex = 0;
-  //ButtonNavigationBarPage({this.selectedIndex});
+  int selectedIndex;
+  ButtonNavigationBarPage({this.selectedIndex = 0});
   @override
   _ButtonNavigationBarPageState createState() =>
       _ButtonNavigationBarPageState();
