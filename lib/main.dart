@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       theme: ThemeData(
+        unselectedWidgetColor: Colors.white,
         fontFamily: 'Rubik',
         /* primarySwatch: Colors.black45,
         canvasColor: Color(0xFF14172B), */

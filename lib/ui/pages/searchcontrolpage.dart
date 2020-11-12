@@ -6,6 +6,7 @@ class SearchControlPage extends StatefulWidget {
 }
 
 class _SearchControlPageState extends State<SearchControlPage> {
+  bool cek = false;
   Icon cusIcon = Icon(Icons.search);
   Widget cusSearchBar = Text('Halo');
   TextEditingController controller = TextEditingController();
@@ -113,12 +114,359 @@ class _SearchControlPageState extends State<SearchControlPage> {
           ),
         ],
       ),
-      body: Center(
-        child: Text(
-          controller.text,
-          style: TextStyle(
-            color: Colors.white,
-          ),
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: ListView(
+          children: [
+            custom.ExpansionTile(
+              headerBackgroundColor: Colors.transparent,
+              iconColor: Colors.white,
+              //trailing: cusSearchBar,
+              initiallyExpanded: true,
+              //trailing: ,
+              //childrenPadding: EdgeInsets.only(left: 10),
+              //backgroundColor: Colors.white,
+              title: Text(
+                "Property",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              children: <Widget>[
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            custom.ExpansionTile(
+              headerBackgroundColor: Colors.transparent,
+              iconColor: Colors.white,
+              //trailing: cusSearchBar,
+              initiallyExpanded: true,
+              //trailing: ,
+              //childrenPadding: EdgeInsets.only(left: 10),
+              //backgroundColor: Colors.white,
+              title: Text(
+                "Property",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              children: <Widget>[
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            custom.ExpansionTile(
+              headerBackgroundColor: Colors.transparent,
+              iconColor: Colors.white,
+              //trailing: cusSearchBar,
+              initiallyExpanded: true,
+              //trailing: ,
+              //childrenPadding: EdgeInsets.only(left: 10),
+              //backgroundColor: Colors.white,
+              title: Text(
+                "Property",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              children: <Widget>[
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+            custom.ExpansionTile(
+              headerBackgroundColor: Colors.transparent,
+              iconColor: Colors.white,
+              //trailing: cusSearchBar,
+              initiallyExpanded: true,
+              //trailing: ,
+              //childrenPadding: EdgeInsets.only(left: 10),
+              //backgroundColor: Colors.white,
+              title: Text(
+                "Property",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              children: <Widget>[
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  activeColor: Colors.amber,
+                  controlAffinity: ListTileControlAffinity.leading,
+                  //checkColor: Colors.white,
+                  title: const Text(
+                    'Animate Slowly',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  value: cek,
+                  onChanged: (bool value) {
+                    setState(() {
+                      cek = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
