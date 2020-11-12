@@ -170,6 +170,7 @@ class _ExpansionTileState extends State<ExpansionTile>
                 title: DefaultTextStyle(
                   style: Theme.of(context)
                       .textTheme
+                      // ignore: deprecated_member_use
                       .subhead
                       .copyWith(color: titleColor),
                   child: widget.title,
@@ -201,6 +202,7 @@ class _ExpansionTileState extends State<ExpansionTile>
     final ThemeData theme = Theme.of(context);
     _borderColorTween..end = theme.dividerColor;
     _headerColorTween
+      // ignore: deprecated_member_use
       ..begin = theme.textTheme.subhead.color
       ..end = theme.accentColor;
     _iconColorTween
