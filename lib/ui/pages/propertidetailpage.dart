@@ -246,7 +246,13 @@ class PropertiDetailPage extends StatelessWidget {
               margin: EdgeInsets.only(left: 10),
               child: TouchableOpacity(
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    showBarModalBottomSheet(
+                      context: context,
+                      expand: true,
+                      builder: (context) => Survey(),
+                    );
+                  },
                   child: Text(
                     'Survey dulu',
                     style: TextStyle(
@@ -266,7 +272,13 @@ class PropertiDetailPage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)),
                 color: Color(0xffaf8d19),
-                onPressed: () {},
+                onPressed: () {
+                  showBarModalBottomSheet(
+                    context: context,
+                    expand: true,
+                    builder: (context) => Booking(),
+                  );
+                },
                 child: Text(
                   'Booking',
                   style: TextStyle(
