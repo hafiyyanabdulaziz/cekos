@@ -53,6 +53,23 @@ class _SearchControlPageState extends State<SearchControlPage> {
           IconButton(
             icon: cusIcon,
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Scaffold(
+                      appBar: AppBar(
+                        backgroundColor: Color(0xFF23243B),
+                        title: Text('Search'),
+                      ),
+                      backgroundColor: Color(0xFF14172B),
+                      body: ExploreListWidget(
+                        name: controller.text,
+                      ),
+                    );
+                  },
+                ),
+              );
               /* setState(() {
                 if (this.cusIcon.icon == Icons.search) {
                   this.cusIcon = Icon(Icons.cancel);

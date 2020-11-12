@@ -1,6 +1,10 @@
 part of 'widgets.dart';
 
+// ignore: must_be_immutable
 class ExploreListWidget extends StatefulWidget {
+  String name;
+  ExploreListWidget({this.name});
+
   @override
   _ExploreListWidgetState createState() => _ExploreListWidgetState();
 }
@@ -9,7 +13,8 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
   int page = 0;
   List<GetListProperti> dataProperti = new List();
   void getDataUser() async {
-    await GetListProperti.connectToAPI(
+    GetListProperti.connectToAPI(
+      name: widget.name,
       limit: 30,
       offset: page,
     ).then((value) {
