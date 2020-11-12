@@ -8,93 +8,95 @@ class MainPagePerluasWawasan extends StatelessWidget {
       physics: ClampingScrollPhysics(),
       children: dataPerluasWawasan.map(
         (item) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return PerluasWawasanWebView(
-                      link: item.link,
-                    );
-                  },
-                ),
-              );
-            },
-            child: Container(
-              margin: EdgeInsets.only(
-                left: 22,
-                right: 22,
-                bottom: 10,
-              ),
-              height: 220,
+          return TouchableOpacity(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return PerluasWawasanWebView(
+                        link: item.link,
+                      );
+                    },
+                  ),
+                );
+              },
               child: Container(
                 margin: EdgeInsets.only(
-                  left: 15,
-                  right: 15,
+                  left: 22,
+                  right: 22,
                   bottom: 10,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.judul,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontSize: 20,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w500,
-                        shadows: [
-                          Shadow(
-                            color: const Color(0xff000000),
-                            offset: Offset(4, 4),
-                            blurRadius: 8,
-                          )
-                        ],
+                height: 220,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                    bottom: 10,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.judul,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                          shadows: [
+                            Shadow(
+                              color: const Color(0xff000000),
+                              offset: Offset(4, 4),
+                              blurRadius: 8,
+                            )
+                          ],
+                        ),
+                        textAlign: TextAlign.left,
                       ),
-                      textAlign: TextAlign.left,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      item.deskripsi,
-                      maxLines: 4,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontSize: 10,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w300,
-                        shadows: [
-                          Shadow(
-                            color: const Color(0xff000000),
-                            offset: Offset(4, 4),
-                            blurRadius: 8,
-                          )
-                        ],
+                      SizedBox(
+                        height: 5,
                       ),
-                      textAlign: TextAlign.left,
+                      Text(
+                        item.deskripsi,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 10,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w300,
+                          shadows: [
+                            Shadow(
+                              color: const Color(0xff000000),
+                              offset: Offset(4, 4),
+                              blurRadius: 8,
+                            )
+                          ],
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14.0),
+                  image: DecorationImage(
+                    image: NetworkImage(item.photo),
+                    fit: BoxFit.cover,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x80000000),
+                      offset: Offset(4, 4),
+                      blurRadius: 8,
                     ),
                   ],
                 ),
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14.0),
-                image: DecorationImage(
-                  image: NetworkImage(item.photo),
-                  fit: BoxFit.cover,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x80000000),
-                    offset: Offset(4, 4),
-                    blurRadius: 8,
-                  ),
-                ],
               ),
             ),
           );

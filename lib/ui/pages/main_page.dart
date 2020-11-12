@@ -104,57 +104,59 @@ class MainPage extends StatelessWidget {
                 MainPagePerluasWawasan(),
               ],
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SearchControlPage();
-                    },
+            TouchableOpacity(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SearchControlPage();
+                      },
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(
+                    top: 5,
+                    left: 20,
+                    right: 20,
                   ),
-                );
-              },
-              child: Container(
-                margin: EdgeInsets.only(
-                  top: 5,
-                  left: 20,
-                  right: 20,
-                ),
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: const Color(0xff23243b),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0x80000000),
-                      offset: Offset(4, 4),
-                      blurRadius: 8,
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      left: 20,
-                      right: 10,
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Color(0xFF50E3C2),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Cari Kampus atau Nama Kost',
-                          style: TextStyle(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: const Color(0xff23243b),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0x80000000),
+                        offset: Offset(4, 4),
+                        blurRadius: 8,
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        left: 20,
+                        right: 10,
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.search,
                             color: Color(0xFF50E3C2),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Cari Kampus atau Nama Kost',
+                            style: TextStyle(
+                              color: Color(0xFF50E3C2),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
