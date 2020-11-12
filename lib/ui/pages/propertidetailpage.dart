@@ -236,8 +236,47 @@ class PropertiDetailPage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 20,
-        color: Colors.amber,
+        //height: 0,
+        padding: EdgeInsets.all(10),
+        color: Color(0xFF23243B),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              child: TouchableOpacity(
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    'Survey dulu',
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontSize: 17,
+                      color: const Color(0xffffffff),
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5)),
+                color: Color(0xffaf8d19),
+                onPressed: () {},
+                child: Text(
+                  'Booking',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
