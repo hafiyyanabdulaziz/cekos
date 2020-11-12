@@ -35,28 +35,30 @@ class MainPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return ButtonNavigationBarPage(
-                                  selectedIndex: 1,
-                                );
-                              },
+                      TouchableOpacity(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return ButtonNavigationBarPage(
+                                    selectedIndex: 1,
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Lihat Semua',
+                            style: TextStyle(
+                              fontFamily: 'Rubik',
+                              fontSize: 15,
+                              color: const Color(0xffffffff),
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline,
                             ),
-                          );
-                        },
-                        child: Text(
-                          'Lihat Semua',
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 15,
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.underline,
+                            textAlign: TextAlign.right,
                           ),
-                          textAlign: TextAlign.right,
                         ),
                       ),
                     ],
