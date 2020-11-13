@@ -13,6 +13,12 @@ class PropertiDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Detail'),
         backgroundColor: Color(0xFF23243B),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.favorite_border),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: ListView(
         children: [
