@@ -250,7 +250,9 @@ class PropertiDetailPage extends StatelessWidget {
                     showBarModalBottomSheet(
                       context: context,
                       expand: true,
-                      builder: (context) => Survey(),
+                      builder: (context) => Survey(
+                        data: getProperti.nama,
+                      ),
                     );
                   },
                   child: Text(
