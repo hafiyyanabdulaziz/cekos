@@ -35,15 +35,49 @@ class _SurveyState extends State<Survey> {
           Container(
             margin: EdgeInsets.all(20),
             child: SfDateRangePicker(
-              selectionColor: Colors.amber,
+              selectionColor: Color(0xffaf8d19),
               showNavigationArrow: true,
               enablePastDates: false,
-              todayHighlightColor: Colors.red,
+              todayHighlightColor: Color(0xFF23243B),
               onSelectionChanged: _onSelectionChanged,
               selectionMode: DateRangePickerSelectionMode.single,
             ),
           ),
-          (_selectedDate == '') ? Container() : Text(widget.data),
+        ],
+      ),
+      bottomNavigationBar: (_selectedDate == '') ? null : konfirmasi(),
+    );
+  }
+
+  Widget konfirmasi() {
+    return Container(
+      //margin: EdgeInsets.all(20),
+      height: 100,
+      padding: EdgeInsets.all(10),
+      color: Color(0xFF23243B),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            'Anda akan survey ke ' +
+                widget.data +
+                'pada tanggal ' +
+                _selectedDate,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 20,
+            child: RaisedButton(
+              onPressed: () {},
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+              color: Color(0xffaf8d19),
+              child: Text('CONFIRM'),
+            ),
+          ),
         ],
       ),
     );
