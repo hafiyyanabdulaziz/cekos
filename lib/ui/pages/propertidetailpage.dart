@@ -11,7 +11,8 @@ class PropertiDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFF14172B),
       appBar: AppBar(
-        title: Text('Detail'),
+        title: Text('CEKOS'),
+        centerTitle: true,
         backgroundColor: Color(0xFF23243B),
         actions: [
           IconButton(
