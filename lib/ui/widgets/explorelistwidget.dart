@@ -3,7 +3,20 @@ part of 'widgets.dart';
 // ignore: must_be_immutable
 class ExploreListWidget extends StatefulWidget {
   String name;
-  ExploreListWidget({this.name = ''});
+  String typeProperty;
+  String durasiMenginap;
+  String kategori;
+  String furniture;
+  String tempatParkir;
+
+  ExploreListWidget({
+    this.name = '',
+    this.typeProperty = '',
+    this.durasiMenginap = '',
+    this.kategori = '',
+    this.furniture = '',
+    this.tempatParkir = '',
+  });
 
   @override
   _ExploreListWidgetState createState() => _ExploreListWidgetState();
@@ -17,6 +30,11 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
       name: widget.name,
       limit: 30,
       offset: page,
+      typeProperty: widget.typeProperty,
+      durasiMenginap: widget.durasiMenginap,
+      kategori: widget.kategori,
+      furniture: widget.furniture,
+      tempatParkir: widget.tempatParkir,
     ).then((value) {
       setState(() {
         dataProperti = value;

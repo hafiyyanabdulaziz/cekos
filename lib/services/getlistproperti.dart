@@ -62,45 +62,59 @@ class GetListProperti {
     String parkingFacility = "",
     String roomFacility = "",
     String publicFacility = "",
+    //tambahan
+    String typeProperty = '',
+    String durasiMenginap = '',
+    String kategori = '',
+    String furniture = '',
+    String tempatParkir = '',
   }) async {
     String url = "https://api.koseeker.id/property?limit=" +
         limit.toString() +
         "&offset=" +
         offset.toString() +
-        "&sort=" +
-        sort +
-        "&area=" +
-        area +
-        "&kind=" +
-        kind +
-        "&min_price=" +
-        minPrice.toString() +
-        "&max_price=" +
-        maxPrice.toString() +
-        "&room_type=" +
-        roomType +
+        typeProperty +
+        durasiMenginap +
+        kategori +
+        furniture +
+        tempatParkir +
         "&name=" +
-        name +
-        "&available=" +
-        available +
-        "&type=" +
-        type +
-        "&category=" +
-        category +
-        "&min_dp_price=" +
-        minDPPrice.toString() +
-        "&max_dp_price=" +
-        maxDPPrice.toString() +
-        "&lon=" +
-        lon +
-        "&lat=" +
-        lat +
-        "&parking_facility=" +
-        parkingFacility +
-        "&room_facility=" +
-        roomFacility +
-        "&public_facility=" +
-        publicFacility;
+        name;
+    print('-------------' + url);
+    // "&sort=" +
+    // sort +
+    // "&area=" +
+    // area +
+    // "&kind=" +
+    // kind +
+    // "&min_price=" +
+    // minPrice.toString() +
+    // "&max_price=" +
+    // maxPrice.toString() +
+    // "&room_type=" +
+    // roomType +
+    // "&name=" +
+    // name +
+    // "&available=" +
+    // available +
+    // "&type=" +
+    // type +
+    // "&category=" +
+    // category +
+    // "&min_dp_price=" +
+    // minDPPrice.toString() +
+    // "&max_dp_price=" +
+    // maxDPPrice.toString() +
+    // "&lon=" +
+    // lon +
+    // "&lat=" +
+    // lat +
+    // "&parking_facility=" +
+    // parkingFacility +
+    // "&room_facility=" +
+    // roomFacility +
+    // "&public_facility=" +
+    // publicFacility;
 
     var apiRequest = await http.get(url);
     var jsonObject = json.decode(apiRequest.body);

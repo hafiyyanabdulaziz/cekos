@@ -32,6 +32,36 @@ class _SearchControlPageState extends State<SearchControlPage> {
   bool cctv = false;
   bool penjagakost = false;
 
+  String typeProperty() {
+    return ((kost) ? '&type=kost' : '') +
+        ((kontrakan) ? '&type=kontrakan' : '') +
+        ((apartement) ? '&type=apartemen' : '');
+  }
+
+  String durasiMenginap() {
+    return ((harian) ? '&kind=daily' : '') +
+        ((mingguan) ? '&kind=weekly' : '') +
+        ((bulanan) ? '&kind=monthly' : '') +
+        ((tahunan) ? '&kind=yearly' : '');
+  }
+
+  String kategori() {
+    return ((pria) ? '&category=male' : '') +
+        ((wanita) ? '&tcategory=female' : '') +
+        ((campur) ? '&category=mix' : '');
+  }
+
+  String furniture() {
+    return ((kosongan) ? '&room_type=kosong' : '') +
+        ((isi) ? '&room_type=isi' : '');
+  }
+
+  String tempatParkir() {
+    return ((sepeda) ? '&parking_facility=sepeda' : '') +
+        ((motor) ? '&tcategory=motor' : '') +
+        ((mobil) ? '&category=mobil' : '');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +84,11 @@ class _SearchControlPageState extends State<SearchControlPage> {
                     backgroundColor: Color(0xFF14172B),
                     body: ExploreListWidget(
                       name: controller.text,
+                      durasiMenginap: durasiMenginap(),
+                      furniture: furniture(),
+                      kategori: kategori(),
+                      tempatParkir: tempatParkir(),
+                      typeProperty: typeProperty(),
                     ),
                   );
                 },
@@ -94,6 +129,11 @@ class _SearchControlPageState extends State<SearchControlPage> {
           IconButton(
             icon: cusIcon,
             onPressed: () {
+              print(typeProperty());
+              print(durasiMenginap());
+              print(kategori());
+              print(furniture());
+              print(tempatParkir());
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -106,6 +146,11 @@ class _SearchControlPageState extends State<SearchControlPage> {
                       backgroundColor: Color(0xFF14172B),
                       body: ExploreListWidget(
                         name: controller.text,
+                        durasiMenginap: durasiMenginap(),
+                        furniture: furniture(),
+                        kategori: kategori(),
+                        tempatParkir: tempatParkir(),
+                        typeProperty: typeProperty(),
                       ),
                     );
                   },
@@ -500,147 +545,147 @@ class _SearchControlPageState extends State<SearchControlPage> {
             ],
           ),
           //internet
-          custom.ExpansionTile(
-            headerBackgroundColor: Colors.transparent,
-            iconColor: Colors.white,
-            //trailing: cusSearchBar,
-            initiallyExpanded: true,
-            //trailing: ,
-            //childrenPadding: EdgeInsets.only(left: 10),
-            //backgroundColor: Colors.white,
-            title: Text(
-              "Internet",
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            children: <Widget>[
-              CheckboxListTile(
-                activeColor: Colors.amber,
-                controlAffinity: ListTileControlAffinity.leading,
-                //checkColor: Colors.white,
-                title: const Text(
-                  'Wi-Fi',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                value: wifi,
-                onChanged: (bool value) {
-                  setState(() {
-                    wifi = value;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                activeColor: Colors.amber,
-                controlAffinity: ListTileControlAffinity.leading,
-                //checkColor: Colors.white,
-                title: const Text(
-                  'Kabel',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                value: kabel,
-                onChanged: (bool value) {
-                  setState(() {
-                    kabel = value;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                activeColor: Colors.amber,
-                controlAffinity: ListTileControlAffinity.leading,
-                //checkColor: Colors.white,
-                title: const Text(
-                  'Lain-lain',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                value: lainlain,
-                onChanged: (bool value) {
-                  setState(() {
-                    lainlain = value;
-                  });
-                },
-              ),
-            ],
-          ),
+          // custom.ExpansionTile(
+          //   headerBackgroundColor: Colors.transparent,
+          //   iconColor: Colors.white,
+          //   //trailing: cusSearchBar,
+          //   initiallyExpanded: true,
+          //   //trailing: ,
+          //   //childrenPadding: EdgeInsets.only(left: 10),
+          //   //backgroundColor: Colors.white,
+          //   title: Text(
+          //     "Internet",
+          //     style: TextStyle(
+          //       fontSize: 18.0,
+          //       fontWeight: FontWeight.bold,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          //   children: <Widget>[
+          //     CheckboxListTile(
+          //       activeColor: Colors.amber,
+          //       controlAffinity: ListTileControlAffinity.leading,
+          //       //checkColor: Colors.white,
+          //       title: const Text(
+          //         'Wi-Fi',
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       value: wifi,
+          //       onChanged: (bool value) {
+          //         setState(() {
+          //           wifi = value;
+          //         });
+          //       },
+          //     ),
+          //     CheckboxListTile(
+          //       activeColor: Colors.amber,
+          //       controlAffinity: ListTileControlAffinity.leading,
+          //       //checkColor: Colors.white,
+          //       title: const Text(
+          //         'Kabel',
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       value: kabel,
+          //       onChanged: (bool value) {
+          //         setState(() {
+          //           kabel = value;
+          //         });
+          //       },
+          //     ),
+          //     CheckboxListTile(
+          //       activeColor: Colors.amber,
+          //       controlAffinity: ListTileControlAffinity.leading,
+          //       //checkColor: Colors.white,
+          //       title: const Text(
+          //         'Lain-lain',
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       value: lainlain,
+          //       onChanged: (bool value) {
+          //         setState(() {
+          //           lainlain = value;
+          //         });
+          //       },
+          //     ),
+          //   ],
+          // ),
           //keamanan
-          custom.ExpansionTile(
-            headerBackgroundColor: Colors.transparent,
-            iconColor: Colors.white,
-            //trailing: cusSearchBar,
-            initiallyExpanded: true,
-            //trailing: ,
-            //childrenPadding: EdgeInsets.only(left: 10),
-            //backgroundColor: Colors.white,
-            title: Text(
-              "Keamanan",
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            children: <Widget>[
-              CheckboxListTile(
-                activeColor: Colors.amber,
-                controlAffinity: ListTileControlAffinity.leading,
-                //checkColor: Colors.white,
-                title: const Text(
-                  'Satpam',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                value: satpam,
-                onChanged: (bool value) {
-                  setState(() {
-                    satpam = value;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                activeColor: Colors.amber,
-                controlAffinity: ListTileControlAffinity.leading,
-                //checkColor: Colors.white,
-                title: const Text(
-                  'CCTV',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                value: cctv,
-                onChanged: (bool value) {
-                  setState(() {
-                    cctv = value;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                activeColor: Colors.amber,
-                controlAffinity: ListTileControlAffinity.leading,
-                //checkColor: Colors.white,
-                title: const Text(
-                  'Penjaga Kost',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                value: penjagakost,
-                onChanged: (bool value) {
-                  setState(() {
-                    penjagakost = value;
-                  });
-                },
-              ),
-            ],
-          ),
+          // custom.ExpansionTile(
+          //   headerBackgroundColor: Colors.transparent,
+          //   iconColor: Colors.white,
+          //   //trailing: cusSearchBar,
+          //   initiallyExpanded: true,
+          //   //trailing: ,
+          //   //childrenPadding: EdgeInsets.only(left: 10),
+          //   //backgroundColor: Colors.white,
+          //   title: Text(
+          //     "Keamanan",
+          //     style: TextStyle(
+          //       fontSize: 18.0,
+          //       fontWeight: FontWeight.bold,
+          //       color: Colors.white,
+          //     ),
+          //   ),
+          //   children: <Widget>[
+          //     CheckboxListTile(
+          //       activeColor: Colors.amber,
+          //       controlAffinity: ListTileControlAffinity.leading,
+          //       //checkColor: Colors.white,
+          //       title: const Text(
+          //         'Satpam',
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       value: satpam,
+          //       onChanged: (bool value) {
+          //         setState(() {
+          //           satpam = value;
+          //         });
+          //       },
+          //     ),
+          //     CheckboxListTile(
+          //       activeColor: Colors.amber,
+          //       controlAffinity: ListTileControlAffinity.leading,
+          //       //checkColor: Colors.white,
+          //       title: const Text(
+          //         'CCTV',
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       value: cctv,
+          //       onChanged: (bool value) {
+          //         setState(() {
+          //           cctv = value;
+          //         });
+          //       },
+          //     ),
+          //     CheckboxListTile(
+          //       activeColor: Colors.amber,
+          //       controlAffinity: ListTileControlAffinity.leading,
+          //       //checkColor: Colors.white,
+          //       title: const Text(
+          //         'Penjaga Kost',
+          //         style: TextStyle(
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       value: penjagakost,
+          //       onChanged: (bool value) {
+          //         setState(() {
+          //           penjagakost = value;
+          //         });
+          //       },
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );
