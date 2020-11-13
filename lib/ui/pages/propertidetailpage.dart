@@ -278,7 +278,9 @@ class PropertiDetailPage extends StatelessWidget {
                   showBarModalBottomSheet(
                     context: context,
                     expand: true,
-                    builder: (context) => Booking(),
+                    builder: (context) => Booking(
+                      data: getProperti.nama,
+                    ),
                   );
                 },
                 child: Text(
