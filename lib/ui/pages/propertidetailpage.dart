@@ -94,7 +94,7 @@ class PropertiDetailPage extends StatelessWidget {
               right: 10,
             ),
             child: Text(
-              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna',
+              deskripsi(),
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 15,
@@ -123,6 +123,22 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
+          ListBody(
+              children: facilityConvert()
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          '- ' + e,
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 15,
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ))
+                  .toList()),
           //LOKASI
           Container(
             margin: EdgeInsets.only(
@@ -180,66 +196,73 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
-          Text('data'),
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                Text(getProperti.nama),
+                Text(getProperti.village),
+                Text(getProperti.district),
+                Text(getProperti.city),
+                Text(getProperti.province),
+                Text(getProperti.facility.toString()),
+                Text(getProperti.environmentAccess.toString()),
+                Text(getProperti.parkingFacility.toString()),
+                Text(getProperti.category.toString()),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+                Text('data'),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: Container(
@@ -302,5 +325,43 @@ class PropertiDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<String> facilityConvert() {
+    List<String> facility = [];
+    for (var item in getProperti.facility) {
+      switch (item) {
+        case 'ruang_santai':
+          facility.add('Ruang Santai');
+          break;
+        case 'garasi':
+          facility.add('Garasi');
+          break;
+        case 'tempat_jemuran':
+          facility.add('Tempat Jemuran');
+          break;
+        case 'dapur':
+          facility.add('Dapur');
+          break;
+        default:
+          facility.add(item);
+      }
+    }
+    return facility;
+  }
+
+  String deskripsi() {
+    return getProperti.nama +
+        'yang terletak di ' +
+        getProperti.village +
+        ', ' +
+        getProperti.district +
+        ', ' +
+        getProperti.city +
+        ', ' +
+        getProperti.province +
+        ' merupakan hunian yang nyaman untuk ditempati. ' +
+        'Lokasinya pun strategis  dan memiliki banyak fasilitas. Harganya pun terjangkau. ' +
+        getProperti.description;
   }
 }

@@ -28,7 +28,7 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
   void getDataUser() async {
     GetListProperti.connectToAPI(
       name: widget.name,
-      limit: 30,
+      limit: 5,
       offset: page,
       typeProperty: widget.typeProperty,
       durasiMenginap: widget.durasiMenginap,

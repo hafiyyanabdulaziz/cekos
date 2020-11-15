@@ -1,15 +1,25 @@
 part of 'services.dart';
 
 class GetListProperti {
-  GetListProperti(
-      {@required this.photo,
-      @required this.tipe,
-      @required this.penghuni,
-      @required this.harga,
-      @required this.nama,
-      @required this.id,
-      @required this.daerah,
-      @required this.gallery});
+  GetListProperti({
+    @required this.photo,
+    @required this.tipe,
+    @required this.penghuni,
+    @required this.harga,
+    @required this.nama,
+    @required this.id,
+    @required this.daerah,
+    @required this.gallery,
+    @required this.village,
+    @required this.district,
+    @required this.city,
+    @required this.province,
+    @required this.facility,
+    @required this.environmentAccess,
+    @required this.parkingFacility,
+    @required this.category,
+    @required this.description,
+  });
 
   String photo =
       "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
@@ -20,6 +30,16 @@ class GetListProperti {
   String id;
   String daerah;
   List<String> gallery;
+
+  String village;
+  String district;
+  String city;
+  String province;
+  List<String> facility;
+  List<String> environmentAccess;
+  List<String> parkingFacility;
+  List<String> category;
+  String description;
 
   factory GetListProperti.getData(Map<String, dynamic> object) {
     /* List<String> gallery = List<String>.from(object['gallery']);
@@ -39,6 +59,15 @@ class GetListProperti {
       id: object['id'],
       daerah: object['address']["city"] + " - " + object['address']['village'],
       gallery: List<String>.from(object['gallery']),
+      village: object['address']['village'],
+      category: List<String>.from(object['category']),
+      city: object['address']["city"],
+      district: object['address']["district"],
+      environmentAccess: List<String>.from(object['environment_access']),
+      facility: List<String>.from(object['facility']),
+      parkingFacility: List<String>.from(object['parking_facility']),
+      province: object['address']["province"],
+      description: object['description'],
     );
   }
 
