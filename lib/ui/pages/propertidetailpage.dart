@@ -139,6 +139,111 @@ class PropertiDetailPage extends StatelessWidget {
                         ),
                       ))
                   .toList()),
+          //HALAMAN PARKIR
+          Container(
+            margin: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            ),
+            child: Text(
+              'Halaman Parkir',
+              style: TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 20,
+                color: const Color(0xffffffff),
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          ListBody(
+              children: parkingFacilityConvert()
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          '- ' + e,
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 15,
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ))
+                  .toList()),
+          //AKSES LINGKUNGAN
+          Container(
+            margin: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            ),
+            child: Text(
+              'Akses Lingkungan',
+              style: TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 20,
+                color: const Color(0xffffffff),
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          ListBody(
+              children: environmentAccessConvert()
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          '- ' + e,
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 15,
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ))
+                  .toList()),
+          //PENGHUNI
+          Container(
+            margin: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            ),
+            child: Text(
+              'Penghuni',
+              style: TextStyle(
+                fontFamily: 'Rubik',
+                fontSize: 20,
+                color: const Color(0xffffffff),
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          ListBody(
+              children: categoryConvert()
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          '- ' + e,
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 15,
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ))
+                  .toList()),
           //LOKASI
           Container(
             margin: EdgeInsets.only(
@@ -158,45 +263,64 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
-          Container(
-            //color: Colors.amber,
-            child: TouchableOpacity(
-              child: GoogleMap(
-                mapType: MapType.normal,
-                initialCameraPosition: CameraPosition(
-                  target: LatLng(getProperti.lat, getProperti.lng),
-                  zoom: 14.0,
+          TouchableOpacity(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Lokasi(
+                        lat: getProperti.lat,
+                        lng: getProperti.lng,
+                      );
+                    },
+                  ),
+                );
+              },
+              child: Container(
+                //color: Colors.amber,
+                // child: TouchableOpacity(
+
+                //     // child: GoogleMap(
+                //     //   mapType: MapType.normal,
+                //     //   initialCameraPosition: CameraPosition(
+                //     //     target: LatLng(getProperti.lat, getProperti.lng),
+                //     //     zoom: 14.0,
+                //     //   ),
+                //     //   markers: {
+                //     //     Marker(
+                //     //       markerId: MarkerId("1"),
+                //     //       position: LatLng(getProperti.lat, getProperti.lng),
+                //     //       icon: BitmapDescriptor.defaultMarker,
+                //     //     )
+                //     //   },
+                //     //   zoomControlsEnabled: false,
+                //     //   zoomGesturesEnabled: false,
+                //     //   scrollGesturesEnabled: false,
+                //     //   mapToolbarEnabled: false,
+                //     //   onTap: (argument) {
+                //     //     Navigator.push(
+                //     //       context,
+                //     //       MaterialPageRoute(
+                //     //         builder: (context) {
+                //     //           return Lokasi(
+                //     //             lat: getProperti.lat,
+                //     //             lng: getProperti.lng,
+                //     //           );
+                //     //         },
+                //     //       ),
+                //     //     );
+                //     //   },
+                //     // ),
+                //     ),
+                color: Colors.blue,
+                height: (MediaQuery.of(context).size.width - 20) / 2,
+                margin: EdgeInsets.only(
+                  left: 10,
+                  right: 10,
                 ),
-                markers: {
-                  Marker(
-                    markerId: MarkerId("1"),
-                    position: LatLng(getProperti.lat, getProperti.lng),
-                    icon: BitmapDescriptor.defaultMarker,
-                  )
-                },
-                zoomControlsEnabled: false,
-                zoomGesturesEnabled: false,
-                scrollGesturesEnabled: false,
-                mapToolbarEnabled: false,
-                onTap: (argument) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Lokasi(
-                          lat: getProperti.lat,
-                          lng: getProperti.lng,
-                        );
-                      },
-                    ),
-                  );
-                },
               ),
-            ),
-            height: (MediaQuery.of(context).size.width - 20) / 2,
-            margin: EdgeInsets.only(
-              left: 10,
-              right: 10,
             ),
           ),
           //PERATURAN
@@ -235,73 +359,6 @@ class PropertiDetailPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.left,
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                Text(getProperti.nama),
-                Text(getProperti.village),
-                Text(getProperti.district),
-                Text(getProperti.city),
-                Text(getProperti.province),
-                Text(getProperti.facility.toString()),
-                Text(getProperti.environmentAccess.toString()),
-                Text(getProperti.parkingFacility.toString()),
-                Text(getProperti.category.toString()),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-                Text('data'),
-              ],
             ),
           ),
         ],
@@ -368,10 +425,6 @@ class PropertiDetailPage extends StatelessWidget {
     );
   }
 
-  Future maps() async {
-    return 0;
-  }
-
   List<String> facilityConvert() {
     List<String> facility = [];
     for (var item in getProperti.facility) {
@@ -387,6 +440,72 @@ class PropertiDetailPage extends StatelessWidget {
           break;
         case 'dapur':
           facility.add('Dapur');
+          break;
+        default:
+          facility.add(item);
+      }
+    }
+    return facility;
+  }
+
+  List<String> parkingFacilityConvert() {
+    List<String> facility = [];
+    for (var item in getProperti.parkingFacility) {
+      switch (item) {
+        case 'sepeda':
+          facility.add('Sepeda');
+          break;
+        case 'motor':
+          facility.add('Motor');
+          break;
+        case 'mobil':
+          facility.add('Mobil');
+          break;
+        default:
+          facility.add(item);
+      }
+    }
+    return facility;
+  }
+
+  List<String> categoryConvert() {
+    List<String> facility = [];
+    for (var item in getProperti.category) {
+      switch (item) {
+        case 'male':
+          facility.add('Laki-Laki');
+          break;
+        case 'female':
+          facility.add('Perempuan');
+          break;
+        case 'mix':
+          facility.add('Campur');
+          break;
+        default:
+          facility.add(item);
+      }
+    }
+    return facility;
+  }
+
+  List<String> environmentAccessConvert() {
+    List<String> facility = [];
+    for (var item in getProperti.environmentAccess) {
+      switch (item) {
+        case 'warung_makan':
+          facility.add('Warung Makan');
+          break;
+        case 'masjid':
+          facility.add('Masjid');
+          break;
+        case 'minimarket':
+          facility.add('Minimarket');
+          break;
+        case 'bank':
+          facility.add('Bank');
+          break;
+        case 'apotek':
+          facility.add('Apotek');
           break;
         default:
           facility.add(item);
