@@ -158,6 +158,16 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
+          RaisedButton(
+            onPressed: () {
+              showBarModalBottomSheet(
+                context: context,
+                expand: true,
+                builder: (context) => Lokasi(),
+              );
+            },
+            child: Text('data'),
+          ),
           //PERATURAN
           Container(
             margin: EdgeInsets.only(
