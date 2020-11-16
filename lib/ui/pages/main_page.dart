@@ -66,7 +66,7 @@ class MainPage extends StatelessWidget {
                 ),
                 MainPageRekomendasi(),
                 //MainPageRekomendasi(),
-
+                //PROMO
                 Container(
                   margin: EdgeInsets.only(
                     left: 25,
@@ -84,6 +84,30 @@ class MainPage extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                 ),
+                Container(
+                  height: 60,
+                  margin: EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                  ),
+                  //color: Colors.amber,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Color(0xff23243b),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Maaf, Saat ini belum ada promo',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        //fontSize: 20,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                //PERLUAS WAWASAN
                 Container(
                   margin: EdgeInsets.only(
                     left: 25,
