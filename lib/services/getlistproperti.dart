@@ -19,6 +19,8 @@ class GetListProperti {
     @required this.parkingFacility,
     @required this.category,
     @required this.description,
+    @required this.lat,
+    @required this.lng,
   });
 
   String photo =
@@ -40,6 +42,9 @@ class GetListProperti {
   List<String> parkingFacility;
   List<String> category;
   String description;
+
+  double lat;
+  double lng;
 
   factory GetListProperti.getData(Map<String, dynamic> object) {
     /* List<String> gallery = List<String>.from(object['gallery']);
@@ -68,6 +73,8 @@ class GetListProperti {
       parkingFacility: List<String>.from(object['parking_facility']),
       province: object['address']["province"],
       description: object['description'],
+      lat: object['address']['location']['coordinates'][1],
+      lng: object['address']['location']['coordinates'][0],
     );
   }
 

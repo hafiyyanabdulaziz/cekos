@@ -158,15 +158,46 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
-          RaisedButton(
-            onPressed: () {
-              showBarModalBottomSheet(
-                context: context,
-                expand: true,
-                builder: (context) => Lokasi(),
-              );
-            },
-            child: Text('data'),
+          Container(
+            //color: Colors.amber,
+            child: TouchableOpacity(
+              child: GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(getProperti.lat, getProperti.lng),
+                  zoom: 14.0,
+                ),
+                markers: {
+                  Marker(
+                    markerId: MarkerId("1"),
+                    position: LatLng(getProperti.lat, getProperti.lng),
+                    icon: BitmapDescriptor.defaultMarker,
+                  )
+                },
+                zoomControlsEnabled: false,
+                zoomGesturesEnabled: false,
+                scrollGesturesEnabled: false,
+                mapToolbarEnabled: false,
+                onTap: (argument) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Lokasi(
+                          lat: getProperti.lat,
+                          lng: getProperti.lng,
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+            height: (MediaQuery.of(context).size.width - 20) / 2,
+            margin: EdgeInsets.only(
+              left: 10,
+              right: 10,
+            ),
           ),
           //PERATURAN
           Container(
@@ -335,6 +366,10 @@ class PropertiDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future maps() async {
+    return 0;
   }
 
   List<String> facilityConvert() {
