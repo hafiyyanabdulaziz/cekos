@@ -160,7 +160,12 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
                                   bottom: 10,
                                 ),
                                 child: Text(
-                                  ('Rp ' + dataProperti[i].harga + '/Tahun'),
+                                  NumberFormat.currency(
+                                        locale: 'id',
+                                        decimalDigits: 0,
+                                        symbol: 'Rp ',
+                                      ).format(dataProperti[i].harga) +
+                                      ' /Tahun',
                                   style: TextStyle(
                                     fontFamily: 'Rubik',
                                     fontSize: 15,

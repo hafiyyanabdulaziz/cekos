@@ -27,7 +27,7 @@ class GetListProperti {
       "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
   String tipe;
   String penghuni;
-  String harga;
+  int harga;
   String nama;
   String id;
   String daerah;
@@ -59,7 +59,7 @@ class GetListProperti {
       photo: object['main_image'],
       tipe: object['type'][0],
       penghuni: object['category'][0].toString(),
-      harga: object['detail_house_price']['yearly'].toString(),
+      harga: object['detail_house_price']['yearly'],
       nama: object['name'],
       id: object['id'],
       daerah: object['address']["city"] + " - " + object['address']['village'],
