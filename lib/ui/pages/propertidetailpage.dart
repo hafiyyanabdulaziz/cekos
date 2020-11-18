@@ -585,7 +585,7 @@ class PropertiDetailPage extends StatelessWidget {
                     context: context,
                     expand: true,
                     builder: (context) => Booking(
-                      data: getProperti.nama,
+                      data: getProperti.roomType,
                     ),
                   );
                 },
