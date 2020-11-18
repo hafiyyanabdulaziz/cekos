@@ -20,6 +20,8 @@ class _WrapperState extends State<Wrapper> {
     if (sharedPreferences.getString('user_uid') != null) {
       isUser = true;
       setState(() {});
+    } else {
+      sharedPreferences.getString('user_uid');
     }
   }
 
