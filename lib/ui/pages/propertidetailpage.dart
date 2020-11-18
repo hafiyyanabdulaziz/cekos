@@ -342,6 +342,22 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
+          ListBody(
+              children: rulesConvert()
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Text(
+                          '- ' + e,
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 15,
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ))
+                  .toList()),
           //TIPE KAMAR
           Container(
             margin: EdgeInsets.only(
@@ -361,6 +377,168 @@ class PropertiDetailPage extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
+          ListBody(
+              children: getProperti.roomType
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(
+                          left: 10,
+                          right: 10,
+                          bottom: 10,
+                        ),
+                        padding: EdgeInsets.only(
+                          top: 10,
+                          bottom: 10,
+                          left: 10,
+                          right: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xff23243b),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0x80000000),
+                              offset: Offset(2, 2),
+                              blurRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              (e['name'] == '') ? 'Tanpa Nama' : e['name'],
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 20,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w700,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            Divider(
+                              color: Color(0xFF50E3C2),
+                            ),
+                            Text(
+                              'Ukuran kamar ${e['room_size']} meter, ${(e['is_bath_room_inside']) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${e['max_guess']} Orang/kamar, ${(e['is_furnished']) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 15,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            Divider(
+                              color: Color(0xFF50E3C2),
+                            ),
+                            Text(
+                              'Fasilitas Kamar',
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 17,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w700,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            ListBody(
+                                children: e['facility']
+                                    .map<Widget>((e) => Container(
+                                          margin: EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          child: Text(
+                                            '- ' + e,
+                                            style: TextStyle(
+                                              fontFamily: 'Rubik',
+                                              fontSize: 15,
+                                              color: const Color(0xffffffff),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                            textAlign: TextAlign.left,
+                                          ),
+                                        ))
+                                    .toList()),
+                            Divider(
+                              color: Color(0xFF50E3C2),
+                            ),
+                            Text(
+                              'Harga',
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 17,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w700,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                            (e['price']['yearly'] == 0)
+                                ? Container()
+                                : Text(
+                                    NumberFormat.currency(
+                                          locale: 'id',
+                                          decimalDigits: 0,
+                                          symbol: 'Rp ',
+                                        ).format(e['price']['yearly']) +
+                                        ' /Tahun',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                            (e['price']['monthly'] == 0)
+                                ? Container()
+                                : Text(
+                                    NumberFormat.currency(
+                                          locale: 'id',
+                                          decimalDigits: 0,
+                                          symbol: 'Rp ',
+                                        ).format(e['price']['monthly']) +
+                                        ' /Bulan',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                            (e['price']['weekly'] == 0)
+                                ? Container()
+                                : Text(
+                                    NumberFormat.currency(
+                                          locale: 'id',
+                                          decimalDigits: 0,
+                                          symbol: 'Rp ',
+                                        ).format(e['price']['weekly']) +
+                                        ' /Pekan',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                            (e['price']['daily'] == 0)
+                                ? Container()
+                                : Text(
+                                    NumberFormat.currency(
+                                          locale: 'id',
+                                          decimalDigits: 0,
+                                          symbol: 'Rp ',
+                                        ).format(e['price']['daily']) +
+                                        ' /Hari',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                          ],
+                        ),
+                      ))
+                  .toList()),
         ],
       ),
       bottomNavigationBar: Container(
@@ -460,6 +638,23 @@ class PropertiDetailPage extends StatelessWidget {
           break;
         case 'mobil':
           facility.add('Mobil');
+          break;
+        default:
+          facility.add(item);
+      }
+    }
+    return facility;
+  }
+
+  List<String> rulesConvert() {
+    List<String> facility = [];
+    for (var item in getProperti.rules) {
+      switch (item) {
+        case 'free':
+          facility.add('Bebas');
+          break;
+        case 'pets_banned':
+          facility.add('Tidak boleh membawa hewan peliharaan');
           break;
         default:
           facility.add(item);

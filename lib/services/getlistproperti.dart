@@ -21,6 +21,8 @@ class GetListProperti {
     @required this.description,
     @required this.lat,
     @required this.lng,
+    @required this.rules,
+    @required this.roomType,
   });
 
   String photo =
@@ -42,6 +44,8 @@ class GetListProperti {
   List<String> parkingFacility;
   List<String> category;
   String description;
+  List<String> rules;
+  List<Map> roomType;
 
   double lat;
   double lng;
@@ -75,6 +79,8 @@ class GetListProperti {
       description: object['description'],
       lat: object['address']['location']['coordinates'][1],
       lng: object['address']['location']['coordinates'][0],
+      rules: List<String>.from(object['rules']),
+      roomType: List<Map>.from(object['room_type']),
     );
   }
 
