@@ -6,10 +6,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String name = 'loading';
-  String userID = 'loading';
-  String email = 'loading';
-  String photo = 'loading';
+  String name = '';
+  String userID = '';
+  String email = '';
+  String photo = '';
   Future<String> getName() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.getString('user_name');
@@ -54,18 +54,25 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Color(0xFF14172B),
+      backgroundColor: Color(0xFF14172B),
       appBar: AppBar(
         backgroundColor: Color(0xFF23243B),
-        title: Text('Profile'),
-      ),
-      body: Column(
-        children: [
-          Text(name),
-          Text(userID),
-          Text(email),
-          Text(photo),
-          RaisedButton(
+        title: Text(name),
+        centerTitle: true,
+        leading: Container(
+          margin: EdgeInsets.all(10),
+          child: CircleAvatar(
+            //radius: 30,
+            backgroundColor: Color(0xFF23243B),
+            backgroundImage: NetworkImage(photo),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.exit_to_app,
+              color: Colors.red,
+            ),
             onPressed: () async {
               CekosGoogleSignIn.signOutGoogle();
               SharedPreferences sharedPreferences =
@@ -81,15 +88,238 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               );
             },
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            color: Color(0xffaf8d19),
-            child: Text(
-              'Logout',
-              style: TextStyle(
-                color: Colors.white,
-              ),
+          )
+        ],
+      ),
+      body: ListView(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              left: 15,
+              top: 15,
+              bottom: 15,
+              right: 15,
             ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Likes',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                TouchableOpacity(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ButtonNavigationBarPage(
+                              selectedIndex: 1,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Lihat Semua',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 15,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          MainPageRekomendasi(),
+          Divider(
+            color: Color(0xFF50E3C2),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              left: 15,
+              top: 15,
+              bottom: 15,
+              right: 15,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Survey',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                TouchableOpacity(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ButtonNavigationBarPage(
+                              selectedIndex: 1,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Lihat Semua',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 15,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          MainPageRekomendasi(),
+          Divider(
+            color: Color(0xFF50E3C2),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              left: 15,
+              top: 15,
+              bottom: 15,
+              right: 15,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Booking',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                TouchableOpacity(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ButtonNavigationBarPage(
+                              selectedIndex: 1,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Lihat Semua',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 15,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          MainPageRekomendasi(),
+          Divider(
+            color: Color(0xFF50E3C2),
+          ),
+          ListView(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            children: ListTile.divideTiles(
+                context: context,
+                color: Color(0xFF50E3C2),
+                tiles: [
+                  ListTile(
+                    title: Text(
+                      'Horse',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 20,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Cow',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 20,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Camel',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 20,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Sheep',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 20,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text(
+                      'Goat',
+                      style: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontSize: 20,
+                        color: const Color(0xffffffff),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                ]).toList(),
           ),
         ],
       ),
