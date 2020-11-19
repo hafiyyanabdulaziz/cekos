@@ -142,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          MainPageRekomendasi(),
+          // MainPageRekomendasi(),
           Divider(
             color: Color(0xFF50E3C2),
           ),
@@ -195,7 +195,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          MainPageRekomendasi(),
+          // MainPageRekomendasi(),
           Divider(
             color: Color(0xFF50E3C2),
           ),
@@ -248,7 +248,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
           ),
-          MainPageRekomendasi(),
+          // MainPageRekomendasi(),
           Divider(
             color: Color(0xFF50E3C2),
           ),
@@ -261,7 +261,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 tiles: [
                   ListTile(
                     title: Text(
-                      'Horse',
+                      'Kebijakan Privasi',
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 20,
@@ -273,7 +273,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   ListTile(
                     title: Text(
-                      'Cow',
+                      'Tentang Cekos',
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 20,
@@ -285,7 +285,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   ListTile(
                     title: Text(
-                      'Camel',
+                      'Hubungi Developer',
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 20,
@@ -297,19 +297,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   ListTile(
                     title: Text(
-                      'Sheep',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontSize: 20,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Goat',
+                      'Beri Nilai',
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 20,
@@ -320,6 +308,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     onTap: () {},
                   ),
                 ]).toList(),
+          ),
+          Container(
+            margin: EdgeInsets.all(10),
+            child: Center(
+              child: Text(
+                'Hak cipta dilindungi undang-undang',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
           ),
         ],
       ),
