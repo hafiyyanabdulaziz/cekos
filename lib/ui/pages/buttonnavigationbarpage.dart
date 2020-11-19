@@ -19,8 +19,8 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
     MainPage(),
     ExplorePage(),
     CrispChatPage(),
-    ProfilePage(),
-
+    //ProfilePage(),
+    Coba(),
     /* Halamantiga(),
     Halamantiga(), */
   ];
