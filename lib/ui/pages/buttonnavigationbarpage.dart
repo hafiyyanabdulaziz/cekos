@@ -3,7 +3,7 @@ part of 'pages.dart';
 // ignore: must_be_immutable
 class ButtonNavigationBarPage extends StatefulWidget {
   int selectedIndex;
-  ButtonNavigationBarPage({this.selectedIndex = 3});
+  ButtonNavigationBarPage({this.selectedIndex = 2});
   @override
   _ButtonNavigationBarPageState createState() =>
       _ButtonNavigationBarPageState();
@@ -18,9 +18,10 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
   final _widgetOptions = [
     MainPage(),
     ExplorePage(),
-    CrispChatPage(),
-    //ProfilePage(),
-    Coba(),
+    Favorite(),
+    //CrispChatPage(),
+    ProfilePage(),
+    //Coba(),
     /* Halamantiga(),
     Halamantiga(), */
   ];
@@ -65,8 +66,8 @@ class _ButtonNavigationBarPageState extends State<ButtonNavigationBarPage> {
 
             /// Likes
             SalomonBottomBarItem(
-              icon: Icon(Icons.chat),
-              title: Text("Chat"),
+              icon: Icon(Icons.favorite),
+              title: Text("Favorite"),
             ),
 
             SalomonBottomBarItem(
