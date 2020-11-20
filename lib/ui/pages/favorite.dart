@@ -33,9 +33,9 @@ class _FavoriteState extends State<Favorite> {
           ),
         ),
         body: TabBarView(children: [
-          ProfilePage(),
-          ProfilePage(),
-          ProfilePage(),
+          LikesTab(),
+          SurveyTab(),
+          BookingTabs(),
         ]),
       ),
     );

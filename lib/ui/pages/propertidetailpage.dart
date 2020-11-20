@@ -17,7 +17,23 @@ class PropertiDetailPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.favorite_border),
-            onPressed: () {},
+            onPressed: () {
+              Future<String> getUserID() async {
+                SharedPreferences sharedPreferences =
+                    await SharedPreferences.getInstance();
+                return sharedPreferences.getString('user_uid');
+              }
+
+              getUserID().then((userID) {
+                print('halo' + userID);
+                DatabaseFirestore.createOrUpdateLikes(
+                    userID: userID,
+                    propertyID: getProperti.id,
+                    propertyName: getProperti.nama,
+                    propertyPhotoURL: getProperti.photo);
+                print('halo' + userID);
+              });
+            },
           ),
         ],
       ),

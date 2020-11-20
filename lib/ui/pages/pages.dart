@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:Cekos/services/services.dart';
 import 'package:Cekos/ui/widgets/widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crisp/crisp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -30,5 +31,5 @@ part 'booking.dart';
 part 'lokasi.dart';
 part 'favorite.dart';
 part 'bookingTab.dart';
-part 'surveyTab.dart';
 part 'likesTab.dart';
+part 'surveyTab.dart';

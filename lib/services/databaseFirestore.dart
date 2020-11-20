@@ -42,4 +42,19 @@ class DatabaseFirestore {
       'propertyPhotoURL': propertyPhotoURL
     });
   }
+
+  static Future getLikes(String userID) async {
+    // var firestore = FirebaseFirestore.instance;
+    // QuerySnapshot querySnapshot = await firestore
+    //     .collection('users')
+    //     .doc(userID)
+    //     .collection('likes')
+    //     .get();
+    // return querySnapshot;
+    return await likesCollection
+        .doc(userID)
+        .collection('likes')
+        .doc('pU8435tJ7zE1uhmZjrXH')
+        .get();
+  }
 }

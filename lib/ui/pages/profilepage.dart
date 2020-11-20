@@ -15,15 +15,15 @@ class _ProfilePageState extends State<ProfilePage> {
     return sharedPreferences.getString('user_name');
   }
 
-  Future<String> getUserID() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString('user_uid');
-  }
+  // Future<String> getUserID() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   return sharedPreferences.getString('user_uid');
+  // }
 
-  Future<String> getEmail() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString('user_email');
-  }
+  // Future<String> getEmail() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   return sharedPreferences.getString('user_email');
+  // }
 
   Future<String> getPhoto() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -37,18 +37,18 @@ class _ProfilePageState extends State<ProfilePage> {
       name = value;
       setState(() {});
     });
-    getEmail().then((value) {
-      email = value;
-      setState(() {});
-    });
+    // getEmail().then((value) {
+    //   email = value;
+    //   setState(() {});
+    // });
     getPhoto().then((value) {
       photo = value;
       setState(() {});
     });
-    getUserID().then((value) {
-      userID = value;
-      setState(() {});
-    });
+    // getUserID().then((value) {
+    //   userID = value;
+    //   setState(() {});
+    // });
   }
 
   @override
@@ -93,165 +93,165 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: ListView(
         children: [
-          Container(
-            margin: EdgeInsets.only(
-              left: 15,
-              top: 15,
-              bottom: 15,
-              right: 15,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Likes',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                TouchableOpacity(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ButtonNavigationBarPage(
-                              selectedIndex: 1,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Lihat Semua',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontSize: 15,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Container(
+          //   margin: EdgeInsets.only(
+          //     left: 15,
+          //     top: 15,
+          //     bottom: 15,
+          //     right: 15,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         'Likes',
+          //         style: TextStyle(
+          //           fontFamily: 'Rubik',
+          //           fontSize: 20,
+          //           color: const Color(0xffffffff),
+          //           fontWeight: FontWeight.w500,
+          //         ),
+          //         textAlign: TextAlign.left,
+          //       ),
+          //       TouchableOpacity(
+          //         child: GestureDetector(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(
+          //               MaterialPageRoute(
+          //                 builder: (context) {
+          //                   return ButtonNavigationBarPage(
+          //                     selectedIndex: 1,
+          //                   );
+          //                 },
+          //               ),
+          //             );
+          //           },
+          //           child: Text(
+          //             'Lihat Semua',
+          //             style: TextStyle(
+          //               fontFamily: 'Rubik',
+          //               fontSize: 15,
+          //               color: const Color(0xffffffff),
+          //               fontWeight: FontWeight.w500,
+          //               decoration: TextDecoration.underline,
+          //             ),
+          //             textAlign: TextAlign.right,
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           // MainPageRekomendasi(),
-          Divider(
-            color: Color(0xFF50E3C2),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              left: 15,
-              top: 15,
-              bottom: 15,
-              right: 15,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Survey',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                TouchableOpacity(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ButtonNavigationBarPage(
-                              selectedIndex: 1,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Lihat Semua',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontSize: 15,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          // MainPageRekomendasi(),
-          Divider(
-            color: Color(0xFF50E3C2),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-              left: 15,
-              top: 15,
-              bottom: 15,
-              right: 15,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Booking',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-                TouchableOpacity(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ButtonNavigationBarPage(
-                              selectedIndex: 1,
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Lihat Semua',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontSize: 15,
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          // MainPageRekomendasi(),
-          Divider(
-            color: Color(0xFF50E3C2),
-          ),
+          // Divider(
+          //   color: Color(0xFF50E3C2),
+          // ),
+          // Container(
+          //   margin: EdgeInsets.only(
+          //     left: 15,
+          //     top: 15,
+          //     bottom: 15,
+          //     right: 15,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         'Survey',
+          //         style: TextStyle(
+          //           fontFamily: 'Rubik',
+          //           fontSize: 20,
+          //           color: const Color(0xffffffff),
+          //           fontWeight: FontWeight.w500,
+          //         ),
+          //         textAlign: TextAlign.left,
+          //       ),
+          //       TouchableOpacity(
+          //         child: GestureDetector(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(
+          //               MaterialPageRoute(
+          //                 builder: (context) {
+          //                   return ButtonNavigationBarPage(
+          //                     selectedIndex: 1,
+          //                   );
+          //                 },
+          //               ),
+          //             );
+          //           },
+          //           child: Text(
+          //             'Lihat Semua',
+          //             style: TextStyle(
+          //               fontFamily: 'Rubik',
+          //               fontSize: 15,
+          //               color: const Color(0xffffffff),
+          //               fontWeight: FontWeight.w500,
+          //               decoration: TextDecoration.underline,
+          //             ),
+          //             textAlign: TextAlign.right,
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // // MainPageRekomendasi(),
+          // Divider(
+          //   color: Color(0xFF50E3C2),
+          // ),
+          // Container(
+          //   margin: EdgeInsets.only(
+          //     left: 15,
+          //     top: 15,
+          //     bottom: 15,
+          //     right: 15,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         'Booking',
+          //         style: TextStyle(
+          //           fontFamily: 'Rubik',
+          //           fontSize: 20,
+          //           color: const Color(0xffffffff),
+          //           fontWeight: FontWeight.w500,
+          //         ),
+          //         textAlign: TextAlign.left,
+          //       ),
+          //       TouchableOpacity(
+          //         child: GestureDetector(
+          //           onTap: () {
+          //             Navigator.of(context).pushReplacement(
+          //               MaterialPageRoute(
+          //                 builder: (context) {
+          //                   return ButtonNavigationBarPage(
+          //                     selectedIndex: 1,
+          //                   );
+          //                 },
+          //               ),
+          //             );
+          //           },
+          //           child: Text(
+          //             'Lihat Semua',
+          //             style: TextStyle(
+          //               fontFamily: 'Rubik',
+          //               fontSize: 15,
+          //               color: const Color(0xffffffff),
+          //               fontWeight: FontWeight.w500,
+          //               decoration: TextDecoration.underline,
+          //             ),
+          //             textAlign: TextAlign.right,
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // // MainPageRekomendasi(),
+          // Divider(
+          //   color: Color(0xFF50E3C2),
+          // ),
           ListView(
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),

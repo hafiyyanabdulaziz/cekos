@@ -92,7 +92,7 @@ class MainPage extends StatelessWidget {
                   ),
                   //color: Colors.amber,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
+                    borderRadius: BorderRadius.circular(14),
                     color: Color(0xff23243b),
                   ),
                   child: Center(
