@@ -18,8 +18,8 @@ class _CobaState extends State<Coba> {
           Text('data'),
           RaisedButton(
             onPressed: () {
-              DatabaseFirestore.createOrUpdateLikes(
-                  userID: '123',
+              DatabaseFirestore.createOrUpdateBooking(
+                  userID: '1234',
                   propertyID: 'p343434',
                   propertyName: 'Rumah',
                   propertyPhotoURL: 'hbfhkdbfkhbadkfhb');
