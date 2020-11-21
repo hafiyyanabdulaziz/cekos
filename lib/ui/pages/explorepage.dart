@@ -29,7 +29,7 @@ class _ExplorePageState extends State<ExplorePage> {
         ],
       ),
       backgroundColor: Color(0xFF14172B),
-      body: ExploreListWidget(),
+      body: RekomendasiList(),
     );
   }
 }

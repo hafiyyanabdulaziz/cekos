@@ -14,3 +14,4 @@ part 'mainpage_rekomendasi.dart';
 part 'mainpage_slider.dart';
 part 'slider_login.dart';
 part 'wrapper.dart';
+part 'rekomendasiList.dart';
