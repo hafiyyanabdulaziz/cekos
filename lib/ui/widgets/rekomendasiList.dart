@@ -1,14 +1,18 @@
 part of 'widgets.dart';
 
+// ignore: must_be_immutable
 class RekomendasiList extends StatefulWidget {
+  List<GetDetailProperti> propertyID = List();
+
+  RekomendasiList({@required this.propertyID});
   @override
   _RekomendasiListState createState() => _RekomendasiListState();
 }
 
 class _RekomendasiListState extends State<RekomendasiList> {
-  int page = 0;
+  //int page = 0;
   //List<GetListProperti> dataProperti = new List();
-  List<GetDetailProperti> propertyID = List();
+  //List<GetDetailProperti> propertyID = List();
 
   // void getDataUser() async {
   //   await GetListProperti.connectToAPI(
@@ -33,7 +37,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
         GetDetailProperti.connectToAPI(propertyID: item).then((value) => {
               setState(() {
                 print('==============' + value.toString());
-                propertyID.add(value);
+                widget.propertyID.add(value);
               }),
             });
       }
@@ -54,7 +58,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
         ListView.builder(
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
-          itemCount: propertyID.length,
+          itemCount: widget.propertyID.length,
           itemBuilder: (context, i) {
             return TouchableOpacity(
               child: GestureDetector(
@@ -101,7 +105,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                             topRight: Radius.circular(14.0),
                           ),
                           image: DecorationImage(
-                            image: NetworkImage(propertyID[i].photo),
+                            image: NetworkImage(widget.propertyID[i].photo),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -114,7 +118,9 @@ class _RekomendasiListState extends State<RekomendasiList> {
                           top: 10,
                         ),
                         child: Text(
-                          (propertyID[i].tipe + ' - ' + propertyID[i].penghuni),
+                          (widget.propertyID[i].tipe +
+                              ' - ' +
+                              widget.propertyID[i].penghuni),
                           style: TextStyle(
                             fontFamily: 'Rubik',
                             fontSize: 15,
@@ -132,7 +138,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                           bottom: 10,
                         ),
                         child: Text(
-                          propertyID[i].nama,
+                          widget.propertyID[i].nama,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -155,7 +161,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                                 locale: 'id',
                                 decimalDigits: 0,
                                 symbol: 'Rp ',
-                              ).format(propertyID[i].harga) +
+                              ).format(widget.propertyID[i].harga) +
                               ' /Tahun',
                           style: TextStyle(
                             fontFamily: 'Rubik',
@@ -173,7 +179,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                             topRight: Radius.circular(14.0),
                           ),
                           image: DecorationImage(
-                            image: NetworkImage(propertyID[i].nama),
+                            image: NetworkImage(widget.propertyID[i].nama),
                             fit: BoxFit.cover,
                           ),
                         ),

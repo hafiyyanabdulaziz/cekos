@@ -6,6 +6,27 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage> {
+  List<GetDetailProperti> propertyID = List();
+  void getRecomendasi() async {
+    GetRecomendasiList().getRecomendasi().then((value) {
+      for (var item in value) {
+        GetDetailProperti.connectToAPI(propertyID: item).then((value) => {
+              setState(() {
+                print('==============' + value.toString());
+                propertyID.add(value);
+              }),
+            });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    //getDataUser();
+    getRecomendasi();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +50,9 @@ class _ExplorePageState extends State<ExplorePage> {
         ],
       ),
       backgroundColor: Color(0xFF14172B),
-      body: RekomendasiList(),
+      body: RekomendasiList(
+        propertyID: propertyID,
+      ),
     );
   }
 }
