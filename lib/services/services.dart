@@ -11,3 +11,4 @@ part 'cekos_googlesignin.dart';
 part 'getlistproperti.dart';
 part 'getdetailpropert.dart';
 part 'databaseFirestore.dart';
+part 'getRecomendasiList.dart';
