@@ -2,9 +2,57 @@ part of 'pages.dart';
 
 // ignore: must_be_immutable
 class PropertiDetailPage extends StatelessWidget {
-  GetListProperti getProperti;
+  String photo =
+      "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
+  String tipe;
+  String penghuni;
+  int harga;
+  String nama;
+  String id;
+  String daerah;
+  List<String> gallery;
 
-  PropertiDetailPage({@required this.getProperti});
+  String village;
+  String district;
+  String city;
+  String province;
+  List<String> facility;
+  List<String> environmentAccess;
+  List<String> parkingFacility;
+  List<String> category;
+  String description;
+  List<String> rules;
+  List<Map> roomType;
+
+  double lat;
+  double lng;
+  //GetListProperti getProperti;
+
+  PropertiDetailPage({
+    @required this.photo,
+    @required this.tipe,
+    @required this.penghuni,
+    @required this.harga,
+    @required this.nama,
+    @required this.id,
+    @required this.daerah,
+    @required this.gallery,
+    @required this.village,
+    @required this.district,
+    @required this.city,
+    @required this.province,
+    @required this.facility,
+    @required this.environmentAccess,
+    @required this.parkingFacility,
+    @required this.category,
+    @required this.description,
+    @required this.lat,
+    @required this.lng,
+    @required this.rules,
+    @required this.roomType,
+  });
+
+  //PropertiDetailPage({@required this.getProperti});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +76,9 @@ class PropertiDetailPage extends StatelessWidget {
                 print('halo' + userID);
                 DatabaseFirestore.createOrUpdateLikes(
                     userID: userID,
-                    propertyID: getProperti.id,
-                    propertyName: getProperti.nama,
-                    propertyPhotoURL: getProperti.photo);
+                    propertyID: id,
+                    propertyName: nama,
+                    propertyPhotoURL: photo);
                 print('halo' + userID);
               });
             },
@@ -40,7 +88,7 @@ class PropertiDetailPage extends StatelessWidget {
       body: ListView(
         children: [
           DetailPageSlider(
-            dataPhotos: getProperti.gallery,
+            dataPhotos: gallery,
           ),
           //TIPE
           Container(
@@ -50,7 +98,7 @@ class PropertiDetailPage extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              (getProperti.tipe + ' - ' + getProperti.penghuni),
+              (tipe + ' - ' + penghuni),
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 15,
@@ -67,7 +115,7 @@ class PropertiDetailPage extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              getProperti.nama,
+              nama,
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 30,
@@ -92,7 +140,7 @@ class PropertiDetailPage extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              getProperti.daerah,
+              daerah,
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 20,
@@ -287,8 +335,8 @@ class PropertiDetailPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return Lokasi(
-                        lat: getProperti.lat,
-                        lng: getProperti.lng,
+                        lat: lat,
+                        lng: lng,
                       );
                     },
                   ),
@@ -394,7 +442,7 @@ class PropertiDetailPage extends StatelessWidget {
             ),
           ),
           ListBody(
-              children: getProperti.roomType
+              children: roomType
                   .map((e) => Container(
                         margin: EdgeInsets.only(
                           left: 10,
@@ -573,7 +621,7 @@ class PropertiDetailPage extends StatelessWidget {
                       context: context,
                       expand: true,
                       builder: (context) => Survey(
-                        data: getProperti.nama,
+                        data: nama,
                       ),
                     );
                   },
@@ -601,7 +649,7 @@ class PropertiDetailPage extends StatelessWidget {
                     context: context,
                     expand: true,
                     builder: (context) => Booking(
-                      data: getProperti.roomType,
+                      data: roomType,
                     ),
                   );
                 },
@@ -621,7 +669,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> facilityConvert() {
     List<String> facility = [];
-    for (var item in getProperti.facility) {
+    for (var item in facility) {
       switch (item) {
         case 'ruang_santai':
           facility.add('Ruang Santai');
@@ -644,7 +692,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> parkingFacilityConvert() {
     List<String> facility = [];
-    for (var item in getProperti.parkingFacility) {
+    for (var item in parkingFacility) {
       switch (item) {
         case 'sepeda':
           facility.add('Sepeda');
@@ -664,7 +712,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> rulesConvert() {
     List<String> facility = [];
-    for (var item in getProperti.rules) {
+    for (var item in rules) {
       switch (item) {
         case 'free':
           facility.add('Bebas');
@@ -681,7 +729,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> categoryConvert() {
     List<String> facility = [];
-    for (var item in getProperti.category) {
+    for (var item in category) {
       switch (item) {
         case 'male':
           facility.add('Laki-Laki');
@@ -701,7 +749,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> environmentAccessConvert() {
     List<String> facility = [];
-    for (var item in getProperti.environmentAccess) {
+    for (var item in environmentAccess) {
       switch (item) {
         case 'warung_makan':
           facility.add('Warung Makan');
@@ -726,17 +774,17 @@ class PropertiDetailPage extends StatelessWidget {
   }
 
   String deskripsi() {
-    return getProperti.nama +
+    return nama +
         'yang terletak di ' +
-        getProperti.village +
+        village +
         ', ' +
-        getProperti.district +
+        district +
         ', ' +
-        getProperti.city +
+        city +
         ', ' +
-        getProperti.province +
+        province +
         ' merupakan hunian yang nyaman untuk ditempati. ' +
         'Lokasinya pun strategis  dan memiliki banyak fasilitas. Harganya pun terjangkau. ' +
-        getProperti.description;
+        description;
   }
 }

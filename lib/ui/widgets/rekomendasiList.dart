@@ -63,16 +63,37 @@ class _RekomendasiListState extends State<RekomendasiList> {
             return TouchableOpacity(
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return PropertiDetailPage(
-                  //         getProperti: propertyID[i],
-                  //       );
-                  //     },
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return PropertiDetailPage(
+                          photo: widget.propertyID[i].photo,
+                          tipe: widget.propertyID[i].tipe,
+                          penghuni: widget.propertyID[i].penghuni,
+                          harga: widget.propertyID[i].harga,
+                          nama: widget.propertyID[i].nama,
+                          id: widget.propertyID[i].id,
+                          daerah: widget.propertyID[i].daerah,
+                          gallery: widget.propertyID[i].gallery,
+                          village: widget.propertyID[i].village,
+                          district: widget.propertyID[i].district,
+                          city: widget.propertyID[i].city,
+                          province: widget.propertyID[i].province,
+                          facility: widget.propertyID[i].facility,
+                          environmentAccess:
+                              widget.propertyID[i].environmentAccess,
+                          parkingFacility: widget.propertyID[i].parkingFacility,
+                          category: widget.propertyID[i].category,
+                          description: widget.propertyID[i].description,
+                          lat: widget.propertyID[i].lat,
+                          lng: widget.propertyID[i].lng,
+                          rules: widget.propertyID[i].rules,
+                          roomType: widget.propertyID[i].roomType,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Container(
                   margin: EdgeInsets.only(
