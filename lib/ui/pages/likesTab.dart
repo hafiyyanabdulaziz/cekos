@@ -6,45 +6,75 @@ class LikesTab extends StatefulWidget {
 }
 
 class _LikesTabState extends State<LikesTab> {
-  String userID;
-  Future getLikes() async {
-    var firestore = FirebaseFirestore.instance;
+  //String userID;
+  Future data;
 
+  // Future<String> getUserID() async {
+  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  //   return sharedPreferences.getString('user_uid');
+  // }
+
+  @override
+  void initState() {
+    // getUserID().then((value) {
+    //   userID = value;
+    //   setState(() {});
+    // });
+    //userID = getUserID();
+    super.initState();
+    data = getLikes();
+  }
+
+  Future getLikes() async {
+    // getUserID().then((value) {
+    //   userID = value;
+    //   setState(() {});
+    // });
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
     QuerySnapshot querySnapshot = await firestore
         .collection('users')
-        .doc(userID)
+        .doc('RpItJsbedUb3WF08BbUQ0qFxHgs1')
         .collection('likes')
         .get();
 
     return querySnapshot.docs;
   }
 
-  Future<String> getUserID() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString('user_uid');
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    getUserID().then((value) {
-      userID = value;
-      setState(() {});
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF14172B),
-      body: Center(
-        child: Text(
-          'Coming Soon',
-          style: TextStyle(color: Colors.white),
+      body: Container(
+        child: FutureBuilder(
+          future: data,
+          builder: (_, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (_, index) {
+                  return ListTile(
+                    title: Text(
+                      snapshot.data[index].data()['propertyName'],
+                      style: TextStyle(color: Colors.amber),
+                    ),
+                  );
+                },
+              );
+            }
+          },
         ),
       ),
     );
+    // return Scaffold(
+    //   backgroundColor: Color(0xFF14172B),
+    //   body: Center(
+    //     child: Text(
+    //       'Coming Soon',
+    //       style: TextStyle(color: Colors.white),
+    //     ),
+    //   ),
+    // );
     //====================================
     // return Scaffold(
     //   body: RaisedButton(
