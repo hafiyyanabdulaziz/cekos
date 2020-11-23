@@ -7,33 +7,27 @@ class LikesTab extends StatefulWidget {
 
 class _LikesTabState extends State<LikesTab> {
   //String userID;
-  Future data;
+  Future _data;
 
-  // Future<String> getUserID() async {
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   return sharedPreferences.getString('user_uid');
-  // }
+  Future<String> getUserID() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('user_uid');
+  }
 
   @override
   void initState() {
-    // getUserID().then((value) {
-    //   userID = value;
-    //   setState(() {});
-    // });
-    //userID = getUserID();
+    //getUserID().then((value) => userID = value);
     super.initState();
-    data = getLikes();
+    _data = getLikes();
   }
 
   Future getLikes() async {
-    // getUserID().then((value) {
-    //   userID = value;
-    //   setState(() {});
-    // });
+    String userID = await getUserID();
+    //debugPrint('ini masuk gak datanya ya ' + userID);
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     QuerySnapshot querySnapshot = await firestore
         .collection('users')
-        .doc('RpItJsbedUb3WF08BbUQ0qFxHgs1')
+        .doc(userID)
         .collection('likes')
         .get();
 
@@ -46,7 +40,7 @@ class _LikesTabState extends State<LikesTab> {
       backgroundColor: Color(0xFF14172B),
       body: Container(
         child: FutureBuilder(
-          future: data,
+          future: _data,
           builder: (_, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
