@@ -269,7 +269,19 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return WebviewDetail(
+                                link:
+                                    'https://cekos.kitahukomputer.com/webview/kebijakanprivasi.html',
+                                textAppBar: 'Kebijakan Privasi');
+                          },
+                        ),
+                      );
+                    },
                   ),
                   ListTile(
                     title: Text(
@@ -281,7 +293,19 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return WebviewDetail(
+                                link:
+                                    'https://cekos.kitahukomputer.com/webview/tentangcekos.html',
+                                textAppBar: 'Tentang Cekos');
+                          },
+                        ),
+                      );
+                    },
                   ),
                   ListTile(
                     title: Text(
@@ -293,11 +317,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () async {
+                      await launch('https://wa.me/6281283793435');
+                    },
                   ),
                   ListTile(
                     title: Text(
-                      'Beri Nilai',
+                      'Bantu Kembangkan',
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontSize: 20,
@@ -305,7 +331,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    onTap: () {},
+                    onTap: () async {
+                      await launch(
+                          'https://github.com/hafiyyanabdulaziz?tab=repositories&q=cekos');
+                    },
                   ),
                 ]).toList(),
           ),
