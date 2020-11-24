@@ -10,11 +10,22 @@ class DatabaseFirestore {
     String propertyName,
     String propertyPhotoURL,
   }) async {
-    await likesCollection.doc(userID).collection('likes').add({
+    await likesCollection.doc(userID).collection('likes').doc(propertyID).set({
       'propertyID': propertyID,
       'propertyName': propertyName,
       'propertyPhotoURL': propertyPhotoURL
     });
+  }
+
+  static Future<void> deleteLikes({
+    @required String userID,
+    @required String propertyID,
+  }) async {
+    await likesCollection
+        .doc(userID)
+        .collection('likes')
+        .doc(propertyID)
+        .delete();
   }
 
   static Future<void> createOrUpdateSurvey({
@@ -36,7 +47,11 @@ class DatabaseFirestore {
     String propertyName,
     String propertyPhotoURL,
   }) async {
-    await likesCollection.doc(userID).collection('booking').add({
+    await likesCollection
+        .doc(userID)
+        .collection('booking')
+        .doc(propertyID)
+        .set({
       'propertyID': propertyID,
       'propertyName': propertyName,
       'propertyPhotoURL': propertyPhotoURL

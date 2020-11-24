@@ -1,7 +1,7 @@
 part of 'pages.dart';
 
 // ignore: must_be_immutable
-class PropertiDetailPage extends StatelessWidget {
+class PropertiDetailPage extends StatefulWidget {
   String photo =
       "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
   String tipe;
@@ -52,7 +52,50 @@ class PropertiDetailPage extends StatelessWidget {
     @required this.roomType,
   });
 
-  //PropertiDetailPage({@required this.getProperti});
+  @override
+  _PropertiDetailPageState createState() => _PropertiDetailPageState();
+}
+
+class _PropertiDetailPageState extends State<PropertiDetailPage> {
+  Future<String> getUserID() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('user_uid');
+  }
+
+  Future checkLikes(String propertyID) async {
+    String userID = await getUserID();
+    bool ada;
+
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    DocumentSnapshot snapshot = await firestore
+        .collection('users')
+        .doc(userID)
+        .collection('likes')
+        .doc(widget.id)
+        .get();
+
+    if (snapshot.exists) {
+      ada = true;
+    } else {
+      ada = false;
+    }
+
+    return ada;
+  }
+
+  bool checkIcon = false;
+
+  @override
+  void initState() {
+    checkLikes(widget.id).then((value) {
+      setState(() {
+        checkIcon = value;
+      });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,22 +107,49 @@ class PropertiDetailPage extends StatelessWidget {
         backgroundColor: Color(0xFF23243B),
         actions: [
           IconButton(
-            icon: Icon(Icons.favorite_border),
+            icon: (checkIcon)
+                ? Icon(
+                    Icons.favorite,
+                    color: Color(0xffaf8d19),
+                  )
+                : Icon(Icons.favorite_border),
             onPressed: () {
-              Future<String> getUserID() async {
-                SharedPreferences sharedPreferences =
-                    await SharedPreferences.getInstance();
-                return sharedPreferences.getString('user_uid');
-              }
+              if (!checkIcon) {
+                {
+                  Future<String> getUserID() async {
+                    SharedPreferences sharedPreferences =
+                        await SharedPreferences.getInstance();
+                    return sharedPreferences.getString('user_uid');
+                  }
 
-              getUserID().then((userID) {
-                print('halo' + userID);
-                DatabaseFirestore.createOrUpdateLikes(
-                    userID: userID,
-                    propertyID: id,
-                    propertyName: nama,
-                    propertyPhotoURL: photo);
-                print('halo' + userID);
+                  getUserID().then((userID) {
+                    print('halo' + userID);
+                    DatabaseFirestore.createOrUpdateLikes(
+                        userID: userID,
+                        propertyID: widget.id,
+                        propertyName: widget.nama,
+                        propertyPhotoURL: widget.photo);
+                    print('halo' + userID);
+                  });
+                }
+              } else {
+                Future<String> getUserID() async {
+                  SharedPreferences sharedPreferences =
+                      await SharedPreferences.getInstance();
+                  return sharedPreferences.getString('user_uid');
+                }
+
+                getUserID().then((userID) {
+                  print('halo' + userID);
+                  DatabaseFirestore.deleteLikes(
+                      userID: userID, propertyID: widget.id);
+                  print('halo' + userID);
+                });
+              }
+              checkIcon = !checkIcon;
+              setState(() {});
+              checkLikes(widget.id).then((value) {
+                print(value);
               });
             },
           ),
@@ -88,7 +158,7 @@ class PropertiDetailPage extends StatelessWidget {
       body: ListView(
         children: [
           DetailPageSlider(
-            dataPhotos: gallery,
+            dataPhotos: widget.gallery,
           ),
           //TIPE
           Container(
@@ -98,7 +168,7 @@ class PropertiDetailPage extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              (tipe + ' - ' + penghuni),
+              (widget.tipe + ' - ' + widget.penghuni),
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 15,
@@ -115,7 +185,7 @@ class PropertiDetailPage extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              nama,
+              widget.nama,
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 30,
@@ -140,7 +210,7 @@ class PropertiDetailPage extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              daerah,
+              widget.daerah,
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 20,
@@ -335,8 +405,8 @@ class PropertiDetailPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return Lokasi(
-                        lat: lat,
-                        lng: lng,
+                        lat: widget.lat,
+                        lng: widget.lng,
                       );
                     },
                   ),
@@ -442,7 +512,7 @@ class PropertiDetailPage extends StatelessWidget {
             ),
           ),
           ListBody(
-              children: roomType
+              children: widget.roomType
                   .map((e) => Container(
                         margin: EdgeInsets.only(
                           left: 10,
@@ -621,7 +691,7 @@ class PropertiDetailPage extends StatelessWidget {
                       context: context,
                       expand: true,
                       builder: (context) => Survey(
-                        data: nama,
+                        data: widget.nama,
                       ),
                     );
                   },
@@ -649,7 +719,7 @@ class PropertiDetailPage extends StatelessWidget {
                     context: context,
                     expand: true,
                     builder: (context) => Booking(
-                      data: roomType,
+                      data: widget.roomType,
                     ),
                   );
                 },
@@ -692,7 +762,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> parkingFacilityConvert() {
     List<String> facility = [];
-    for (var item in parkingFacility) {
+    for (var item in widget.parkingFacility) {
       switch (item) {
         case 'sepeda':
           facility.add('Sepeda');
@@ -712,7 +782,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> rulesConvert() {
     List<String> facility = [];
-    for (var item in rules) {
+    for (var item in widget.rules) {
       switch (item) {
         case 'free':
           facility.add('Bebas');
@@ -729,7 +799,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> categoryConvert() {
     List<String> facility = [];
-    for (var item in category) {
+    for (var item in widget.category) {
       switch (item) {
         case 'male':
           facility.add('Laki-Laki');
@@ -749,7 +819,7 @@ class PropertiDetailPage extends StatelessWidget {
 
   List<String> environmentAccessConvert() {
     List<String> facility = [];
-    for (var item in environmentAccess) {
+    for (var item in widget.environmentAccess) {
       switch (item) {
         case 'warung_makan':
           facility.add('Warung Makan');
@@ -774,17 +844,17 @@ class PropertiDetailPage extends StatelessWidget {
   }
 
   String deskripsi() {
-    return nama +
+    return widget.nama +
         'yang terletak di ' +
-        village +
+        widget.village +
         ', ' +
-        district +
+        widget.district +
         ', ' +
-        city +
+        widget.city +
         ', ' +
-        province +
+        widget.province +
         ' merupakan hunian yang nyaman untuk ditempati. ' +
         'Lokasinya pun strategis  dan memiliki banyak fasilitas. Harganya pun terjangkau. ' +
-        description;
+        widget.description;
   }
 }
