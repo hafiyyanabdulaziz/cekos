@@ -120,19 +120,7 @@ class _MainPageSliderState extends State<MainPageSlider> {
                     ),
                   ),
                   SizedBox(
-                    height: 40,
-                  ),
-                  RaisedButton(
-                    onPressed: () {},
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5)),
-                    color: Color(0xffaf8d19),
-                    child: Text(
-                      'Selengkapnya',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+                    height: 50,
                   ),
                 ],
               ),
