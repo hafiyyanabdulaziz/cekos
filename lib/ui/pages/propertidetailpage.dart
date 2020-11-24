@@ -722,6 +722,9 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                     expand: true,
                     builder: (context) => Booking(
                       data: widget.roomType,
+                      propertyName: widget.nama,
+                      propertyID: widget.id,
+                      propertyPhoto: widget.photo,
                     ),
                   );
                 },
