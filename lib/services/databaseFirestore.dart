@@ -30,14 +30,22 @@ class DatabaseFirestore {
 
   static Future<void> createOrUpdateSurvey({
     @required String userID,
-    String propertyID,
-    String propertyName,
-    String propertyPhotoURL,
+    @required String propertyID,
+    @required String propertyName,
+    @required String propertyPhotoURL,
+    @required DateTime tanggal,
   }) async {
-    await likesCollection.doc(userID).collection('survey').add({
+    await likesCollection.doc(userID).collection('likes').doc(propertyID).set({
       'propertyID': propertyID,
       'propertyName': propertyName,
       'propertyPhotoURL': propertyPhotoURL
+    });
+
+    await likesCollection.doc(userID).collection('survey').doc(propertyID).set({
+      'propertyID': propertyID,
+      'propertyName': propertyName,
+      'propertyPhotoURL': propertyPhotoURL,
+      'tanggal': tanggal,
     });
   }
 

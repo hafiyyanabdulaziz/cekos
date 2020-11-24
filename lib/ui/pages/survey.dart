@@ -1,10 +1,15 @@
 part of 'pages.dart';
 
-// ignore: must_be_immutable
 class Survey extends StatefulWidget {
-  String data = '';
+  final String namaProperty;
+  final String idProperty;
+  final String photoPropety;
 
-  Survey({this.data});
+  Survey({
+    this.namaProperty,
+    this.idProperty,
+    this.photoPropety,
+  });
 
   @override
   _SurveyState createState() => _SurveyState();
@@ -13,9 +18,11 @@ class Survey extends StatefulWidget {
 class _SurveyState extends State<Survey> {
   //String data = widget.data;
   String _selectedDate = '';
+  DateTime tanggal;
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
+      tanggal = args.value;
       _selectedDate = DateFormat('dd-MM-yyy').format(args.value).toString();
       print(_selectedDate);
     });
@@ -52,18 +59,19 @@ class _SurveyState extends State<Survey> {
   Widget konfirmasi() {
     return Container(
       //margin: EdgeInsets.all(20),
-      height: 100,
+      height: 140,
       padding: EdgeInsets.all(10),
       color: Color(0xFF23243B),
 
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
             'Anda akan survey ke ' +
-                widget.data +
+                widget.namaProperty +
                 'pada tanggal ' +
-                _selectedDate,
+                _selectedDate +
+                '. Untuk informasi selengkapnya mengenai survey, akan Kami kirimkan melalui e-mail.',
             style: TextStyle(
               color: Colors.white,
             ),
@@ -71,7 +79,33 @@ class _SurveyState extends State<Survey> {
           SizedBox(
             width: MediaQuery.of(context).size.width - 20,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Future<String> getUserID() async {
+                  SharedPreferences sharedPreferences =
+                      await SharedPreferences.getInstance();
+                  return sharedPreferences.getString('user_uid');
+                }
+
+                getUserID().then((userID) {
+                  print('halo' + userID);
+                  DatabaseFirestore.createOrUpdateSurvey(
+                      userID: userID,
+                      propertyID: widget.idProperty,
+                      propertyName: widget.namaProperty,
+                      propertyPhotoURL: widget.photoPropety,
+                      tanggal: tanggal);
+                  print('halo' + userID);
+                });
+
+                Navigator.pop(context);
+                Flushbar(
+                  duration: Duration(milliseconds: 2500),
+                  flushbarPosition: FlushbarPosition.TOP,
+                  backgroundColor: Color(0xffaf8d19),
+                  message:
+                      'Survey ke ${widget.namaProperty} pada tanggal $_selectedDate berhasil ditambahkan',
+                )..show(context);
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
               color: Color(0xffaf8d19),

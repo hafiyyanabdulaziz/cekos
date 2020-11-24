@@ -691,7 +691,9 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                       context: context,
                       expand: true,
                       builder: (context) => Survey(
-                        data: widget.nama,
+                        idProperty: widget.id,
+                        namaProperty: widget.nama,
+                        photoPropety: widget.photo,
                       ),
                     );
                   },
