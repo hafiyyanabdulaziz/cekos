@@ -24,9 +24,11 @@ class _BookingState extends State<Booking> {
   int _selectedRoomType;
   int _roomPrice;
   String durasiMenginap;
+  DateTime tanggal;
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
+      tanggal = args.value;
       _selectedDate = DateFormat('dd-MM-yyy').format(args.value).toString();
       print(_selectedDate);
     });
@@ -549,6 +551,26 @@ class _BookingState extends State<Booking> {
             width: MediaQuery.of(context).size.width - 20,
             child: RaisedButton(
               onPressed: () {
+                Future<String> getUserID() async {
+                  SharedPreferences sharedPreferences =
+                      await SharedPreferences.getInstance();
+                  return sharedPreferences.getString('user_uid');
+                }
+
+                getUserID().then((userID) {
+                  DatabaseFirestore.createOrUpdateBooking(
+                    userID: userID,
+                    durasi: durasiMenginap,
+                    harga: _roomPrice,
+                    propertyID: widget.propertyID,
+                    propertyName: widget.propertyName,
+                    propertyPhotoURL: widget.propertyPhoto,
+                    tanggal: tanggal,
+                    tipeKamar: widget.data[_selectedRoomType]['name'],
+                  );
+                  print('halo' + userID);
+                });
+
                 showBarModalBottomSheet(
                   context: context,
                   expand: true,

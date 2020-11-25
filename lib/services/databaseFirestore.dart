@@ -51,9 +51,13 @@ class DatabaseFirestore {
 
   static Future<void> createOrUpdateBooking({
     @required String userID,
-    String propertyID,
-    String propertyName,
-    String propertyPhotoURL,
+    @required String propertyID,
+    @required String propertyName,
+    @required String propertyPhotoURL,
+    @required String durasi,
+    @required DateTime tanggal,
+    @required int harga,
+    @required String tipeKamar,
   }) async {
     await likesCollection
         .doc(userID)
@@ -62,7 +66,12 @@ class DatabaseFirestore {
         .set({
       'propertyID': propertyID,
       'propertyName': propertyName,
-      'propertyPhotoURL': propertyPhotoURL
+      'propertyPhotoURL': propertyPhotoURL,
+      'durasi': durasi,
+      'tanggal': tanggal,
+      'harga': harga,
+      'tipeKamar': tipeKamar,
+      'status': 'Menuggu Pembayaran'
     });
   }
 
