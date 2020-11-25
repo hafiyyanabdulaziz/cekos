@@ -13,4 +13,3 @@ part 'getlistproperti.dart';
 part 'getdetailpropert.dart';
 part 'databaseFirestore.dart';
 part 'getRecomendasiList.dart';
-part 'postRekomendasi.dart';

@@ -7,15 +7,16 @@ class GetRecomendasiList {
   // String cfToJson(List<String> data) =>
   //     json.encode(List<dynamic>.from(data.map((x) => x)));
 
-  Future<List> getRecomendasi() async {
+  Future<List> getRecomendasi(String userID) async {
     try {
       http.Response hasil = await http.get(
           Uri.encodeFull(
-              "https://hafiyyanabdulaziz.pythonanywhere.com/get/123/"),
+              "https://hafiyyanabdulaziz.pythonanywhere.com/get/$userID/"),
           headers: {"Accept": "application/json"});
       if (hasil.statusCode == 200) {
         print("data category success");
         final data = cfFromJson(hasil.body);
+        print('ini keluar gak ya' + data.toString());
         return data;
       } else {
         print("error status " + hasil.statusCode.toString());

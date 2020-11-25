@@ -132,7 +132,11 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                     return sharedPreferences.getString('user_uid');
                   }
 
-                  getUserID().then((userID) {
+                  getUserID().then((userID) async {
+                    await http.post(
+                        'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
+                        body:
+                            '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 2}');
                     print('halo' + userID);
                     DatabaseFirestore.createOrUpdateLikes(
                         userID: userID,
@@ -710,7 +714,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
               margin: EdgeInsets.only(left: 10),
               child: TouchableOpacity(
                 child: GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    String userID = await getUserID();
+
+                    await http.post(
+                        'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
+                        body:
+                            '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 3}');
+
                     showBarModalBottomSheet(
                       context: context,
                       expand: true,
@@ -740,7 +751,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5)),
                 color: Color(0xffaf8d19),
-                onPressed: () {
+                onPressed: () async {
+                  String userID = await getUserID();
+
+                  await http.post(
+                      'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
+                      body:
+                          '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 4}');
+
                   showBarModalBottomSheet(
                     context: context,
                     expand: true,

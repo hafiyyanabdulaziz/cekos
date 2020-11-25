@@ -2,9 +2,9 @@ part of 'widgets.dart';
 
 // ignore: must_be_immutable
 class RekomendasiList extends StatefulWidget {
-  List<GetDetailProperti> propertyID = List();
+  //List<GetDetailProperti> propertyID = List();
 
-  RekomendasiList({@required this.propertyID});
+  //RekomendasiList({@required this.propertyID});
   @override
   _RekomendasiListState createState() => _RekomendasiListState();
 }
@@ -12,18 +12,18 @@ class RekomendasiList extends StatefulWidget {
 class _RekomendasiListState extends State<RekomendasiList> {
   //int page = 0;
   //List<GetListProperti> dataProperti = new List();
-  //List<GetDetailProperti> propertyID = List();
+  List<GetDetailProperti> propertyID = List();
 
   // void getDataUser() async {
   //   await GetListProperti.connectToAPI(
-  //     name: widget.name,
+  //     name: name,
   //     limit: 5,
   //     offset: page,
-  //     typeProperty: widget.typeProperty,
-  //     durasiMenginap: widget.durasiMenginap,
-  //     kategori: widget.kategori,
-  //     furniture: widget.furniture,
-  //     tempatParkir: widget.tempatParkir,
+  //     typeProperty: typeProperty,
+  //     durasiMenginap: durasiMenginap,
+  //     kategori: kategori,
+  //     furniture: furniture,
+  //     tempatParkir: tempatParkir,
   //   ).then((value) {
   //     setState(() {
   //       dataProperti = value;
@@ -31,16 +31,23 @@ class _RekomendasiListState extends State<RekomendasiList> {
   //   });
   // }
 
+  Future<String> getUserID() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString('user_uid');
+  }
+
   void getRecomendasi() async {
-    GetRecomendasiList().getRecomendasi().then((value) {
-      for (var item in value) {
-        GetDetailProperti.connectToAPI(propertyID: item).then((value) => {
-              setState(() {
-                print('==============' + value.toString());
-                widget.propertyID.add(value);
-              }),
-            });
-      }
+    getUserID().then((userID) {
+      GetRecomendasiList().getRecomendasi(userID).then((value) {
+        for (var item in value) {
+          GetDetailProperti.connectToAPI(propertyID: item).then((value) => {
+                setState(() {
+                  print('==============' + value.toString());
+                  propertyID.add(value);
+                }),
+              });
+        }
+      });
     });
   }
 
@@ -58,7 +65,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
         ListView.builder(
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
-          itemCount: widget.propertyID.length,
+          itemCount: propertyID.length,
           itemBuilder: (context, i) {
             return TouchableOpacity(
               child: GestureDetector(
@@ -68,28 +75,27 @@ class _RekomendasiListState extends State<RekomendasiList> {
                     MaterialPageRoute(
                       builder: (context) {
                         return PropertiDetailPage(
-                          photo: widget.propertyID[i].photo,
-                          tipe: widget.propertyID[i].tipe,
-                          penghuni: widget.propertyID[i].penghuni,
-                          harga: widget.propertyID[i].harga,
-                          nama: widget.propertyID[i].nama,
-                          id: widget.propertyID[i].id,
-                          daerah: widget.propertyID[i].daerah,
-                          gallery: widget.propertyID[i].gallery,
-                          village: widget.propertyID[i].village,
-                          district: widget.propertyID[i].district,
-                          city: widget.propertyID[i].city,
-                          province: widget.propertyID[i].province,
-                          facility: widget.propertyID[i].facility,
-                          environmentAccess:
-                              widget.propertyID[i].environmentAccess,
-                          parkingFacility: widget.propertyID[i].parkingFacility,
-                          category: widget.propertyID[i].category,
-                          description: widget.propertyID[i].description,
-                          lat: widget.propertyID[i].lat,
-                          lng: widget.propertyID[i].lng,
-                          rules: widget.propertyID[i].rules,
-                          roomType: widget.propertyID[i].roomType,
+                          photo: propertyID[i].photo,
+                          tipe: propertyID[i].tipe,
+                          penghuni: propertyID[i].penghuni,
+                          harga: propertyID[i].harga,
+                          nama: propertyID[i].nama,
+                          id: propertyID[i].id,
+                          daerah: propertyID[i].daerah,
+                          gallery: propertyID[i].gallery,
+                          village: propertyID[i].village,
+                          district: propertyID[i].district,
+                          city: propertyID[i].city,
+                          province: propertyID[i].province,
+                          facility: propertyID[i].facility,
+                          environmentAccess: propertyID[i].environmentAccess,
+                          parkingFacility: propertyID[i].parkingFacility,
+                          category: propertyID[i].category,
+                          description: propertyID[i].description,
+                          lat: propertyID[i].lat,
+                          lng: propertyID[i].lng,
+                          rules: propertyID[i].rules,
+                          roomType: propertyID[i].roomType,
                         );
                       },
                     ),
@@ -126,7 +132,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                             topRight: Radius.circular(14.0),
                           ),
                           image: DecorationImage(
-                            image: NetworkImage(widget.propertyID[i].photo),
+                            image: NetworkImage(propertyID[i].photo),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -139,9 +145,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                           top: 10,
                         ),
                         child: Text(
-                          (widget.propertyID[i].tipe +
-                              ' - ' +
-                              widget.propertyID[i].penghuni),
+                          (propertyID[i].tipe + ' - ' + propertyID[i].penghuni),
                           style: TextStyle(
                             fontFamily: 'Rubik',
                             fontSize: 15,
@@ -159,7 +163,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                           bottom: 10,
                         ),
                         child: Text(
-                          widget.propertyID[i].nama,
+                          propertyID[i].nama,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -182,7 +186,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                                 locale: 'id',
                                 decimalDigits: 0,
                                 symbol: 'Rp ',
-                              ).format(widget.propertyID[i].harga) +
+                              ).format(propertyID[i].harga) +
                               ' /Tahun',
                           style: TextStyle(
                             fontFamily: 'Rubik',
@@ -200,7 +204,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                             topRight: Radius.circular(14.0),
                           ),
                           image: DecorationImage(
-                            image: NetworkImage(widget.propertyID[i].nama),
+                            image: NetworkImage(propertyID[i].nama),
                             fit: BoxFit.cover,
                           ),
                         ),
