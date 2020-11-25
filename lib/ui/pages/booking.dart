@@ -23,6 +23,7 @@ class _BookingState extends State<Booking> {
   List<Map> pilih = [];
   int _selectedRoomType;
   int _roomPrice;
+  String durasiMenginap;
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
@@ -297,6 +298,7 @@ class _BookingState extends State<Booking> {
                         ? Container()
                         : GestureDetector(
                             onTap: () {
+                              durasiMenginap = 'Tahunan';
                               _roomPrice = widget.data[_selectedRoomType]
                                   ['price']['yearly'];
                               setState(() {});
@@ -350,6 +352,7 @@ class _BookingState extends State<Booking> {
                         ? Container()
                         : GestureDetector(
                             onTap: () {
+                              durasiMenginap = 'Bulanan';
                               _roomPrice = widget.data[_selectedRoomType]
                                   ['price']['monthly'];
                               setState(() {});
@@ -403,6 +406,7 @@ class _BookingState extends State<Booking> {
                         ? Container()
                         : GestureDetector(
                             onTap: () {
+                              durasiMenginap = 'Mingguan';
                               _roomPrice = widget.data[_selectedRoomType]
                                   ['price']['weekly'];
                               setState(() {});
@@ -456,6 +460,7 @@ class _BookingState extends State<Booking> {
                         ? Container()
                         : GestureDetector(
                             onTap: () {
+                              durasiMenginap = 'Harian';
                               _roomPrice = widget.data[_selectedRoomType]
                                   ['price']['daily'];
                               setState(() {});
@@ -543,7 +548,20 @@ class _BookingState extends State<Booking> {
           SizedBox(
             width: MediaQuery.of(context).size.width - 20,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                showBarModalBottomSheet(
+                  context: context,
+                  expand: true,
+                  builder: (context) => Pembayaran(
+                    tanggal: _selectedDate,
+                    durasiMenginap: durasiMenginap,
+                    propertyNama: widget.propertyName,
+                    propertyRoomTypeNama: widget.data[_selectedRoomType]
+                        ['name'],
+                    propertyHarga: _roomPrice,
+                  ),
+                );
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
               color: Color(0xffaf8d19),

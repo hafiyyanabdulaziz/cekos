@@ -34,3 +34,4 @@ part 'bookingTab.dart';
 part 'likesTab.dart';
 part 'surveyTab.dart';
 part 'webviewDetail.dart';
+part 'pembayaran.dart';
