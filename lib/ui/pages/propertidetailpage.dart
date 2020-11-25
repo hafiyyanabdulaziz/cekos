@@ -66,6 +66,10 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
     String userID = await getUserID();
     bool ada;
 
+    await http.post('https://hafiyyanabdulaziz.pythonanywhere.com/post/',
+        body:
+            '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 1}');
+
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
     DocumentSnapshot snapshot = await firestore
@@ -88,6 +92,12 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   @override
   void initState() {
+    // getUserID().then((value) {
+    //   PostRekomendasi.connectToAPI(value, 'asd').then((value) {
+    //     print('Hafiyyan' + value.userID);
+    //     setState(() {});
+    //   });
+    // });
     checkLikes(widget.id).then((value) {
       setState(() {
         checkIcon = value;
