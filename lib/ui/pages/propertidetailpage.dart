@@ -448,11 +448,25 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                 //     //   },
                 //     // ),
                 //     ),
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Color(0xff23243b),
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 height: (MediaQuery.of(context).size.width - 20) / 2,
                 margin: EdgeInsets.only(
                   left: 10,
                   right: 10,
+                ),
+                child: Center(
+                  child: Text(
+                    'Ketuk untuk melihat lokasi',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'rubik',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
             ),
