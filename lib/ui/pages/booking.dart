@@ -523,7 +523,7 @@ class _BookingState extends State<Booking> {
   Widget konfirmasi() {
     return Container(
       //margin: EdgeInsets.all(20),
-      height: 130,
+      height: 145,
       padding: EdgeInsets.all(10),
       color: Color(0xFF23243B),
 

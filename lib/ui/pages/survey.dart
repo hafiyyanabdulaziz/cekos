@@ -59,7 +59,7 @@ class _SurveyState extends State<Survey> {
   Widget konfirmasi() {
     return Container(
       //margin: EdgeInsets.all(20),
-      height: 140,
+      height: 145,
       padding: EdgeInsets.all(10),
       color: Color(0xFF23243B),
 

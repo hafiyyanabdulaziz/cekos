@@ -112,7 +112,7 @@ class _SearchControlPageState extends State<SearchControlPage> {
               Icons.search,
               color: Colors.white,
             ), */
-            hintText: "Masukkan Nama Kampus atau Kost",
+            hintText: "Masukkan Nama Kost",
             hintStyle: TextStyle(
               color: Color(0xFF50E3C2),
               fontSize: 13,
