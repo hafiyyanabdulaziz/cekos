@@ -63,7 +63,7 @@ class GetDetailProperti {
       photo: object['main_image'],
       tipe: object['type'][0],
       penghuni: object['category'][0].toString(),
-      harga: object['detail_house_price']['yearly'],
+      harga: object['room_type'][0]['price']['yearly'],
       nama: object['name'],
       id: object['id'],
       daerah: object['address']["city"] + " - " + object['address']['village'],
