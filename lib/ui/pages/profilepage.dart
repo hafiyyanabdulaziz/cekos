@@ -175,6 +175,31 @@ class _ProfilePageState extends State<ProfilePage> {
                         );
                       },
                     ),
+                    //Cara pembayaran
+                    ListTile(
+                      title: Text(
+                        'Cara Pembayaran',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      onTap: () {
+                        showBarModalBottomSheet(
+                          context: context,
+                          expand: true,
+                          builder: (context) => Pembayaran(
+                            durasiMenginap: 'abc',
+                            propertyHarga: 0,
+                            propertyNama: '',
+                            propertyRoomTypeNama: 'abc',
+                            tanggal: 'abc',
+                          ),
+                        );
+                      },
+                    ),
                     ListTile(
                       title: Text(
                         'Hubungi Developer',
