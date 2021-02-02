@@ -49,7 +49,25 @@ class _BookingTabsState extends State<BookingTabs> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (_, index) {
                   return TouchableOpacity(
-                    onTap: () {},
+                    onTap: () {
+                      showBarModalBottomSheet(
+                        context: context,
+                        expand: true,
+                        builder: (context) => Pembayaran(
+                          durasiMenginap: snapshot.data[index].data()['durasi'],
+                          propertyHarga: snapshot.data[index].data()['harga'],
+                          propertyNama:
+                              snapshot.data[index].data()['propertyName'],
+                          propertyRoomTypeNama:
+                              snapshot.data[index].data()['tipeKamar'],
+                          tanggal: DateFormat('dd MMMM yyy')
+                              .format(snapshot.data[index]
+                                  .data()['tanggal']
+                                  .toDate())
+                              .toString(),
+                        ),
+                      );
+                    },
                     child: Container(
                       margin: EdgeInsets.only(
                         left: 20,
