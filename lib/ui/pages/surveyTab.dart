@@ -34,6 +34,11 @@ class _SurveyTabState extends State<SurveyTab> {
     return querySnapshot.docs;
   }
 
+  void _cardOnTap(String lokasi, String tanggal) {
+    launch(
+        'https://wa.me/6281283793435/?text=Haloo, Saya ingin survey ke $lokasi pada tanggal $tanggal');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +54,15 @@ class _SurveyTabState extends State<SurveyTab> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (_, index) {
                   return TouchableOpacity(
-                    onTap: () {},
+                    onTap: () {
+                      _cardOnTap(
+                          snapshot.data[index].data()['propertyName'],
+                          DateFormat('dd MMMM yyy')
+                              .format(snapshot.data[index]
+                                  .data()['tanggal']
+                                  .toDate())
+                              .toString());
+                    },
                     child: Container(
                       //height: 30,
                       margin: EdgeInsets.only(
