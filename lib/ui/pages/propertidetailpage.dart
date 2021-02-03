@@ -171,417 +171,131 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
       ),
       body: ListView(
         children: [
+          //FOTO
           DetailPageSlider(
             dataPhotos: widget.gallery,
           ),
-          //TIPE
+          //HEADER
           Container(
-            margin: EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 10,
-            ),
-            child: Text(
-              (widget.tipe + ' - ' + widget.penghuni),
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 15,
-                color: const Color(0xffffffff),
-              ),
-              textAlign: TextAlign.left,
+            padding: EdgeInsets.all(15),
+            color: Color(0xFF23243B),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //TIPE
+                Text(
+                  (widget.tipe + ' - ' + widget.penghuni),
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 15,
+                    color: const Color(0xffffffff),
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                //NAME
+                Text(
+                  widget.nama,
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 30,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w700,
+                    shadows: [
+                      Shadow(
+                        color: const Color(0xff000000),
+                        offset: Offset(4, 4),
+                        blurRadius: 8,
+                      )
+                    ],
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                //DAERAH
+                Text(
+                  widget.daerah,
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              ],
             ),
           ),
-          //NAME
-          Container(
-            margin: EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 10,
-            ),
-            child: Text(
-              widget.nama,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 30,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w700,
-                shadows: [
-                  Shadow(
-                    color: const Color(0xff000000),
-                    offset: Offset(4, 4),
-                    blurRadius: 8,
-                  )
-                ],
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          //DAERAH
-          Container(
-            margin: EdgeInsets.only(
-              left: 10,
-              right: 10,
-              top: 10,
-            ),
-            child: Text(
-              widget.daerah,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
+
           //ABOUT
           Container(
+            color: Color(0xFF23243B),
             margin: EdgeInsets.only(
-              top: 20,
-              left: 10,
-              right: 10,
+              top: 10,
             ),
-            child: Text(
-              deskripsi(),
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 15,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'About',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  deskripsi(),
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 15,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+              ],
             ),
           ),
+
           //FASILITAS
           Container(
+            color: Color(0xFF23243B),
             margin: EdgeInsets.only(
               top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
             ),
-            child: Text(
-              'Fasilitas',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          ListBody(
-              children: facilityConvert()
-                  .map((e) => Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          '- ' + e,
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 15,
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ))
-                  .toList()),
-          //HALAMAN PARKIR
-          Container(
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              'Halaman Parkir',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          ListBody(
-              children: parkingFacilityConvert()
-                  .map((e) => Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          '- ' + e,
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 15,
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ))
-                  .toList()),
-          //AKSES LINGKUNGAN
-          Container(
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              'Akses Lingkungan',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          ListBody(
-              children: environmentAccessConvert()
-                  .map((e) => Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          '- ' + e,
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 15,
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ))
-                  .toList()),
-          //PENGHUNI
-          Container(
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              'Penghuni',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          ListBody(
-              children: categoryConvert()
-                  .map((e) => Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          '- ' + e,
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 15,
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ))
-                  .toList()),
-          //LOKASI
-          Container(
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              'Lokasi',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          TouchableOpacity(
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Lokasi(
-                        lat: widget.lat,
-                        lng: widget.lng,
-                      );
-                    },
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Fasilitas',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
                   ),
-                );
-              },
-              child: Container(
-                //color: Colors.amber,
-                // child: TouchableOpacity(
-
-                //     // child: GoogleMap(
-                //     //   mapType: MapType.normal,
-                //     //   initialCameraPosition: CameraPosition(
-                //     //     target: LatLng(getProperti.lat, getProperti.lng),
-                //     //     zoom: 14.0,
-                //     //   ),
-                //     //   markers: {
-                //     //     Marker(
-                //     //       markerId: MarkerId("1"),
-                //     //       position: LatLng(getProperti.lat, getProperti.lng),
-                //     //       icon: BitmapDescriptor.defaultMarker,
-                //     //     )
-                //     //   },
-                //     //   zoomControlsEnabled: false,
-                //     //   zoomGesturesEnabled: false,
-                //     //   scrollGesturesEnabled: false,
-                //     //   mapToolbarEnabled: false,
-                //     //   onTap: (argument) {
-                //     //     Navigator.push(
-                //     //       context,
-                //     //       MaterialPageRoute(
-                //     //         builder: (context) {
-                //     //           return Lokasi(
-                //     //             lat: getProperti.lat,
-                //     //             lng: getProperti.lng,
-                //     //           );
-                //     //         },
-                //     //       ),
-                //     //     );
-                //     //   },
-                //     // ),
-                //     ),
-                decoration: BoxDecoration(
-                  color: Color(0xff23243b),
-                  borderRadius: BorderRadius.circular(20),
+                  textAlign: TextAlign.left,
                 ),
-                height: (MediaQuery.of(context).size.width - 20) / 2,
-                margin: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
+                SizedBox(
+                  height: 10,
                 ),
-                child: Center(
-                  child: Text(
-                    'Ketuk untuk melihat lokasi',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'rubik',
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          //PERATURAN
-          Container(
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              'Peraturan',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          ListBody(
-              children: rulesConvert()
-                  .map((e) => Container(
-                        margin: EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          '- ' + e,
-                          style: TextStyle(
-                            fontFamily: 'Rubik',
-                            fontSize: 15,
-                            color: const Color(0xffffffff),
-                            fontWeight: FontWeight.w500,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ))
-                  .toList()),
-          //TIPE KAMAR
-          Container(
-            margin: EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10,
-            ),
-            child: Text(
-              'Tipe Kamar',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 20,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          ListBody(
-              children: widget.roomType
-                  .map((e) => Container(
-                        margin: EdgeInsets.only(
-                          left: 10,
-                          right: 10,
-                          bottom: 10,
-                        ),
-                        padding: EdgeInsets.only(
-                          top: 10,
-                          bottom: 10,
-                          left: 10,
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xff23243b),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0x80000000),
-                              offset: Offset(2, 2),
-                              blurRadius: 2,
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              (e['name'] == '') ? 'Tanpa Nama' : e['name'],
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 20,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                            Divider(
-                              color: Color(0xFF50E3C2),
-                            ),
-                            Text(
-                              'Ukuran kamar ${e['room_size']} meter, ${(e['is_bath_room_inside']) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${e['max_guess']} Orang/kamar, ${(e['is_furnished']) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
+                ListBody(
+                    children: facilityConvert()
+                        .map((e) => Text(
+                              '- ' + e,
                               style: TextStyle(
                                 fontFamily: 'Rubik',
                                 fontSize: 15,
@@ -589,124 +303,445 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                 fontWeight: FontWeight.w500,
                               ),
                               textAlign: TextAlign.left,
-                            ),
-                            Divider(
-                              color: Color(0xFF50E3C2),
-                            ),
-                            Text(
-                              'Fasilitas Kamar',
+                            ))
+                        .toList()),
+              ],
+            ),
+          ),
+
+          //HALAMAN PARKIR
+          Container(
+            color: Color(0xFF23243B),
+            margin: EdgeInsets.only(
+              top: 10,
+            ),
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Halaman Parkir',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListBody(
+                    children: parkingFacilityConvert()
+                        .map((e) => Text(
+                              '- ' + e,
                               style: TextStyle(
                                 fontFamily: 'Rubik',
-                                fontSize: 17,
+                                fontSize: 15,
                                 color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w500,
                               ),
                               textAlign: TextAlign.left,
-                            ),
-                            ListBody(
-                                children: e['facility']
-                                    .map<Widget>((e) => Container(
-                                          margin: EdgeInsets.only(
-                                              left: 10, right: 10),
-                                          child: Text(
-                                            '- ' + e,
-                                            style: TextStyle(
-                                              fontFamily: 'Rubik',
-                                              fontSize: 15,
-                                              color: const Color(0xffffffff),
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                            textAlign: TextAlign.left,
-                                          ),
-                                        ))
-                                    .toList()),
-                            Divider(
-                              color: Color(0xFF50E3C2),
-                            ),
-                            Text(
-                              'Harga',
+                            ))
+                        .toList()),
+              ],
+            ),
+          ),
+
+          //AKSES lINGKUNGAN
+          Container(
+            color: Color(0xFF23243B),
+            margin: EdgeInsets.only(
+              top: 10,
+            ),
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Akses Lingkungan',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListBody(
+                    children: environmentAccessConvert()
+                        .map((e) => Text(
+                              '- ' + e,
                               style: TextStyle(
                                 fontFamily: 'Rubik',
-                                fontSize: 17,
+                                fontSize: 15,
                                 color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w500,
                               ),
                               textAlign: TextAlign.left,
-                            ),
-                            (e['price']['yearly'] == 0)
-                                ? Container()
-                                : Text(
-                                    NumberFormat.currency(
-                                          locale: 'id',
-                                          decimalDigits: 0,
-                                          symbol: 'Rp ',
-                                        ).format(e['price']['yearly']) +
-                                        ' /Tahun',
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontSize: 15,
-                                      color: const Color(0xffffffff),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                            (e['price']['monthly'] == 0)
-                                ? Container()
-                                : Text(
-                                    NumberFormat.currency(
-                                          locale: 'id',
-                                          decimalDigits: 0,
-                                          symbol: 'Rp ',
-                                        ).format(e['price']['monthly']) +
-                                        ' /Bulan',
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontSize: 15,
-                                      color: const Color(0xffffffff),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                            (e['price']['weekly'] == 0)
-                                ? Container()
-                                : Text(
-                                    NumberFormat.currency(
-                                          locale: 'id',
-                                          decimalDigits: 0,
-                                          symbol: 'Rp ',
-                                        ).format(e['price']['weekly']) +
-                                        ' /Pekan',
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontSize: 15,
-                                      color: const Color(0xffffffff),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                            (e['price']['daily'] == 0)
-                                ? Container()
-                                : Text(
-                                    NumberFormat.currency(
-                                          locale: 'id',
-                                          decimalDigits: 0,
-                                          symbol: 'Rp ',
-                                        ).format(e['price']['daily']) +
-                                        ' /Hari',
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontSize: 15,
-                                      color: const Color(0xffffffff),
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                          ],
+                            ))
+                        .toList()),
+              ],
+            ),
+          ),
+
+          //PENGHUNI
+          Container(
+            color: Color(0xFF23243B),
+            margin: EdgeInsets.only(
+              top: 10,
+            ),
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Penghuni',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListBody(
+                    children: categoryConvert()
+                        .map((e) => Text(
+                              '- ' + e,
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 15,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.left,
+                            ))
+                        .toList()),
+              ],
+            ),
+          ),
+
+          //PERATURAN
+          Container(
+            color: Color(0xFF23243B),
+            margin: EdgeInsets.only(
+              top: 10,
+            ),
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Peraturan',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListBody(
+                    children: rulesConvert()
+                        .map((e) => Text(
+                              '- ' + e,
+                              style: TextStyle(
+                                fontFamily: 'Rubik',
+                                fontSize: 15,
+                                color: const Color(0xffffffff),
+                                fontWeight: FontWeight.w500,
+                              ),
+                              textAlign: TextAlign.left,
+                            ))
+                        .toList()),
+              ],
+            ),
+          ),
+
+          //LOKASI
+          Container(
+            color: Color(0xFF23243B),
+            margin: EdgeInsets.only(
+              top: 10,
+            ),
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Lokasi',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TouchableOpacity(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Lokasi(
+                              lat: widget.lat,
+                              lng: widget.lng,
+                            );
+                          },
                         ),
-                      ))
-                  .toList()),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xff23243b),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              'https://static.vecteezy.com/ti/vettori-gratis/p1/151264-vettore-di-mappa-della-citta-vettoriale.png'),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      height: (MediaQuery.of(context).size.width - 20) / 2,
+                      child: Center(
+                        child: Text(
+                          'Ketuk untuk melihat lokasi',
+                          style: TextStyle(
+                            color: Color(0xFF14172B),
+                            fontFamily: 'rubik',
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          //TIPE KAMAR
+          Container(
+            color: Color(0xFF23243B),
+            margin: EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+            ),
+            padding: EdgeInsets.only(
+              top: 15,
+              left: 15,
+              right: 15,
+              bottom: 5,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //title fasilitas
+                Text(
+                  'Tipe Kamar',
+                  style: TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    color: const Color(0xffffffff),
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ListBody(
+                    children: widget.roomType
+                        .map((e) => Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.only(
+                                bottom: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  color: Color(0xFF50E3C2),
+                                ),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    (e['name'] == '')
+                                        ? 'Tanpa Nama'
+                                        : e['name'],
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 20,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  Divider(
+                                    color: Color(0xFF50E3C2),
+                                  ),
+                                  Text(
+                                    'Ukuran kamar ${e['room_size']} meter, ${(e['is_bath_room_inside']) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${e['max_guess']} Orang/kamar, ${(e['is_furnished']) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  Divider(
+                                    color: Color(0xFF50E3C2),
+                                  ),
+                                  Text(
+                                    'Fasilitas Kamar',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 17,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  ListBody(
+                                      children: e['facility']
+                                          .map<Widget>((e) => Container(
+                                                margin: EdgeInsets.only(
+                                                    left: 10, right: 10),
+                                                child: Text(
+                                                  '- ' + e,
+                                                  style: TextStyle(
+                                                    fontFamily: 'Rubik',
+                                                    fontSize: 15,
+                                                    color:
+                                                        const Color(0xffffffff),
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ))
+                                          .toList()),
+                                  Divider(
+                                    color: Color(0xFF50E3C2),
+                                  ),
+                                  Text(
+                                    'Harga',
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 17,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                  (e['price']['yearly'] == 0)
+                                      ? Container()
+                                      : Text(
+                                          NumberFormat.currency(
+                                                locale: 'id',
+                                                decimalDigits: 0,
+                                                symbol: 'Rp ',
+                                              ).format(e['price']['yearly']) +
+                                              ' /Tahun',
+                                          style: TextStyle(
+                                            fontFamily: 'Rubik',
+                                            fontSize: 15,
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                  (e['price']['monthly'] == 0)
+                                      ? Container()
+                                      : Text(
+                                          NumberFormat.currency(
+                                                locale: 'id',
+                                                decimalDigits: 0,
+                                                symbol: 'Rp ',
+                                              ).format(e['price']['monthly']) +
+                                              ' /Bulan',
+                                          style: TextStyle(
+                                            fontFamily: 'Rubik',
+                                            fontSize: 15,
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                  (e['price']['weekly'] == 0)
+                                      ? Container()
+                                      : Text(
+                                          NumberFormat.currency(
+                                                locale: 'id',
+                                                decimalDigits: 0,
+                                                symbol: 'Rp ',
+                                              ).format(e['price']['weekly']) +
+                                              ' /Pekan',
+                                          style: TextStyle(
+                                            fontFamily: 'Rubik',
+                                            fontSize: 15,
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                  (e['price']['daily'] == 0)
+                                      ? Container()
+                                      : Text(
+                                          NumberFormat.currency(
+                                                locale: 'id',
+                                                decimalDigits: 0,
+                                                symbol: 'Rp ',
+                                              ).format(e['price']['daily']) +
+                                              ' /Hari',
+                                          style: TextStyle(
+                                            fontFamily: 'Rubik',
+                                            fontSize: 15,
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                ],
+                              ),
+                            ))
+                        .toList()),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: Container(
         //height: 0,
+        decoration: BoxDecoration(
+          color: Color(0xFF23243B),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0.0, 1.5), //(x,y)
+              blurRadius: 4.0,
+            ),
+          ],
+        ),
         padding: EdgeInsets.all(10),
-        color: Color(0xFF23243B),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -786,7 +821,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   List<String> facilityConvert() {
     List<String> facility = [];
-    for (var item in facility) {
+    for (var item in widget.facility) {
       switch (item) {
         case 'ruang_santai':
           facility.add('Ruang Santai');
