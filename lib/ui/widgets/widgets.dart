@@ -1,4 +1,5 @@
 import 'package:Cekos/data/data.dart';
+import 'package:Cekos/models/koseekerModelMultiple.dart';
 import 'package:Cekos/models/koseekerModelSingle.dart';
 import 'package:Cekos/services/koseekerViewModel.dart';
 import 'package:Cekos/services/services.dart';
