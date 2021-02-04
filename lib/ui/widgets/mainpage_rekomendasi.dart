@@ -6,13 +6,15 @@ class MainPageRekomendasi extends StatefulWidget {
 }
 
 class _MainPageRekomendasiState extends State<MainPageRekomendasi> {
-  int offset = 0;
   int limit = 5;
   //List<GetListProperti> dataProperti = new List();
   KoseekerModelMultiple koseekerModelMultiple = KoseekerModelMultiple();
 
   void getDataKoseekerMultiple() async {
-    await KoseekerViewModel().getDataKoseekerMultiple().then((value) {
+    String parameter = '?limit=$limit';
+    await KoseekerViewModel()
+        .getDataKoseekerMultiple(parameter: parameter)
+        .then((value) {
       setState(() {
         koseekerModelMultiple = value;
       });

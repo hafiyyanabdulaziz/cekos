@@ -4,10 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class KoseekerViewModel {
-  Future<KoseekerModelMultiple> getDataKoseekerMultiple() async {
+  Future<KoseekerModelMultiple> getDataKoseekerMultiple(
+      {String parameter = ''}) async {
     try {
       http.Response hasil = await http.get(
-          Uri.encodeFull("https://api.koseeker.id/property/"),
+          Uri.encodeFull("https://api.koseeker.id/property" + parameter),
           headers: {"Accept": "application/json"});
       if (hasil.statusCode == 200) {
         print("data category success");
