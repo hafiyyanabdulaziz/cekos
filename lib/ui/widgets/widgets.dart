@@ -1,4 +1,6 @@
 import 'package:Cekos/data/data.dart';
+import 'package:Cekos/models/koseekerModelSingle.dart';
+import 'package:Cekos/services/koseekerViewModel.dart';
 import 'package:Cekos/services/services.dart';
 import 'package:Cekos/ui/pages/pages.dart';
 import 'package:carousel_slider/carousel_slider.dart';

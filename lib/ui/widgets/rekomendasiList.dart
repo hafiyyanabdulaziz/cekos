@@ -12,7 +12,9 @@ class RekomendasiList extends StatefulWidget {
 class _RekomendasiListState extends State<RekomendasiList> {
   //int page = 0;
   //List<GetListProperti> dataProperti = new List();
-  List<GetDetailProperti> propertyID = List();
+  //List<GetDetailProperti> propertyID = List();
+  List<KoseekerModelSingle> listKoseekerModelSingle = List();
+  List<Map> coba = [];
 
   // void getDataUser() async {
   //   await GetListProperti.connectToAPI(
@@ -36,16 +38,34 @@ class _RekomendasiListState extends State<RekomendasiList> {
     return sharedPreferences.getString('user_uid');
   }
 
-  void getRecomendasi() async {
+  void getRecomendasi() {
     getUserID().then((userID) {
       GetRecomendasiList().getRecomendasi(userID).then((value) {
+        print('SEBELUM PENGULANGAN');
+        int i = 0;
         for (var item in value) {
-          GetDetailProperti.connectToAPI(propertyID: item).then((value) => {
-                setState(() {
-                  print('==============' + value.toString());
-                  propertyID.add(value);
-                }),
-              });
+          KoseekerViewModel().getDataKoseekerSingle(propertyID: item).then(
+                (value) => {
+                  print('Ini Hasil value: ' + value.toString()),
+                  if (value != null)
+                    {
+                      setState(() {
+                        print('Hasil ==============' + value.toString());
+                        listKoseekerModelSingle.add(value);
+                        print('ini panjang listmodel: ' +
+                            listKoseekerModelSingle.length.toString());
+                        print('Ini ID dari python: ' + item);
+                        print('Ini ID dari Koseeker: ' +
+                            listKoseekerModelSingle[i].data.id);
+                        i++;
+                      }),
+                    }
+                  else
+                    {
+                      print('Tidak ada hasil'),
+                    },
+                },
+              );
         }
       });
     });
@@ -65,7 +85,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
         ListView.builder(
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
-          itemCount: propertyID.length,
+          itemCount: listKoseekerModelSingle.length,
           itemBuilder: (context, i) {
             return TouchableOpacity(
               onTap: () {
@@ -74,38 +94,56 @@ class _RekomendasiListState extends State<RekomendasiList> {
                   MaterialPageRoute(
                     builder: (context) {
                       return PropertiDetailPage(
-                        photo: propertyID[i].photo,
-                        tipe: propertyID[i].tipe,
-                        penghuni: propertyID[i].penghuni,
-                        harga: propertyID[i].harga,
-                        nama: propertyID[i].nama,
-                        id: propertyID[i].id,
-                        daerah: propertyID[i].daerah,
-                        gallery: propertyID[i].gallery,
-                        village: propertyID[i].village,
-                        district: propertyID[i].district,
-                        city: propertyID[i].city,
-                        province: propertyID[i].province,
-                        facility: propertyID[i].facility,
-                        environmentAccess: propertyID[i].environmentAccess,
-                        parkingFacility: propertyID[i].parkingFacility,
-                        category: propertyID[i].category,
-                        description: propertyID[i].description,
-                        lat: propertyID[i].lat,
-                        lng: propertyID[i].lng,
-                        rules: propertyID[i].rules,
-                        roomType: propertyID[i].roomType,
+                        photo: listKoseekerModelSingle[i].data.mainImage,
+                        tipe: listKoseekerModelSingle[i].data.type[0],
+                        penghuni: listKoseekerModelSingle[i].data.category[0],
+                        harga: listKoseekerModelSingle[i]
+                            .data
+                            .roomType[0]
+                            .price
+                            .yearly,
+                        nama: listKoseekerModelSingle[i].data.name,
+                        id: listKoseekerModelSingle[i].data.id,
+                        daerah: 'xxxDAERAHxxx',
+                        gallery: listKoseekerModelSingle[i].data.gallery,
+                        village:
+                            listKoseekerModelSingle[i].data.address.village,
+                        district:
+                            listKoseekerModelSingle[i].data.address.district,
+                        city: listKoseekerModelSingle[i].data.address.city,
+                        province:
+                            listKoseekerModelSingle[i].data.address.province,
+                        facility: listKoseekerModelSingle[i].data.facility,
+                        environmentAccess:
+                            listKoseekerModelSingle[i].data.environmentAccess,
+                        parkingFacility:
+                            listKoseekerModelSingle[i].data.parkingFacility,
+                        category: listKoseekerModelSingle[i].data.category,
+                        description:
+                            listKoseekerModelSingle[i].data.description,
+                        lat: listKoseekerModelSingle[i]
+                            .data
+                            .address
+                            .location
+                            .coordinates[1],
+                        lng: listKoseekerModelSingle[i]
+                            .data
+                            .address
+                            .location
+                            .coordinates[0],
+                        rules: listKoseekerModelSingle[i].data.rules,
+                        roomType: coba,
                       );
                     },
                   ),
                 );
               },
               child: Card(
-                harga: propertyID[i].harga,
-                nama: propertyID[i].nama,
-                penghuni: propertyID[i].penghuni,
-                photo: propertyID[i].photo,
-                type: propertyID[i].tipe,
+                harga: listKoseekerModelSingle[i].data.roomType[0].price.yearly,
+                nama: listKoseekerModelSingle[i].data.name,
+                penghuni: listKoseekerModelSingle[i].data.category[0],
+                photo: listKoseekerModelSingle[i].data.mainImage,
+                type: listKoseekerModelSingle[i].data.type[0],
               ),
             );
           },
