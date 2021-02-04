@@ -22,7 +22,7 @@ class PropertiDetailPage extends StatefulWidget {
   List<String> category;
   String description;
   List<String> rules;
-  List<Map> roomType;
+  List<RoomType> roomType;
 
   double lat;
   double lng;
@@ -588,9 +588,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    (e['name'] == '')
-                                        ? 'Tanpa Nama'
-                                        : e['name'],
+                                    (e.name == '') ? 'Tanpa Nama' : e.name,
                                     style: TextStyle(
                                       fontFamily: 'Rubik',
                                       fontSize: 20,
@@ -603,7 +601,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                     color: Color(0xFF50E3C2),
                                   ),
                                   Text(
-                                    'Ukuran kamar ${e['room_size']} meter, ${(e['is_bath_room_inside']) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${e['max_guess']} Orang/kamar, ${(e['is_furnished']) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
+                                    'Ukuran kamar ${e.roomSize} meter, ${(e.isBathRoomInside) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${e.maxGuess} Orang/kamar, ${(e.isFurnished) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
                                     style: TextStyle(
                                       fontFamily: 'Rubik',
                                       fontSize: 15,
@@ -626,7 +624,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                     textAlign: TextAlign.left,
                                   ),
                                   ListBody(
-                                      children: e['facility']
+                                      children: e.facility
                                           .map<Widget>((e) => Container(
                                                 margin: EdgeInsets.only(
                                                     left: 10, right: 10),
@@ -656,14 +654,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                     ),
                                     textAlign: TextAlign.left,
                                   ),
-                                  (e['price']['yearly'] == 0)
+                                  (e.price.yearly == 0)
                                       ? Container()
                                       : Text(
                                           NumberFormat.currency(
                                                 locale: 'id',
                                                 decimalDigits: 0,
                                                 symbol: 'Rp ',
-                                              ).format(e['price']['yearly']) +
+                                              ).format(e.price.yearly) +
                                               ' /Tahun',
                                           style: TextStyle(
                                             fontFamily: 'Rubik',
@@ -672,14 +670,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                  (e['price']['monthly'] == 0)
+                                  (e.price.monthly == 0)
                                       ? Container()
                                       : Text(
                                           NumberFormat.currency(
                                                 locale: 'id',
                                                 decimalDigits: 0,
                                                 symbol: 'Rp ',
-                                              ).format(e['price']['monthly']) +
+                                              ).format(e.price.monthly) +
                                               ' /Bulan',
                                           style: TextStyle(
                                             fontFamily: 'Rubik',
@@ -688,14 +686,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                  (e['price']['weekly'] == 0)
+                                  (e.price.weekly == 0)
                                       ? Container()
                                       : Text(
                                           NumberFormat.currency(
                                                 locale: 'id',
                                                 decimalDigits: 0,
                                                 symbol: 'Rp ',
-                                              ).format(e['price']['weekly']) +
+                                              ).format(e.price.weekly) +
                                               ' /Pekan',
                                           style: TextStyle(
                                             fontFamily: 'Rubik',
@@ -704,14 +702,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                  (e['price']['daily'] == 0)
+                                  (e.price.daily == 0)
                                       ? Container()
                                       : Text(
                                           NumberFormat.currency(
                                                 locale: 'id',
                                                 decimalDigits: 0,
                                                 symbol: 'Rp ',
-                                              ).format(e['price']['daily']) +
+                                              ).format(e.price.daily) +
                                               ' /Hari',
                                           style: TextStyle(
                                             fontFamily: 'Rubik',

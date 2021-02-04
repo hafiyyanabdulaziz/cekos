@@ -132,7 +132,7 @@ class _RekomendasiListState extends State<RekomendasiList> {
                             .location
                             .coordinates[0],
                         rules: listKoseekerModelSingle[i].data.rules,
-                        roomType: coba,
+                        roomType: listKoseekerModelSingle[i].data.roomType,
                       );
                     },
                   ),

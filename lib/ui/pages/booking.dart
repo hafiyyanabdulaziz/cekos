@@ -2,7 +2,7 @@ part of 'pages.dart';
 
 // ignore: must_be_immutable
 class Booking extends StatefulWidget {
-  List<Map> data;
+  List<RoomType> data;
   String propertyName;
   String propertyID;
   String propertyPhoto;
@@ -131,9 +131,9 @@ class _BookingState extends State<Booking> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  (widget.data[index]['name'] == '')
+                                  (widget.data[index].name == '')
                                       ? 'Tanpa Nama'
-                                      : widget.data[index]['name'],
+                                      : widget.data[index].name,
                                   style: TextStyle(
                                     fontFamily: 'Rubik',
                                     fontSize: 20,
@@ -146,7 +146,7 @@ class _BookingState extends State<Booking> {
                                   color: Color(0xFF50E3C2),
                                 ),
                                 Text(
-                                  'Ukuran kamar ${widget.data[index]['room_size']} meter, ${(widget.data[index]['is_bath_room_inside']) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${widget.data[index]['max_guess']} Orang/kamar, ${(widget.data[index]['is_furnished']) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
+                                  'Ukuran kamar ${widget.data[index].roomSize} meter, ${(widget.data[index].isBathRoomInside) ? "Kamar mandi di dalam" : "Kamar mandi di luar"}, Maksimal ${widget.data[index].maxGuess} Orang/kamar, ${(widget.data[index].isFurnished) ? "Sudah ada kasur dan perabotan" : "Belum ada kasur dan perabotan"}.',
                                   style: TextStyle(
                                     fontFamily: 'Rubik',
                                     fontSize: 15,
@@ -169,7 +169,7 @@ class _BookingState extends State<Booking> {
                                   textAlign: TextAlign.left,
                                 ),
                                 ListBody(
-                                    children: widget.data[index]['facility']
+                                    children: widget.data[index].facility
                                         .map<Widget>((e) => Container(
                                               margin: EdgeInsets.only(
                                                   left: 10, right: 10),
@@ -199,15 +199,15 @@ class _BookingState extends State<Booking> {
                                   ),
                                   textAlign: TextAlign.left,
                                 ),
-                                (widget.data[index]['price']['yearly'] == 0)
+                                (widget.data[index].price.yearly == 0)
                                     ? Container()
                                     : Text(
                                         NumberFormat.currency(
                                               locale: 'id',
                                               decimalDigits: 0,
                                               symbol: 'Rp ',
-                                            ).format(widget.data[index]['price']
-                                                ['yearly']) +
+                                            ).format(widget
+                                                .data[index].price.yearly) +
                                             ' /Tahun',
                                         style: TextStyle(
                                           fontFamily: 'Rubik',
@@ -216,15 +216,15 @@ class _BookingState extends State<Booking> {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                (widget.data[index]['price']['monthly'] == 0)
+                                (widget.data[index].price.monthly == 0)
                                     ? Container()
                                     : Text(
                                         NumberFormat.currency(
                                               locale: 'id',
                                               decimalDigits: 0,
                                               symbol: 'Rp ',
-                                            ).format(widget.data[index]['price']
-                                                ['monthly']) +
+                                            ).format(widget
+                                                .data[index].price.monthly) +
                                             ' /Bulan',
                                         style: TextStyle(
                                           fontFamily: 'Rubik',
@@ -233,15 +233,15 @@ class _BookingState extends State<Booking> {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                (widget.data[index]['price']['weekly'] == 0)
+                                (widget.data[index].price.weekly == 0)
                                     ? Container()
                                     : Text(
                                         NumberFormat.currency(
                                               locale: 'id',
                                               decimalDigits: 0,
                                               symbol: 'Rp ',
-                                            ).format(widget.data[index]['price']
-                                                ['weekly']) +
+                                            ).format(widget
+                                                .data[index].price.weekly) +
                                             ' /Pekan',
                                         style: TextStyle(
                                           fontFamily: 'Rubik',
@@ -250,15 +250,15 @@ class _BookingState extends State<Booking> {
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
-                                (widget.data[index]['price']['daily'] == 0)
+                                (widget.data[index].price.daily == 0)
                                     ? Container()
                                     : Text(
                                         NumberFormat.currency(
                                               locale: 'id',
                                               decimalDigits: 0,
                                               symbol: 'Rp ',
-                                            ).format(widget.data[index]['price']
-                                                ['daily']) +
+                                            ).format(widget
+                                                .data[index].price.daily) +
                                             ' /Hari',
                                         style: TextStyle(
                                           fontFamily: 'Rubik',
@@ -296,13 +296,13 @@ class _BookingState extends State<Booking> {
                         ),
                       ),
                     ),
-                    (widget.data[_selectedRoomType]['price']['yearly'] == 0)
+                    (widget.data[_selectedRoomType].price.yearly == 0)
                         ? Container()
                         : GestureDetector(
                             onTap: () {
                               durasiMenginap = 'Tahunan';
-                              _roomPrice = widget.data[_selectedRoomType]
-                                  ['price']['yearly'];
+                              _roomPrice =
+                                  widget.data[_selectedRoomType].price.yearly;
                               setState(() {});
                             },
                             child: Container(
@@ -321,8 +321,8 @@ class _BookingState extends State<Booking> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: (_roomPrice ==
-                                        widget.data[_selectedRoomType]['price']
-                                            ['yearly'])
+                                        widget.data[_selectedRoomType].price
+                                            .yearly)
                                     ? Color(0xffaf8d19)
                                     : Color(0xff23243b),
                                 boxShadow: [
@@ -338,8 +338,8 @@ class _BookingState extends State<Booking> {
                                       locale: 'id',
                                       decimalDigits: 0,
                                       symbol: 'Rp ',
-                                    ).format(widget.data[_selectedRoomType]
-                                        ['price']['yearly']) +
+                                    ).format(widget
+                                        .data[_selectedRoomType].price.yearly) +
                                     ' /Tahun',
                                 style: TextStyle(
                                   fontFamily: 'Rubik',
@@ -350,13 +350,13 @@ class _BookingState extends State<Booking> {
                               ),
                             ),
                           ),
-                    (widget.data[_selectedRoomType]['price']['monthly'] == 0)
+                    (widget.data[_selectedRoomType].price.monthly == 0)
                         ? Container()
                         : GestureDetector(
                             onTap: () {
                               durasiMenginap = 'Bulanan';
-                              _roomPrice = widget.data[_selectedRoomType]
-                                  ['price']['monthly'];
+                              _roomPrice =
+                                  widget.data[_selectedRoomType].price.monthly;
                               setState(() {});
                             },
                             child: Container(
@@ -375,8 +375,8 @@ class _BookingState extends State<Booking> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: (_roomPrice ==
-                                        widget.data[_selectedRoomType]['price']
-                                            ['monthly'])
+                                        widget.data[_selectedRoomType].price
+                                            .monthly)
                                     ? Color(0xffaf8d19)
                                     : Color(0xff23243b),
                                 boxShadow: [
@@ -393,7 +393,7 @@ class _BookingState extends State<Booking> {
                                       decimalDigits: 0,
                                       symbol: 'Rp ',
                                     ).format(widget.data[_selectedRoomType]
-                                        ['price']['monthly']) +
+                                        .price.monthly) +
                                     ' /Bulan',
                                 style: TextStyle(
                                   fontFamily: 'Rubik',
@@ -404,13 +404,13 @@ class _BookingState extends State<Booking> {
                               ),
                             ),
                           ),
-                    (widget.data[_selectedRoomType]['price']['weekly'] == 0)
+                    (widget.data[_selectedRoomType].price.weekly == 0)
                         ? Container()
                         : GestureDetector(
                             onTap: () {
                               durasiMenginap = 'Mingguan';
-                              _roomPrice = widget.data[_selectedRoomType]
-                                  ['price']['weekly'];
+                              _roomPrice =
+                                  widget.data[_selectedRoomType].price.weekly;
                               setState(() {});
                             },
                             child: Container(
@@ -429,8 +429,8 @@ class _BookingState extends State<Booking> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: (_roomPrice ==
-                                        widget.data[_selectedRoomType]['price']
-                                            ['weekly'])
+                                        widget.data[_selectedRoomType].price
+                                            .weekly)
                                     ? Color(0xffaf8d19)
                                     : Color(0xff23243b),
                                 boxShadow: [
@@ -446,8 +446,8 @@ class _BookingState extends State<Booking> {
                                       locale: 'id',
                                       decimalDigits: 0,
                                       symbol: 'Rp ',
-                                    ).format(widget.data[_selectedRoomType]
-                                        ['price']['weekly']) +
+                                    ).format(widget
+                                        .data[_selectedRoomType].price.weekly) +
                                     ' /Pekan',
                                 style: TextStyle(
                                   fontFamily: 'Rubik',
@@ -458,13 +458,13 @@ class _BookingState extends State<Booking> {
                               ),
                             ),
                           ),
-                    (widget.data[_selectedRoomType]['price']['daily'] == 0)
+                    (widget.data[_selectedRoomType].price.daily == 0)
                         ? Container()
                         : GestureDetector(
                             onTap: () {
                               durasiMenginap = 'Harian';
-                              _roomPrice = widget.data[_selectedRoomType]
-                                  ['price']['daily'];
+                              _roomPrice =
+                                  widget.data[_selectedRoomType].price.daily;
                               setState(() {});
                             },
                             child: Container(
@@ -483,8 +483,8 @@ class _BookingState extends State<Booking> {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: (_roomPrice ==
-                                        widget.data[_selectedRoomType]['price']
-                                            ['daily'])
+                                        widget.data[_selectedRoomType].price
+                                            .daily)
                                     ? Color(0xffaf8d19)
                                     : Color(0xff23243b),
                                 boxShadow: [
@@ -500,8 +500,8 @@ class _BookingState extends State<Booking> {
                                       locale: 'id',
                                       decimalDigits: 0,
                                       symbol: 'Rp ',
-                                    ).format(widget.data[_selectedRoomType]
-                                        ['price']['daily']) +
+                                    ).format(widget
+                                        .data[_selectedRoomType].price.daily) +
                                     ' /Hari',
                                 style: TextStyle(
                                   fontFamily: 'Rubik',
@@ -536,7 +536,7 @@ class _BookingState extends State<Booking> {
                 ' pada tanggal ' +
                 _selectedDate +
                 '. Tipe property ' +
-                widget.data[_selectedRoomType]['name'] +
+                widget.data[_selectedRoomType].name +
                 ' dengan harga ' +
                 NumberFormat.currency(
                   locale: 'id',
@@ -566,7 +566,7 @@ class _BookingState extends State<Booking> {
                     propertyName: widget.propertyName,
                     propertyPhotoURL: widget.propertyPhoto,
                     tanggal: tanggal,
-                    tipeKamar: widget.data[_selectedRoomType]['name'],
+                    tipeKamar: widget.data[_selectedRoomType].name,
                   );
                   print('halo' + userID);
                 });
@@ -578,8 +578,7 @@ class _BookingState extends State<Booking> {
                     tanggal: _selectedDate,
                     durasiMenginap: durasiMenginap,
                     propertyNama: widget.propertyName,
-                    propertyRoomTypeNama: widget.data[_selectedRoomType]
-                        ['name'],
+                    propertyRoomTypeNama: widget.data[_selectedRoomType].name,
                     propertyHarga: _roomPrice,
                   ),
                 );
