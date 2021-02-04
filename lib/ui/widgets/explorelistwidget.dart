@@ -23,199 +23,148 @@ class ExploreListWidget extends StatefulWidget {
 }
 
 class _ExploreListWidgetState extends State<ExploreListWidget> {
-  int page = 0;
-  List<GetListProperti> dataProperti = new List();
-  void getDataUser() async {
-    GetListProperti.connectToAPI(
-      name: widget.name,
-      limit: 30,
-      offset: page,
-      typeProperty: widget.typeProperty,
-      durasiMenginap: widget.durasiMenginap,
-      kategori: widget.kategori,
-      furniture: widget.furniture,
-      tempatParkir: widget.tempatParkir,
-    ).then((value) {
+  //int page = 0;
+  //List<GetListProperti> dataProperti = new List();
+  KoseekerModelMultiple koseekerModelMultiple = KoseekerModelMultiple();
+
+  String checkName() {
+    if (widget.name == '') {
+      return '';
+    } else {
+      return '&name=' + widget.name;
+    }
+  }
+
+  String parameter() {
+    print('nama: ' + widget.name);
+    print('tipe properti: ' + widget.typeProperty);
+    print('durasi menginap: ' + widget.durasiMenginap);
+    print('kategori: ' + widget.kategori);
+    print('furniture: ' + widget.furniture);
+    print('tempat parkir: ' + widget.tempatParkir);
+    print('Total: ' +
+        '?limit=30' +
+        checkName() +
+        widget.durasiMenginap +
+        widget.kategori +
+        widget.furniture +
+        widget.tempatParkir);
+    return '?limit=30' +
+        checkName() +
+        widget.durasiMenginap +
+        widget.kategori +
+        widget.furniture +
+        widget.tempatParkir;
+  }
+
+  void getDataKoseekerMultiple() async {
+    await KoseekerViewModel()
+        .getDataKoseekerMultiple(parameter: parameter())
+        .then((value) {
       setState(() {
-        dataProperti = value;
+        koseekerModelMultiple = value;
       });
     });
   }
 
+  // void getDataUser() async {
+  //   GetListProperti.connectToAPI(
+  //     name: widget.name,
+  //     limit: 30,
+  //     offset: page,
+  //     typeProperty: widget.typeProperty,
+  //     durasiMenginap: widget.durasiMenginap,
+  //     kategori: widget.kategori,
+  //     furniture: widget.furniture,
+  //     tempatParkir: widget.tempatParkir,
+  //   ).then((value) {
+  //     setState(() {
+  //       dataProperti = value;
+  //     });
+  //   });
+  // }
+
   @override
   void initState() {
     super.initState();
-    getDataUser();
+    //getDataUser();
+    getDataKoseekerMultiple();
+    //parameter();
   }
 
   @override
   Widget build(BuildContext context) {
-    return dataProperti == null
+    return koseekerModelMultiple.data == null
         ? Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.amber,
-            ),
+                //backgroundColor: Colors.amber,
+                ),
           )
-        : ListView(
-            children: [
-              ListView.builder(
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  itemCount: dataProperti.length,
-                  itemBuilder: (context, i) {
-                    return TouchableOpacity(
-                      child: GestureDetector(
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) {
-                          //       return PropertiDetailPage(
-                          //         photo: dataProperti[i].photo,
-                          //         tipe: dataProperti[i].tipe,
-                          //         penghuni: dataProperti[i].penghuni,
-                          //         harga: dataProperti[i].harga,
-                          //         nama: dataProperti[i].nama,
-                          //         id: dataProperti[i].id,
-                          //         daerah: dataProperti[i].daerah,
-                          //         gallery: dataProperti[i].gallery,
-                          //         village: dataProperti[i].village,
-                          //         district: dataProperti[i].district,
-                          //         city: dataProperti[i].city,
-                          //         province: dataProperti[i].province,
-                          //         facility: dataProperti[i].facility,
-                          //         environmentAccess:
-                          //             dataProperti[i].environmentAccess,
-                          //         parkingFacility:
-                          //             dataProperti[i].parkingFacility,
-                          //         category: dataProperti[i].category,
-                          //         description: dataProperti[i].description,
-                          //         lat: dataProperti[i].lat,
-                          //         lng: dataProperti[i].lng,
-                          //         rules: dataProperti[i].rules,
-                          //         roomType: dataProperti[i].roomType,
-                          //       );
-                          //     },
-                          //   ),
-                          // );
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            left: 20,
-                            right: 20,
-                            bottom: 10,
-                            top: 10,
+        : (koseekerModelMultiple.data.isEmpty)
+            ? Center(
+                child: Text(
+                  'Maaf yang Anca cari tidak ditemukan...',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            : ListView(
+                children: [
+                  ListView.builder(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemCount: koseekerModelMultiple.data.length,
+                      itemBuilder: (context, i) {
+                        return TouchableOpacity(
+                          child: GestureDetector(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) {
+                              //       return PropertiDetailPage(
+                              //         photo: dataProperti[i].photo,
+                              //         tipe: dataProperti[i].tipe,
+                              //         penghuni: dataProperti[i].penghuni,
+                              //         harga: dataProperti[i].harga,
+                              //         nama: dataProperti[i].nama,
+                              //         id: dataProperti[i].id,
+                              //         daerah: dataProperti[i].daerah,
+                              //         gallery: dataProperti[i].gallery,
+                              //         village: dataProperti[i].village,
+                              //         district: dataProperti[i].district,
+                              //         city: dataProperti[i].city,
+                              //         province: dataProperti[i].province,
+                              //         facility: dataProperti[i].facility,
+                              //         environmentAccess:
+                              //             dataProperti[i].environmentAccess,
+                              //         parkingFacility:
+                              //             dataProperti[i].parkingFacility,
+                              //         category: dataProperti[i].category,
+                              //         description: dataProperti[i].description,
+                              //         lat: dataProperti[i].lat,
+                              //         lng: dataProperti[i].lng,
+                              //         rules: dataProperti[i].rules,
+                              //         roomType: dataProperti[i].roomType,
+                              //       );
+                              //     },
+                              //   ),
+                              // );
+                            },
+                            child: Card(
+                              harga: koseekerModelMultiple
+                                  .data[i].roomType[0].price.yearly,
+                              nama: koseekerModelMultiple.data[i].name,
+                              penghuni:
+                                  koseekerModelMultiple.data[i].category[0],
+                              photo: koseekerModelMultiple.data[i].mainImage,
+                              type: koseekerModelMultiple.data[i].type[0],
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14.0),
-                            color: const Color(0xff23243b),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color(0x80000000),
-                                offset: Offset(4, 4),
-                                blurRadius: 8,
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //Text(dataProperti[i].photo),
-                              //FOTO
-                              Container(
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(14.0),
-                                    topRight: Radius.circular(14.0),
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(dataProperti[i].photo),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              //TIPE
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: 10,
-                                  right: 10,
-                                  top: 10,
-                                ),
-                                child: Text(
-                                  (dataProperti[i].tipe +
-                                      ' - ' +
-                                      dataProperti[i].penghuni),
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 15,
-                                    color: const Color(0xffffffff),
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              //NAMA
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: 10,
-                                  right: 10,
-                                  top: 10,
-                                  bottom: 10,
-                                ),
-                                child: Text(
-                                  dataProperti[i].nama,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 25,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: 10,
-                                  right: 10,
-                                  bottom: 10,
-                                ),
-                                child: Text(
-                                  NumberFormat.currency(
-                                        locale: 'id',
-                                        decimalDigits: 0,
-                                        symbol: 'Rp ',
-                                      ).format(dataProperti[i].harga) +
-                                      ' /Tahun',
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 15,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(14.0),
-                                    topRight: Radius.circular(14.0),
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(dataProperti[i].nama),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ],
-          );
+                        );
+                      }),
+                ],
+              );
   }
 }
