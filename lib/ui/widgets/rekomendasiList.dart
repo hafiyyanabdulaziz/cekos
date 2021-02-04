@@ -107,7 +107,6 @@ class _RekomendasiListState extends State<RekomendasiList> {
                                   .yearly,
                               nama: listKoseekerModelSingle[i].data.name,
                               id: listKoseekerModelSingle[i].data.id,
-                              daerah: 'xxxDAERAHxxx',
                               gallery: listKoseekerModelSingle[i].data.gallery,
                               village: listKoseekerModelSingle[i]
                                   .data

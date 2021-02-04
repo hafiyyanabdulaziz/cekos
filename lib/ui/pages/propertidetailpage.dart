@@ -9,7 +9,6 @@ class PropertiDetailPage extends StatefulWidget {
   int harga;
   String nama;
   String id;
-  String daerah;
   List<String> gallery;
 
   String village;
@@ -35,7 +34,6 @@ class PropertiDetailPage extends StatefulWidget {
     @required this.harga,
     @required this.nama,
     @required this.id,
-    @required this.daerah,
     @required this.gallery,
     @required this.village,
     @required this.district,
@@ -218,7 +216,9 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                 ),
                 //DAERAH
                 Text(
-                  widget.daerah,
+                  (widget.village != '' && widget.city != '')
+                      ? widget.village + ' - ' + widget.city
+                      : 'Indonesia',
                   style: TextStyle(
                     fontFamily: 'Rubik',
                     fontSize: 20,
