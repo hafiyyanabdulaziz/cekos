@@ -1,4 +1,5 @@
 import 'package:Cekos/data/data.dart';
+import 'package:Cekos/extensions/convertText.dart';
 import 'package:Cekos/models/koseekerModelMultiple.dart';
 import 'package:Cekos/models/koseekerModelSingle.dart';
 import 'package:Cekos/services/koseekerViewModel.dart';
@@ -10,6 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
 import 'package:Cekos/extensions/koseekerModelMultipleExtensions.dart';
+import 'package:Cekos/extensions/stringExtension.dart';
 
 part 'detailpage_slider.dart';
 part 'explorelistwidget.dart';

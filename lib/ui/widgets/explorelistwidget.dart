@@ -157,13 +157,15 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
                               );
                             },
                             child: Card(
-                              harga: koseekerModelMultiple
-                                  .data[i].roomType[0].price.yearly,
-                              nama: koseekerModelMultiple.data[i].name,
-                              penghuni:
-                                  koseekerModelMultiple.data[i].category[0],
-                              photo: koseekerModelMultiple.data[i].mainImage,
-                              type: koseekerModelMultiple.data[i].type[0],
+                              koseekerModelMultiple
+                                  .convertToKoseekerModelSingle(index: i),
+                              // harga: koseekerModelMultiple
+                              //     .data[i].roomType[0].price.yearly,
+                              // nama: koseekerModelMultiple.data[i].name,
+                              // penghuni:
+                              //     koseekerModelMultiple.data[i].category[0],
+                              // photo: koseekerModelMultiple.data[i].mainImage,
+                              // type: koseekerModelMultiple.data[i].type[0],
                             ),
                           ),
                         );

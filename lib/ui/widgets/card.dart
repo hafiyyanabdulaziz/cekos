@@ -1,19 +1,22 @@
 part of 'widgets.dart';
 
 class Card extends StatelessWidget {
-  final String photo;
-  final String type;
-  final String penghuni;
-  final String nama;
-  final int harga;
+  // final String photo;
+  // final String type;
+  // final String penghuni;
+  // final String nama;
+  // final int harga;
+  final KoseekerModelSingle koseekerModelSingle;
 
-  Card({
-    this.photo = 'https://picsum.photos/200/300',
-    this.type = 'Kost',
-    this.penghuni = 'Perempuan',
-    this.nama = 'Kost Tulung Agung',
-    this.harga = 1000000,
-  });
+  Card(this.koseekerModelSingle);
+
+  // Card({
+  //   this.photo = 'https://picsum.photos/200/300',
+  //   this.type = 'Kost',
+  //   this.penghuni = 'Perempuan',
+  //   this.nama = 'Kost Tulung Agung',
+  //   this.harga = 1000000,
+  // });
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +51,7 @@ class Card extends StatelessWidget {
                 topRight: Radius.circular(14.0),
               ),
               image: DecorationImage(
-                image: NetworkImage(photo),
+                image: NetworkImage(koseekerModelSingle.data.mainImage),
                 fit: BoxFit.cover,
               ),
             ),
@@ -61,7 +64,9 @@ class Card extends StatelessWidget {
               top: 10,
             ),
             child: Text(
-              (type + ' - ' + penghuni),
+              (koseekerModelSingle.data.type[0].capitalize() +
+                  ' - ' +
+                  ConvertText.convertToPenghuni(koseekerModelSingle)),
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 15,
@@ -79,7 +84,7 @@ class Card extends StatelessWidget {
               bottom: 10,
             ),
             child: Text(
-              nama,
+              koseekerModelSingle.data.name,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -99,7 +104,9 @@ class Card extends StatelessWidget {
               bottom: 10,
             ),
             child: Text(
-              (harga == 0) ? 'Maaf Sudah Penuh' : displayHarga(),
+              (koseekerModelSingle.data.roomType[0].price.yearly == 0)
+                  ? 'Maaf Sudah Penuh'
+                  : displayHarga(),
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 15,
@@ -119,7 +126,7 @@ class Card extends StatelessWidget {
           locale: 'id',
           decimalDigits: 0,
           symbol: 'Rp ',
-        ).format(harga) +
+        ).format(koseekerModelSingle.data.roomType[0].price.yearly) +
         ' /Tahun';
   }
 }

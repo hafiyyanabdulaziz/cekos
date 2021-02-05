@@ -154,15 +154,16 @@ class _RekomendasiListState extends State<RekomendasiList> {
                       );
                     },
                     child: Card(
-                      harga: listKoseekerModelSingle[i]
-                          .data
-                          .roomType[0]
-                          .price
-                          .yearly,
-                      nama: listKoseekerModelSingle[i].data.name,
-                      penghuni: listKoseekerModelSingle[i].data.category[0],
-                      photo: listKoseekerModelSingle[i].data.mainImage,
-                      type: listKoseekerModelSingle[i].data.type[0],
+                      listKoseekerModelSingle[i],
+                      // harga: listKoseekerModelSingle[i]
+                      //     .data
+                      //     .roomType[0]
+                      //     .price
+                      //     .yearly,
+                      // nama: listKoseekerModelSingle[i].data.name,
+                      // penghuni: listKoseekerModelSingle[i].data.category[0],
+                      // photo: listKoseekerModelSingle[i].data.mainImage,
+                      // type: listKoseekerModelSingle[i].data.type[0],
                     ),
                   );
                 },
