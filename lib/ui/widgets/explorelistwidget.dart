@@ -51,6 +51,7 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
         widget.tempatParkir);
     return '?limit=30' +
         checkName() +
+        widget.typeProperty +
         widget.durasiMenginap +
         widget.kategori +
         widget.furniture +
