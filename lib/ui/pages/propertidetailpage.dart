@@ -527,8 +527,10 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                       decoration: BoxDecoration(
                         color: Color(0xff23243b),
                         image: DecorationImage(
-                          image: NetworkImage(
-                              'https://static.vecteezy.com/ti/vettori-gratis/p1/151264-vettore-di-mappa-della-citta-vettoriale.png'),
+                          // NetworkImage(
+                          //     'https://static.vecteezy.com/ti/vettori-gratis/p1/151264-vettore-di-mappa-della-citta-vettoriale.png'),
+                          image: AssetImage(
+                              'lib/assets/images/maps/mapsIlustration.png'),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(15),
