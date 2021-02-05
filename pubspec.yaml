@@ -43,6 +43,7 @@ dependencies:
   touchable_opacity: ^1.1.2
   url_launcher: ^5.7.10
   webview_flutter: ^1.0.7
+  photo_view: ^0.10.3
 
 dev_dependencies:
   flutter_test:

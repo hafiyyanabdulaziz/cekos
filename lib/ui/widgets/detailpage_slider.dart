@@ -34,12 +34,27 @@ class _DetailPageSliderState extends State<DetailPageSlider> {
                     );
                   },
                 ),
-                items: widget.dataPhotos
-                    .map(
-                      (item) =>
+                items: widget.dataPhotos.map((item) {
+                  return GestureDetector(
+                    onTap: () {
+                      print('Halo Ini foto dipencet');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return PhotoFullScreen(item);
+                          },
+                        ),
+                      );
+                    },
+                    child: Hero(
+                      tag: 'imageHero',
+                      child:
                           Image.network(item, fit: BoxFit.cover, width: 1000.0),
-                    )
-                    .toList(),
+                    ),
+                    // Image.network(item, fit: BoxFit.cover, width: 1000.0),
+                  );
+                }).toList(),
               );
             },
           ),
