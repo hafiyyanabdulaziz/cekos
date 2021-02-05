@@ -2,52 +2,54 @@ part of 'pages.dart';
 
 // ignore: must_be_immutable
 class PropertiDetailPage extends StatefulWidget {
-  String photo =
-      "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
-  String tipe;
-  String penghuni;
-  int harga;
-  String nama;
-  String id;
-  List<String> gallery;
+  KoseekerModelSingle koseekerModelSingle = KoseekerModelSingle();
+  // String photo =
+  //     "https://1.bp.blogspot.com/-fcqYJ8sOUtw/X0zEQsZWkVI/AAAAAAAAI24/hAq1jqHHAhYIZoRqkSsdlh3QBBfYcYAwgCLcBGAsYHQ/s1600/fiksioner-no-image.png";
+  // String tipe;
+  // String penghuni;
+  // int harga;
+  // String nama;
+  // String id;
+  // List<String> gallery;
 
-  String village;
-  String district;
-  String city;
-  String province;
-  List<String> facility;
-  List<String> environmentAccess;
-  List<String> parkingFacility;
-  List<String> category;
-  String description;
-  List<String> rules;
-  List<RoomType> roomType;
+  // String village;
+  // String district;
+  // String city;
+  // String province;
+  // List<String> facility;
+  // List<String> environmentAccess;
+  // List<String> parkingFacility;
+  // List<String> category;
+  // String description;
+  // List<String> rules;
+  // List<RoomType> roomType;
 
-  double lat;
-  double lng;
+  // double lat;
+  // double lng;
   //GetListProperti getProperti;
 
   PropertiDetailPage({
-    @required this.photo,
-    @required this.tipe,
-    @required this.penghuni,
-    @required this.harga,
-    @required this.nama,
-    @required this.id,
-    @required this.gallery,
-    @required this.village,
-    @required this.district,
-    @required this.city,
-    @required this.province,
-    @required this.facility,
-    @required this.environmentAccess,
-    @required this.parkingFacility,
-    @required this.category,
-    @required this.description,
-    @required this.lat,
-    @required this.lng,
-    @required this.rules,
-    @required this.roomType,
+    @required this.koseekerModelSingle,
+    // @required this.photo,
+    // @required this.tipe,
+    // @required this.penghuni,
+    // @required this.harga,
+    // @required this.nama,
+    // @required this.id,
+    // @required this.gallery,
+    // @required this.village,
+    // @required this.district,
+    // @required this.city,
+    // @required this.province,
+    // @required this.facility,
+    // @required this.environmentAccess,
+    // @required this.parkingFacility,
+    // @required this.category,
+    // @required this.description,
+    // @required this.lat,
+    // @required this.lng,
+    // @required this.rules,
+    // @required this.roomType,
   });
 
   @override
@@ -66,7 +68,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
     await http.post('https://hafiyyanabdulaziz.pythonanywhere.com/post/',
         body:
-            '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 1}');
+            '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 1}');
 
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -74,7 +76,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
         .collection('users')
         .doc(userID)
         .collection('likes')
-        .doc(widget.id)
+        .doc(widget.koseekerModelSingle.data.id)
         .get();
 
     if (snapshot.exists) {
@@ -96,7 +98,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
     //     setState(() {});
     //   });
     // });
-    checkLikes(widget.id).then((value) {
+    checkLikes(widget.koseekerModelSingle.data.id).then((value) {
       setState(() {
         checkIcon = value;
       });
@@ -134,13 +136,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                     await http.post(
                         'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
                         body:
-                            '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 2}');
+                            '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 2}');
                     print('halo' + userID);
                     DatabaseFirestore.createOrUpdateLikes(
                         userID: userID,
-                        propertyID: widget.id,
-                        propertyName: widget.nama,
-                        propertyPhotoURL: widget.photo);
+                        propertyID: widget.koseekerModelSingle.data.id,
+                        propertyName: widget.koseekerModelSingle.data.name,
+                        propertyPhotoURL:
+                            widget.koseekerModelSingle.data.mainImage);
                     print('halo' + userID);
                   });
                 }
@@ -154,13 +157,14 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                 getUserID().then((userID) {
                   print('halo' + userID);
                   DatabaseFirestore.deleteLikes(
-                      userID: userID, propertyID: widget.id);
+                      userID: userID,
+                      propertyID: widget.koseekerModelSingle.data.id);
                   print('halo' + userID);
                 });
               }
               checkIcon = !checkIcon;
               setState(() {});
-              checkLikes(widget.id).then((value) {
+              checkLikes(widget.koseekerModelSingle.data.id).then((value) {
                 print(value);
               });
             },
@@ -171,7 +175,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
         children: [
           //FOTO
           DetailPageSlider(
-            dataPhotos: widget.gallery,
+            dataPhotos: widget.koseekerModelSingle.data.gallery,
           ),
           //HEADER
           Container(
@@ -182,7 +186,9 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
               children: [
                 //TIPE
                 Text(
-                  (widget.tipe + ' - ' + widget.penghuni),
+                  (widget.koseekerModelSingle.data.type[0] +
+                      ' - ' +
+                      widget.koseekerModelSingle.data.category[0]),
                   style: TextStyle(
                     fontFamily: 'Rubik',
                     fontSize: 15,
@@ -195,7 +201,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                 ),
                 //NAME
                 Text(
-                  widget.nama,
+                  widget.koseekerModelSingle.data.name,
                   style: TextStyle(
                     fontFamily: 'Rubik',
                     fontSize: 30,
@@ -216,8 +222,11 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                 ),
                 //DAERAH
                 Text(
-                  (widget.village != '' && widget.city != '')
-                      ? widget.village + ' - ' + widget.city
+                  (widget.koseekerModelSingle.data.address.village != '' &&
+                          widget.koseekerModelSingle.data.address.city != '')
+                      ? widget.koseekerModelSingle.data.address.village +
+                          ' - ' +
+                          widget.koseekerModelSingle.data.address.city
                       : 'Indonesia',
                   style: TextStyle(
                     fontFamily: 'Rubik',
@@ -505,8 +514,10 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                         MaterialPageRoute(
                           builder: (context) {
                             return Lokasi(
-                              lat: widget.lat,
-                              lng: widget.lng,
+                              lat: widget.koseekerModelSingle.data.address
+                                  .location.coordinates[1],
+                              lng: widget.koseekerModelSingle.data.address
+                                  .location.coordinates[0],
                             );
                           },
                         ),
@@ -572,7 +583,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   height: 10,
                 ),
                 ListBody(
-                    children: widget.roomType
+                    children: widget.koseekerModelSingle.data.roomType
                         .map((e) => Container(
                               padding: EdgeInsets.all(10),
                               margin: EdgeInsets.only(
@@ -753,15 +764,15 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                     await http.post(
                         'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
                         body:
-                            '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 3}');
+                            '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 3}');
 
                     showBarModalBottomSheet(
                       context: context,
                       expand: true,
                       builder: (context) => Survey(
-                        idProperty: widget.id,
-                        namaProperty: widget.nama,
-                        photoPropety: widget.photo,
+                        idProperty: widget.koseekerModelSingle.data.id,
+                        namaProperty: widget.koseekerModelSingle.data.name,
+                        photoPropety: widget.koseekerModelSingle.data.mainImage,
                       ),
                     );
                   },
@@ -790,16 +801,16 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   await http.post(
                       'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
                       body:
-                          '{"user_id": "$userID", "property_id": "${widget.id}", "ratings": 4}');
+                          '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 4}');
 
                   showBarModalBottomSheet(
                     context: context,
                     expand: true,
                     builder: (context) => Booking(
-                      data: widget.roomType,
-                      propertyName: widget.nama,
-                      propertyID: widget.id,
-                      propertyPhoto: widget.photo,
+                      data: widget.koseekerModelSingle.data.roomType,
+                      propertyName: widget.koseekerModelSingle.data.name,
+                      propertyID: widget.koseekerModelSingle.data.id,
+                      propertyPhoto: widget.koseekerModelSingle.data.mainImage,
                     ),
                   );
                 },
@@ -819,7 +830,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   List<String> facilityConvert() {
     List<String> facility = [];
-    for (var item in widget.facility) {
+    for (var item in widget.koseekerModelSingle.data.facility) {
       switch (item) {
         case 'ruang_santai':
           facility.add('Ruang Santai');
@@ -842,7 +853,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   List<String> parkingFacilityConvert() {
     List<String> facility = [];
-    for (var item in widget.parkingFacility) {
+    for (var item in widget.koseekerModelSingle.data.parkingFacility) {
       switch (item) {
         case 'sepeda':
           facility.add('Sepeda');
@@ -862,7 +873,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   List<String> rulesConvert() {
     List<String> facility = [];
-    for (var item in widget.rules) {
+    for (var item in widget.koseekerModelSingle.data.rules) {
       switch (item) {
         case 'free':
           facility.add('Bebas');
@@ -879,7 +890,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   List<String> categoryConvert() {
     List<String> facility = [];
-    for (var item in widget.category) {
+    for (var item in widget.koseekerModelSingle.data.category) {
       switch (item) {
         case 'male':
           facility.add('Laki-Laki');
@@ -899,7 +910,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
 
   List<String> environmentAccessConvert() {
     List<String> facility = [];
-    for (var item in widget.environmentAccess) {
+    for (var item in widget.koseekerModelSingle.data.environmentAccess) {
       switch (item) {
         case 'warung_makan':
           facility.add('Warung Makan');
@@ -924,17 +935,17 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
   }
 
   String deskripsi() {
-    return widget.nama +
+    return widget.koseekerModelSingle.data.name +
         'yang terletak di ' +
-        widget.village +
+        widget.koseekerModelSingle.data.address.village +
         ', ' +
-        widget.district +
+        widget.koseekerModelSingle.data.address.district +
         ', ' +
-        widget.city +
+        widget.koseekerModelSingle.data.address.city +
         ', ' +
-        widget.province +
+        widget.koseekerModelSingle.data.address.province +
         ' merupakan hunian yang nyaman untuk ditempati. ' +
         'Lokasinya pun strategis  dan memiliki banyak fasilitas. Harganya pun terjangkau. ' +
-        widget.description;
+        widget.koseekerModelSingle.data.description;
   }
 }

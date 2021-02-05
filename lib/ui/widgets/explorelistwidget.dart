@@ -119,38 +119,41 @@ class _ExploreListWidgetState extends State<ExploreListWidget> {
                         return TouchableOpacity(
                           child: GestureDetector(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) {
-                              //       return PropertiDetailPage(
-                              //         photo: dataProperti[i].photo,
-                              //         tipe: dataProperti[i].tipe,
-                              //         penghuni: dataProperti[i].penghuni,
-                              //         harga: dataProperti[i].harga,
-                              //         nama: dataProperti[i].nama,
-                              //         id: dataProperti[i].id,
-                              //         daerah: dataProperti[i].daerah,
-                              //         gallery: dataProperti[i].gallery,
-                              //         village: dataProperti[i].village,
-                              //         district: dataProperti[i].district,
-                              //         city: dataProperti[i].city,
-                              //         province: dataProperti[i].province,
-                              //         facility: dataProperti[i].facility,
-                              //         environmentAccess:
-                              //             dataProperti[i].environmentAccess,
-                              //         parkingFacility:
-                              //             dataProperti[i].parkingFacility,
-                              //         category: dataProperti[i].category,
-                              //         description: dataProperti[i].description,
-                              //         lat: dataProperti[i].lat,
-                              //         lng: dataProperti[i].lng,
-                              //         rules: dataProperti[i].rules,
-                              //         roomType: dataProperti[i].roomType,
-                              //       );
-                              //     },
-                              //   ),
-                              // );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return PropertiDetailPage(
+                                      koseekerModelSingle: koseekerModelMultiple
+                                          .convertToKoseekerModelSingle(
+                                              index: i),
+                                      // photo: dataProperti[i].photo,
+                                      // tipe: dataProperti[i].tipe,
+                                      // penghuni: dataProperti[i].penghuni,
+                                      // harga: dataProperti[i].harga,
+                                      // nama: dataProperti[i].nama,
+                                      // id: dataProperti[i].id,
+                                      // daerah: dataProperti[i].daerah,
+                                      // gallery: dataProperti[i].gallery,
+                                      // village: dataProperti[i].village,
+                                      // district: dataProperti[i].district,
+                                      // city: dataProperti[i].city,
+                                      // province: dataProperti[i].province,
+                                      // facility: dataProperti[i].facility,
+                                      // environmentAccess:
+                                      //     dataProperti[i].environmentAccess,
+                                      // parkingFacility:
+                                      //     dataProperti[i].parkingFacility,
+                                      // category: dataProperti[i].category,
+                                      // description: dataProperti[i].description,
+                                      // lat: dataProperti[i].lat,
+                                      // lng: dataProperti[i].lng,
+                                      // rules: dataProperti[i].rules,
+                                      // roomType: dataProperti[i].roomType,
+                                    );
+                                  },
+                                ),
+                              );
                             },
                             child: Card(
                               harga: koseekerModelMultiple

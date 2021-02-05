@@ -96,57 +96,58 @@ class _RekomendasiListState extends State<RekomendasiList> {
                         MaterialPageRoute(
                           builder: (context) {
                             return PropertiDetailPage(
-                              photo: listKoseekerModelSingle[i].data.mainImage,
-                              tipe: listKoseekerModelSingle[i].data.type[0],
-                              penghuni:
-                                  listKoseekerModelSingle[i].data.category[0],
-                              harga: listKoseekerModelSingle[i]
-                                  .data
-                                  .roomType[0]
-                                  .price
-                                  .yearly,
-                              nama: listKoseekerModelSingle[i].data.name,
-                              id: listKoseekerModelSingle[i].data.id,
-                              gallery: listKoseekerModelSingle[i].data.gallery,
-                              village: listKoseekerModelSingle[i]
-                                  .data
-                                  .address
-                                  .village,
-                              district: listKoseekerModelSingle[i]
-                                  .data
-                                  .address
-                                  .district,
-                              city:
-                                  listKoseekerModelSingle[i].data.address.city,
-                              province: listKoseekerModelSingle[i]
-                                  .data
-                                  .address
-                                  .province,
-                              facility:
-                                  listKoseekerModelSingle[i].data.facility,
-                              environmentAccess: listKoseekerModelSingle[i]
-                                  .data
-                                  .environmentAccess,
-                              parkingFacility: listKoseekerModelSingle[i]
-                                  .data
-                                  .parkingFacility,
-                              category:
-                                  listKoseekerModelSingle[i].data.category,
-                              description:
-                                  listKoseekerModelSingle[i].data.description,
-                              lat: listKoseekerModelSingle[i]
-                                  .data
-                                  .address
-                                  .location
-                                  .coordinates[1],
-                              lng: listKoseekerModelSingle[i]
-                                  .data
-                                  .address
-                                  .location
-                                  .coordinates[0],
-                              rules: listKoseekerModelSingle[i].data.rules,
-                              roomType:
-                                  listKoseekerModelSingle[i].data.roomType,
+                              koseekerModelSingle: listKoseekerModelSingle[i],
+                              // photo: listKoseekerModelSingle[i].data.mainImage,
+                              // tipe: listKoseekerModelSingle[i].data.type[0],
+                              // penghuni:
+                              //     listKoseekerModelSingle[i].data.category[0],
+                              // harga: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .roomType[0]
+                              //     .price
+                              //     .yearly,
+                              // nama: listKoseekerModelSingle[i].data.name,
+                              // id: listKoseekerModelSingle[i].data.id,
+                              // gallery: listKoseekerModelSingle[i].data.gallery,
+                              // village: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .address
+                              //     .village,
+                              // district: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .address
+                              //     .district,
+                              // city:
+                              //     listKoseekerModelSingle[i].data.address.city,
+                              // province: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .address
+                              //     .province,
+                              // facility:
+                              //     listKoseekerModelSingle[i].data.facility,
+                              // environmentAccess: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .environmentAccess,
+                              // parkingFacility: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .parkingFacility,
+                              // category:
+                              //     listKoseekerModelSingle[i].data.category,
+                              // description:
+                              //     listKoseekerModelSingle[i].data.description,
+                              // lat: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .address
+                              //     .location
+                              //     .coordinates[1],
+                              // lng: listKoseekerModelSingle[i]
+                              //     .data
+                              //     .address
+                              //     .location
+                              //     .coordinates[0],
+                              // rules: listKoseekerModelSingle[i].data.rules,
+                              // roomType:
+                              //     listKoseekerModelSingle[i].data.roomType,
                             );
                           },
                         ),

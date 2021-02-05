@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:touchable_opacity/touchable_opacity.dart';
+import 'package:Cekos/extensions/koseekerModelMultipleExtensions.dart';
 
 part 'detailpage_slider.dart';
 part 'explorelistwidget.dart';

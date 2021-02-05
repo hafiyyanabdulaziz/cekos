@@ -59,41 +59,45 @@ class _MainPageRekomendasiState extends State<MainPageRekomendasi> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
+                              // return Testing(koseekerModelMultiple
+                              //     .convertToKoseekerModelSingle(index: 1));
                               return PropertiDetailPage(
-                                photo: koseekerModelMultiple.data[i].mainImage,
-                                tipe: koseekerModelMultiple.data[i].type[0],
-                                penghuni:
-                                    koseekerModelMultiple.data[i].category[0],
-                                harga: koseekerModelMultiple
-                                    .data[i].roomType[0].price.yearly,
-                                nama: koseekerModelMultiple.data[i].name,
-                                id: koseekerModelMultiple.data[i].id,
-                                gallery: koseekerModelMultiple.data[i].gallery,
-                                village: koseekerModelMultiple
-                                    .data[i].address.village,
-                                district: koseekerModelMultiple
-                                    .data[i].address.district,
-                                city:
-                                    koseekerModelMultiple.data[i].address.city,
-                                province: koseekerModelMultiple
-                                    .data[i].address.province,
-                                facility:
-                                    koseekerModelMultiple.data[i].facility,
-                                environmentAccess: koseekerModelMultiple
-                                    .data[i].environmentAccess,
-                                parkingFacility: koseekerModelMultiple
-                                    .data[i].parkingFacility,
-                                category:
-                                    koseekerModelMultiple.data[i].category,
-                                description:
-                                    koseekerModelMultiple.data[i].description,
-                                lat: koseekerModelMultiple
-                                    .data[i].address.location.coordinates[1],
-                                lng: koseekerModelMultiple
-                                    .data[i].address.location.coordinates[0],
-                                rules: koseekerModelMultiple.data[i].rules,
-                                roomType:
-                                    koseekerModelMultiple.data[i].roomType,
+                                koseekerModelSingle: koseekerModelMultiple
+                                    .convertToKoseekerModelSingle(index: i),
+                                // photo: koseekerModelMultiple.data[i].mainImage,
+                                // tipe: koseekerModelMultiple.data[i].type[0],
+                                // penghuni:
+                                //     koseekerModelMultiple.data[i].category[0],
+                                // harga: koseekerModelMultiple
+                                //     .data[i].roomType[0].price.yearly,
+                                // nama: koseekerModelMultiple.data[i].name,
+                                // id: koseekerModelMultiple.data[i].id,
+                                // gallery: koseekerModelMultiple.data[i].gallery,
+                                // village: koseekerModelMultiple
+                                //     .data[i].address.village,
+                                // district: koseekerModelMultiple
+                                //     .data[i].address.district,
+                                // city:
+                                //     koseekerModelMultiple.data[i].address.city,
+                                // province: koseekerModelMultiple
+                                //     .data[i].address.province,
+                                // facility:
+                                //     koseekerModelMultiple.data[i].facility,
+                                // environmentAccess: koseekerModelMultiple
+                                //     .data[i].environmentAccess,
+                                // parkingFacility: koseekerModelMultiple
+                                //     .data[i].parkingFacility,
+                                // category:
+                                //     koseekerModelMultiple.data[i].category,
+                                // description:
+                                //     koseekerModelMultiple.data[i].description,
+                                // lat: koseekerModelMultiple
+                                //     .data[i].address.location.coordinates[1],
+                                // lng: koseekerModelMultiple
+                                //     .data[i].address.location.coordinates[0],
+                                // rules: koseekerModelMultiple.data[i].rules,
+                                // roomType:
+                                //     koseekerModelMultiple.data[i].roomType,
                               );
                             },
                           ),
