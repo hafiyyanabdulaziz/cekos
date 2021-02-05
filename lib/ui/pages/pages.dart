@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:Cekos/models/koseekerModelSingle.dart';
+import 'package:Cekos/services/koseekerViewModel.dart';
 import 'package:Cekos/services/services.dart';
 import 'package:Cekos/ui/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

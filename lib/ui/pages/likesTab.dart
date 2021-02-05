@@ -49,7 +49,45 @@ class _LikesTabState extends State<LikesTab> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (_, index) {
                   return TouchableOpacity(
-                    onTap: () {},
+                    onTap: () {
+                      print('Loading jalan gak');
+                      KoseekerViewModel()
+                          .getDataKoseekerSingle(
+                              propertyID:
+                                  snapshot.data[index].data()['propertyID'])
+                          .then(
+                            (value) => {
+                              print('Ini Hasil value: ' + value.toString()),
+                              if (value != null)
+                                {
+                                  setState(() {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return PropertiDetailPage(
+                                            koseekerModelSingle: value,
+                                          );
+                                        },
+                                      ),
+                                    );
+                                    print('ada delay gak');
+                                  }),
+                                }
+                              else
+                                {
+                                  print('Tidak ada hasil'),
+                                  Flushbar(
+                                    duration: Duration(milliseconds: 2500),
+                                    flushbarPosition: FlushbarPosition.TOP,
+                                    backgroundColor: Color(0xffaf8d19),
+                                    message:
+                                        'Maaf, hunian sudah tidak tersedia',
+                                  )..show(context),
+                                },
+                            },
+                          );
+                    },
                     child: Container(
                       //height: 30,
                       margin: EdgeInsets.only(
