@@ -1,4 +1,5 @@
 import 'package:Cekos/models/koseekerModelSingle.dart';
+import 'package:Cekos/extensions/stringExtension.dart';
 
 class ConvertText {
   static String convertToPenghuni(KoseekerModelSingle text) {
@@ -11,5 +12,117 @@ class ConvertText {
     } else {
       return 'Perempuan';
     }
+  }
+
+  static List<String> facilityConvert(KoseekerModelSingle list) {
+    List<String> facility = [];
+    for (var item in list.data.facility) {
+      switch (item) {
+        case 'ruang_santai':
+          facility.add('Ruang Santai');
+          break;
+        case 'garasi':
+          facility.add('Garasi');
+          break;
+        case 'tempat_jemuran':
+          facility.add('Tempat Jemuran');
+          break;
+        case 'dapur':
+          facility.add('Dapur');
+          break;
+        case 'ruang_tamu':
+          facility.add('Ruang Tamu');
+          break;
+        default:
+          facility.add(item.replaceAll('_', ' ').capitalize());
+      }
+    }
+    return facility;
+  }
+
+  static List<String> parkingFacilityConvert(KoseekerModelSingle list) {
+    List<String> facility = [];
+    for (var item in list.data.parkingFacility) {
+      switch (item) {
+        case 'sepeda':
+          facility.add('Sepeda');
+          break;
+        case 'motor':
+          facility.add('Motor');
+          break;
+        case 'mobil':
+          facility.add('Mobil');
+          break;
+        default:
+          facility.add(item.replaceAll('_', ' ').capitalize());
+      }
+    }
+    return facility;
+  }
+
+  static List<String> rulesConvert(KoseekerModelSingle list) {
+    List<String> facility = [];
+    for (var item in list.data.rules) {
+      switch (item) {
+        case 'free':
+          facility.add('Bebas');
+          break;
+        case 'pets_banned':
+          facility.add('Tidak boleh membawa hewan peliharaan');
+          break;
+        case 'allow_pets':
+          facility.add('Boleh membawa hewan peliharaan');
+          break;
+        default:
+          facility.add(item.replaceAll('_', ' ').capitalize());
+      }
+    }
+    return facility;
+  }
+
+  static List<String> categoryConvert(KoseekerModelSingle list) {
+    List<String> facility = [];
+    for (var item in list.data.category) {
+      switch (item) {
+        case 'male':
+          facility.add('Laki-Laki');
+          break;
+        case 'female':
+          facility.add('Perempuan');
+          break;
+        case 'mix':
+          facility.add('Campur');
+          break;
+        default:
+          facility.add(item.replaceAll('_', ' ').capitalize());
+      }
+    }
+    return facility;
+  }
+
+  static List<String> environmentAccessConvert(KoseekerModelSingle list) {
+    List<String> facility = [];
+    for (var item in list.data.environmentAccess) {
+      switch (item) {
+        case 'warung_makan':
+          facility.add('Warung Makan');
+          break;
+        case 'masjid':
+          facility.add('Masjid');
+          break;
+        case 'minimarket':
+          facility.add('Minimarket');
+          break;
+        case 'bank':
+          facility.add('Bank');
+          break;
+        case 'apotek':
+          facility.add('Apotek');
+          break;
+        default:
+          facility.add(item.replaceAll('_', ' ').capitalize());
+      }
+    }
+    return facility;
   }
 }

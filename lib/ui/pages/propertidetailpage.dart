@@ -186,9 +186,10 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
               children: [
                 //TIPE
                 Text(
-                  (widget.koseekerModelSingle.data.type[0] +
+                  (widget.koseekerModelSingle.data.type[0].capitalize() +
                       ' - ' +
-                      widget.koseekerModelSingle.data.category[0]),
+                      ConvertText.convertToPenghuni(
+                          widget.koseekerModelSingle)),
                   style: TextStyle(
                     fontFamily: 'Rubik',
                     fontSize: 15,
@@ -302,18 +303,23 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   height: 10,
                 ),
                 ListBody(
-                    children: facilityConvert()
-                        .map((e) => Text(
-                              '- ' + e,
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 15,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ))
-                        .toList()),
+                    children:
+                        (ConvertText.facilityConvert(widget.koseekerModelSingle)
+                                .isEmpty)
+                            ? ifEmpty('Maaf, tidak dapat menampilkan fasilitas')
+                            : ConvertText.facilityConvert(
+                                    widget.koseekerModelSingle)
+                                .map((e) => Text(
+                                      '- ' + e,
+                                      style: TextStyle(
+                                        fontFamily: 'Rubik',
+                                        fontSize: 15,
+                                        color: const Color(0xffffffff),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    ))
+                                .toList()),
               ],
             ),
           ),
@@ -343,18 +349,23 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   height: 10,
                 ),
                 ListBody(
-                    children: parkingFacilityConvert()
-                        .map((e) => Text(
-                              '- ' + e,
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 15,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ))
-                        .toList()),
+                    children: (ConvertText.parkingFacilityConvert(
+                                widget.koseekerModelSingle)
+                            .isEmpty)
+                        ? ifEmpty('Maaf, tidak dapat menampilkan parkir')
+                        : ConvertText.parkingFacilityConvert(
+                                widget.koseekerModelSingle)
+                            .map((e) => Text(
+                                  '- ' + e,
+                                  style: TextStyle(
+                                    fontFamily: 'Rubik',
+                                    fontSize: 15,
+                                    color: const Color(0xffffffff),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ))
+                            .toList()),
               ],
             ),
           ),
@@ -384,18 +395,24 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   height: 10,
                 ),
                 ListBody(
-                    children: environmentAccessConvert()
-                        .map((e) => Text(
-                              '- ' + e,
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 15,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ))
-                        .toList()),
+                    children: (ConvertText.environmentAccessConvert(
+                                widget.koseekerModelSingle)
+                            .isEmpty)
+                        ? ifEmpty(
+                            'Maaf, tidak dapat menampilkan akses lingkungan')
+                        : ConvertText.environmentAccessConvert(
+                                widget.koseekerModelSingle)
+                            .map((e) => Text(
+                                  '- ' + e,
+                                  style: TextStyle(
+                                    fontFamily: 'Rubik',
+                                    fontSize: 15,
+                                    color: const Color(0xffffffff),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ))
+                            .toList()),
               ],
             ),
           ),
@@ -425,18 +442,23 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   height: 10,
                 ),
                 ListBody(
-                    children: categoryConvert()
-                        .map((e) => Text(
-                              '- ' + e,
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 15,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ))
-                        .toList()),
+                    children:
+                        (ConvertText.categoryConvert(widget.koseekerModelSingle)
+                                .isEmpty)
+                            ? ifEmpty('Maaf, tidak dapat menampilkan penghuni')
+                            : ConvertText.categoryConvert(
+                                    widget.koseekerModelSingle)
+                                .map((e) => Text(
+                                      '- ' + e,
+                                      style: TextStyle(
+                                        fontFamily: 'Rubik',
+                                        fontSize: 15,
+                                        color: const Color(0xffffffff),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    ))
+                                .toList()),
               ],
             ),
           ),
@@ -466,18 +488,22 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                   height: 10,
                 ),
                 ListBody(
-                    children: rulesConvert()
-                        .map((e) => Text(
-                              '- ' + e,
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 15,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ))
-                        .toList()),
+                    children: (ConvertText.rulesConvert(
+                                widget.koseekerModelSingle)
+                            .isEmpty)
+                        ? ifEmpty('Maaf, tidak dapat menampilkan peraturan')
+                        : ConvertText.rulesConvert(widget.koseekerModelSingle)
+                            .map((e) => Text(
+                                  '- ' + e,
+                                  style: TextStyle(
+                                    fontFamily: 'Rubik',
+                                    fontSize: 15,
+                                    color: const Color(0xffffffff),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ))
+                            .toList()),
               ],
             ),
           ),
@@ -601,7 +627,7 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    (e.name == '') ? 'Tanpa Nama' : e.name,
+                                    (e.name == '') ? 'Tipe Idaman' : e.name,
                                     style: TextStyle(
                                       fontFamily: 'Rubik',
                                       fontSize: 20,
@@ -623,19 +649,23 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                     ),
                                     textAlign: TextAlign.left,
                                   ),
-                                  Divider(
-                                    color: Color(0xFF50E3C2),
-                                  ),
-                                  Text(
-                                    'Fasilitas Kamar',
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontSize: 17,
-                                      color: const Color(0xffffffff),
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
+                                  (e.facility.isEmpty)
+                                      ? Container()
+                                      : Divider(
+                                          color: Color(0xFF50E3C2),
+                                        ),
+                                  (e.facility.isEmpty)
+                                      ? Container()
+                                      : Text(
+                                          'Fasilitas Kamar',
+                                          style: TextStyle(
+                                            fontFamily: 'Rubik',
+                                            fontSize: 17,
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
                                   ListBody(
                                       children: e.facility
                                           .map<Widget>((e) => Container(
@@ -657,16 +687,18 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                   Divider(
                                     color: Color(0xFF50E3C2),
                                   ),
-                                  Text(
-                                    'Harga',
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontSize: 17,
-                                      color: const Color(0xffffffff),
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
+                                  (e.price.yearly == 0)
+                                      ? Container()
+                                      : Text(
+                                          'Harga',
+                                          style: TextStyle(
+                                            fontFamily: 'Rubik',
+                                            fontSize: 17,
+                                            color: const Color(0xffffffff),
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
                                   (e.price.yearly == 0)
                                       ? Container()
                                       : Text(
@@ -740,200 +772,103 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        //height: 0,
-        decoration: BoxDecoration(
-          color: Color(0xFF23243B),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(0.0, 1.5), //(x,y)
-              blurRadius: 4.0,
-            ),
-          ],
-        ),
-        padding: EdgeInsets.all(10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              child: TouchableOpacity(
-                child: GestureDetector(
-                  onTap: () async {
-                    String userID = await getUserID();
+      bottomNavigationBar: (widget
+                  .koseekerModelSingle.data.roomType[0].price.yearly ==
+              0)
+          ? Container(
+              height: 0,
+            )
+          : Container(
+              //height: 0,
+              decoration: BoxDecoration(
+                color: Color(0xFF23243B),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(0.0, 1.5), //(x,y)
+                    blurRadius: 4.0,
+                  ),
+                ],
+              ),
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: TouchableOpacity(
+                      child: GestureDetector(
+                        onTap: () async {
+                          String userID = await getUserID();
 
-                    await http.post(
-                        'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
-                        body:
-                            '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 3}');
+                          await http.post(
+                              'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
+                              body:
+                                  '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 3}');
 
-                    showBarModalBottomSheet(
-                      context: context,
-                      expand: true,
-                      builder: (context) => Survey(
-                        idProperty: widget.koseekerModelSingle.data.id,
-                        namaProperty: widget.koseekerModelSingle.data.name,
-                        photoPropety: widget.koseekerModelSingle.data.mainImage,
+                          showBarModalBottomSheet(
+                            context: context,
+                            expand: true,
+                            builder: (context) => Survey(
+                              idProperty: widget.koseekerModelSingle.data.id,
+                              namaProperty:
+                                  widget.koseekerModelSingle.data.name,
+                              photoPropety:
+                                  widget.koseekerModelSingle.data.mainImage,
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Survey dulu',
+                          style: TextStyle(
+                            fontFamily: 'Rubik',
+                            fontSize: 17,
+                            color: const Color(0xffffffff),
+                            fontWeight: FontWeight.w500,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Survey dulu',
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 17,
-                      color: const Color(0xffffffff),
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.6,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5)),
-                color: Color(0xffaf8d19),
-                onPressed: () async {
-                  String userID = await getUserID();
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      color: Color(0xffaf8d19),
+                      onPressed: () async {
+                        String userID = await getUserID();
 
-                  await http.post(
-                      'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
-                      body:
-                          '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 4}');
+                        await http.post(
+                            'https://hafiyyanabdulaziz.pythonanywhere.com/post/',
+                            body:
+                                '{"user_id": "$userID", "property_id": "${widget.koseekerModelSingle.data.id}", "ratings": 4}');
 
-                  showBarModalBottomSheet(
-                    context: context,
-                    expand: true,
-                    builder: (context) => Booking(
-                      data: widget.koseekerModelSingle.data.roomType,
-                      propertyName: widget.koseekerModelSingle.data.name,
-                      propertyID: widget.koseekerModelSingle.data.id,
-                      propertyPhoto: widget.koseekerModelSingle.data.mainImage,
+                        showBarModalBottomSheet(
+                          context: context,
+                          expand: true,
+                          builder: (context) => Booking(
+                            data: widget.koseekerModelSingle.data.roomType,
+                            propertyName: widget.koseekerModelSingle.data.name,
+                            propertyID: widget.koseekerModelSingle.data.id,
+                            propertyPhoto:
+                                widget.koseekerModelSingle.data.mainImage,
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Booking',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  );
-                },
-                child: Text(
-                  'Booking',
-                  style: TextStyle(
-                    color: Colors.white,
                   ),
-                ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
-  }
-
-  List<String> facilityConvert() {
-    List<String> facility = [];
-    for (var item in widget.koseekerModelSingle.data.facility) {
-      switch (item) {
-        case 'ruang_santai':
-          facility.add('Ruang Santai');
-          break;
-        case 'garasi':
-          facility.add('Garasi');
-          break;
-        case 'tempat_jemuran':
-          facility.add('Tempat Jemuran');
-          break;
-        case 'dapur':
-          facility.add('Dapur');
-          break;
-        default:
-          facility.add(item);
-      }
-    }
-    return facility;
-  }
-
-  List<String> parkingFacilityConvert() {
-    List<String> facility = [];
-    for (var item in widget.koseekerModelSingle.data.parkingFacility) {
-      switch (item) {
-        case 'sepeda':
-          facility.add('Sepeda');
-          break;
-        case 'motor':
-          facility.add('Motor');
-          break;
-        case 'mobil':
-          facility.add('Mobil');
-          break;
-        default:
-          facility.add(item);
-      }
-    }
-    return facility;
-  }
-
-  List<String> rulesConvert() {
-    List<String> facility = [];
-    for (var item in widget.koseekerModelSingle.data.rules) {
-      switch (item) {
-        case 'free':
-          facility.add('Bebas');
-          break;
-        case 'pets_banned':
-          facility.add('Tidak boleh membawa hewan peliharaan');
-          break;
-        default:
-          facility.add(item);
-      }
-    }
-    return facility;
-  }
-
-  List<String> categoryConvert() {
-    List<String> facility = [];
-    for (var item in widget.koseekerModelSingle.data.category) {
-      switch (item) {
-        case 'male':
-          facility.add('Laki-Laki');
-          break;
-        case 'female':
-          facility.add('Perempuan');
-          break;
-        case 'mix':
-          facility.add('Campur');
-          break;
-        default:
-          facility.add(item);
-      }
-    }
-    return facility;
-  }
-
-  List<String> environmentAccessConvert() {
-    List<String> facility = [];
-    for (var item in widget.koseekerModelSingle.data.environmentAccess) {
-      switch (item) {
-        case 'warung_makan':
-          facility.add('Warung Makan');
-          break;
-        case 'masjid':
-          facility.add('Masjid');
-          break;
-        case 'minimarket':
-          facility.add('Minimarket');
-          break;
-        case 'bank':
-          facility.add('Bank');
-          break;
-        case 'apotek':
-          facility.add('Apotek');
-          break;
-        default:
-          facility.add(item);
-      }
-    }
-    return facility;
   }
 
   String deskripsi() {
@@ -949,5 +884,18 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
         ' merupakan hunian yang nyaman untuk ditempati. ' +
         'Lokasinya pun strategis  dan memiliki banyak fasilitas. Harganya pun terjangkau. ' +
         widget.koseekerModelSingle.data.description;
+  }
+
+  Widget ifEmpty(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: 'Rubik',
+        fontSize: 15,
+        color: const Color(0xffffffff),
+        fontWeight: FontWeight.w500,
+      ),
+      textAlign: TextAlign.left,
+    );
   }
 }

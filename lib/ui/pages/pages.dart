@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:Cekos/extensions/convertText.dart';
 import 'package:Cekos/models/koseekerModelSingle.dart';
 import 'package:Cekos/services/koseekerViewModel.dart';
 import 'package:Cekos/services/services.dart';
@@ -23,6 +24,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:async';
 import 'package:Cekos/ui/widgets/custom_expantion_tile.dart' as custom;
 import 'package:http/http.dart' as http;
+import 'package:Cekos/extensions/stringExtension.dart';
 
 part 'signin_page.dart';
 part 'main_page.dart';
