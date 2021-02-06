@@ -279,234 +279,224 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
           ),
 
           //FASILITAS
-          Container(
-            color: Color(0xFF23243B),
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title fasilitas
-                Text(
-                  'Fasilitas',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
+          (widget.koseekerModelSingle.data.facility.isEmpty)
+              ? Container()
+              : Container(
+                  color: Color(0xFF23243B),
+                  margin: EdgeInsets.only(
+                    top: 10,
                   ),
-                  textAlign: TextAlign.left,
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //title fasilitas
+                      Text(
+                        'Fasilitas',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ListBody(
+                          children: ConvertText.facilityConvert(
+                                  widget.koseekerModelSingle)
+                              .map((e) => Text(
+                                    '- ' + e,
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ))
+                              .toList()),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ListBody(
-                    children:
-                        (ConvertText.facilityConvert(widget.koseekerModelSingle)
-                                .isEmpty)
-                            ? ifEmpty('Maaf, tidak dapat menampilkan fasilitas')
-                            : ConvertText.facilityConvert(
-                                    widget.koseekerModelSingle)
-                                .map((e) => Text(
-                                      '- ' + e,
-                                      style: TextStyle(
-                                        fontFamily: 'Rubik',
-                                        fontSize: 15,
-                                        color: const Color(0xffffffff),
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                      textAlign: TextAlign.left,
-                                    ))
-                                .toList()),
-              ],
-            ),
-          ),
 
           //HALAMAN PARKIR
-          Container(
-            color: Color(0xFF23243B),
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title fasilitas
-                Text(
-                  'Halaman Parkir',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
+          (widget.koseekerModelSingle.data.parkingFacility.isEmpty)
+              ? Container()
+              : Container(
+                  color: Color(0xFF23243B),
+                  margin: EdgeInsets.only(
+                    top: 10,
                   ),
-                  textAlign: TextAlign.left,
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //title fasilitas
+                      Text(
+                        'Halaman Parkir',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ListBody(
+                          children: ConvertText.parkingFacilityConvert(
+                                  widget.koseekerModelSingle)
+                              .map((e) => Text(
+                                    '- ' + e,
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ))
+                              .toList()),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ListBody(
-                    children: (ConvertText.parkingFacilityConvert(
-                                widget.koseekerModelSingle)
-                            .isEmpty)
-                        ? ifEmpty('Maaf, tidak dapat menampilkan parkir')
-                        : ConvertText.parkingFacilityConvert(
-                                widget.koseekerModelSingle)
-                            .map((e) => Text(
-                                  '- ' + e,
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 15,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ))
-                            .toList()),
-              ],
-            ),
-          ),
 
           //AKSES lINGKUNGAN
-          Container(
-            color: Color(0xFF23243B),
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title fasilitas
-                Text(
-                  'Akses Lingkungan',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
+          (widget.koseekerModelSingle.data.environmentAccess.isEmpty)
+              ? Container()
+              : Container(
+                  color: Color(0xFF23243B),
+                  margin: EdgeInsets.only(
+                    top: 10,
                   ),
-                  textAlign: TextAlign.left,
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //title fasilitas
+                      Text(
+                        'Akses Lingkungan',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ListBody(
+                          children: ConvertText.environmentAccessConvert(
+                                  widget.koseekerModelSingle)
+                              .map((e) => Text(
+                                    '- ' + e,
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ))
+                              .toList()),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ListBody(
-                    children: (ConvertText.environmentAccessConvert(
-                                widget.koseekerModelSingle)
-                            .isEmpty)
-                        ? ifEmpty(
-                            'Maaf, tidak dapat menampilkan akses lingkungan')
-                        : ConvertText.environmentAccessConvert(
-                                widget.koseekerModelSingle)
-                            .map((e) => Text(
-                                  '- ' + e,
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 15,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ))
-                            .toList()),
-              ],
-            ),
-          ),
 
           //PENGHUNI
-          Container(
-            color: Color(0xFF23243B),
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title fasilitas
-                Text(
-                  'Penghuni',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
+          (widget.koseekerModelSingle.data.category.isEmpty)
+              ? Container()
+              : Container(
+                  color: Color(0xFF23243B),
+                  margin: EdgeInsets.only(
+                    top: 10,
                   ),
-                  textAlign: TextAlign.left,
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //title fasilitas
+                      Text(
+                        'Penghuni',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ListBody(
+                          children: ConvertText.categoryConvert(
+                                  widget.koseekerModelSingle)
+                              .map((e) => Text(
+                                    '- ' + e,
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ))
+                              .toList()),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ListBody(
-                    children:
-                        (ConvertText.categoryConvert(widget.koseekerModelSingle)
-                                .isEmpty)
-                            ? ifEmpty('Maaf, tidak dapat menampilkan penghuni')
-                            : ConvertText.categoryConvert(
-                                    widget.koseekerModelSingle)
-                                .map((e) => Text(
-                                      '- ' + e,
-                                      style: TextStyle(
-                                        fontFamily: 'Rubik',
-                                        fontSize: 15,
-                                        color: const Color(0xffffffff),
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                      textAlign: TextAlign.left,
-                                    ))
-                                .toList()),
-              ],
-            ),
-          ),
 
           //PERATURAN
-          Container(
-            color: Color(0xFF23243B),
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //title fasilitas
-                Text(
-                  'Peraturan',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w500,
+          (widget.koseekerModelSingle.data.rules.isEmpty)
+              ? Container()
+              : Container(
+                  color: Color(0xFF23243B),
+                  margin: EdgeInsets.only(
+                    top: 10,
                   ),
-                  textAlign: TextAlign.left,
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //title fasilitas
+                      Text(
+                        'Peraturan',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 20,
+                          color: const Color(0xffffffff),
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ListBody(
+                          children: ConvertText.rulesConvert(
+                                  widget.koseekerModelSingle)
+                              .map((e) => Text(
+                                    '- ' + e,
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 15,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ))
+                              .toList()),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                ListBody(
-                    children: (ConvertText.rulesConvert(
-                                widget.koseekerModelSingle)
-                            .isEmpty)
-                        ? ifEmpty('Maaf, tidak dapat menampilkan peraturan')
-                        : ConvertText.rulesConvert(widget.koseekerModelSingle)
-                            .map((e) => Text(
-                                  '- ' + e,
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 15,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ))
-                            .toList()),
-              ],
-            ),
-          ),
 
           //LOKASI
           Container(
@@ -667,7 +657,8 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                           textAlign: TextAlign.left,
                                         ),
                                   ListBody(
-                                      children: e.facility
+                                      children: ConvertText.roomFacilityConvert(
+                                              e.facility)
                                           .map<Widget>((e) => Container(
                                                 margin: EdgeInsets.only(
                                                     left: 10, right: 10),
@@ -684,9 +675,11 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
                                                 ),
                                               ))
                                           .toList()),
-                                  Divider(
-                                    color: Color(0xFF50E3C2),
-                                  ),
+                                  (e.price.yearly == 0)
+                                      ? Container()
+                                      : Divider(
+                                          color: Color(0xFF50E3C2),
+                                        ),
                                   (e.price.yearly == 0)
                                       ? Container()
                                       : Text(
@@ -886,16 +879,16 @@ class _PropertiDetailPageState extends State<PropertiDetailPage> {
         widget.koseekerModelSingle.data.description;
   }
 
-  Widget ifEmpty(String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontFamily: 'Rubik',
-        fontSize: 15,
-        color: const Color(0xffffffff),
-        fontWeight: FontWeight.w500,
-      ),
-      textAlign: TextAlign.left,
-    );
-  }
+  // Widget ifEmpty(String text) {
+  //   return Text(
+  //     text,
+  //     style: TextStyle(
+  //       fontFamily: 'Rubik',
+  //       fontSize: 15,
+  //       color: const Color(0xffffffff),
+  //       fontWeight: FontWeight.w500,
+  //     ),
+  //     textAlign: TextAlign.left,
+  //   );
+  // }
 }

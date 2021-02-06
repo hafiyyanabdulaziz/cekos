@@ -125,4 +125,30 @@ class ConvertText {
     }
     return facility;
   }
+
+  static List<String> roomFacilityConvert(List<String> list) {
+    List<String> facility = [];
+    for (var item in list) {
+      switch (item) {
+        case 'rak_buku':
+          facility.add('Rak Buku');
+          break;
+        case 'include_listrik':
+          facility.add('Sudah termasuk listrik');
+          break;
+        case 'include_internet':
+          facility.add('Sudah termasuk internet');
+          break;
+        case 'Include loundry':
+          facility.add('Sudah termasuk laundry');
+          break;
+        case 'listrik_token':
+          facility.add('Listrik Token');
+          break;
+        default:
+          facility.add(item.replaceAll('_', ' ').capitalize());
+      }
+    }
+    return facility;
+  }
 }
