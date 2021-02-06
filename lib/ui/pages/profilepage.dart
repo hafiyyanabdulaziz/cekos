@@ -242,20 +242,50 @@ class _ProfilePageState extends State<ProfilePage> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5)),
               color: Colors.red,
-              onPressed: () async {
-                CekosGoogleSignIn.signOutGoogle();
-                SharedPreferences sharedPreferences =
-                    await SharedPreferences.getInstance();
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Ingin Logout?",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Color(0xff23243b),
+                        actions: [
+                          FlatButton(
+                            child: Text(
+                              "Yes",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            onPressed: () async {
+                              CekosGoogleSignIn.signOutGoogle();
+                              SharedPreferences sharedPreferences =
+                                  await SharedPreferences.getInstance();
 
-                sharedPreferences.clear();
+                              sharedPreferences.clear();
 
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignInPage();
-                    },
-                  ),
-                );
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return SignInPage();
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                          FlatButton(
+                            child: Text(
+                              "No",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ],
+                      );
+                    });
               },
               child: Text(
                 'Logout',
