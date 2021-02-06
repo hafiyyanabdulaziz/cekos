@@ -186,7 +186,7 @@ class _SearchControlPageState extends State<SearchControlPage> {
 
   Widget filter() {
     return Container(
-      padding: EdgeInsets.all(10),
+      //padding: EdgeInsets.all(10),
       child: ListView(
         children: [
           //type property
