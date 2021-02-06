@@ -2,7 +2,7 @@ part of 'data.dart';
 
 var dataMainPageSlider = [
   ModelMainPageSlider(
-      'Cekos 1.0 release',
+      'Cekos 1.1 release',
       'Cekos menghadirkan kemudahan dalam mencari kost, kontrakan, dan apartement. Dilengkapi dengan kecerdasan buatan untuk memberikan rekomendasi yang sesuai dengan keinginan pengguna.',
       'https://1.bp.blogspot.com/-8tAg2oJ_w7c/X9ag04geE_I/AAAAAAAAAT4/121h9jRt1vQ6DO3kqcoB1p11SIaHNmDEACLcBGAsYHQ/s16000/1.jpg'),
   ModelMainPageSlider(
