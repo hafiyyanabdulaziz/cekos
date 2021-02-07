@@ -264,7 +264,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   await SharedPreferences.getInstance();
 
                               sharedPreferences.clear();
-
+								Navigator.of(context).pop();
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                   builder: (context) {
