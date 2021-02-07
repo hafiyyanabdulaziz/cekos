@@ -132,7 +132,7 @@ class _BookingState extends State<Booking> {
                               children: [
                                 Text(
                                   (widget.data[index].name == '')
-                                      ? 'Tanpa Nama'
+                                      ? 'Tipe Idaman'
                                       : widget.data[index].name,
                                   style: TextStyle(
                                     fontFamily: 'Rubik',
@@ -155,21 +155,26 @@ class _BookingState extends State<Booking> {
                                   ),
                                   textAlign: TextAlign.left,
                                 ),
-                                Divider(
-                                  color: Color(0xFF50E3C2),
-                                ),
-                                Text(
-                                  'Fasilitas Kamar',
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 17,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ),
+                                (widget.data[index].facility.isEmpty)
+                                    ? Container()
+                                    : Divider(
+                                        color: Color(0xFF50E3C2),
+                                      ),
+                                (widget.data[index].facility.isEmpty)
+                                    ? Container()
+                                    : Text(
+                                        'Fasilitas Kamar',
+                                        style: TextStyle(
+                                          fontFamily: 'Rubik',
+                                          fontSize: 17,
+                                          color: const Color(0xffffffff),
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
                                 ListBody(
-                                    children: widget.data[index].facility
+                                    children: ConvertText.roomFacilityConvert(
+                                            widget.data[index].facility)
                                         .map<Widget>((e) => Container(
                                               margin: EdgeInsets.only(
                                                   left: 10, right: 10),

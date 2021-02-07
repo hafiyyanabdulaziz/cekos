@@ -149,9 +149,13 @@ class _MainPageRekomendasiState extends State<MainPageRekomendasi> {
                                 top: 10,
                               ),
                               child: Text(
-                                (koseekerModelMultiple.data[i].type[0] +
+                                (koseekerModelMultiple.data[i].type[0]
+                                        .capitalize() +
                                     ' - ' +
-                                    koseekerModelMultiple.data[i].category[0]),
+                                    ConvertText.convertToPenghuni(
+                                        koseekerModelMultiple
+                                            .convertToKoseekerModelSingle(
+                                                index: i))),
                                 style: TextStyle(
                                   fontFamily: 'Rubik',
                                   fontSize: 12,
