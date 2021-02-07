@@ -50,113 +50,130 @@ class _SurveyTabState extends State<SurveyTab> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             } else {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (_, index) {
-                  return TouchableOpacity(
-                    onTap: () {
-                      _cardOnTap(
-                          snapshot.data[index].data()['propertyName'],
-                          DateFormat('dd MMMM yyy')
-                              .format(snapshot.data[index]
-                                  .data()['tanggal']
-                                  .toDate())
-                              .toString());
-                    },
-                    child: Container(
-                      //height: 30,
-                      margin: EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        bottom: 10,
-                        top: 10,
+              return (snapshot.data.length == 0)
+                  ? Center(
+                      child: Text(
+                        'Tidak ada property yang Anda Survey',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 14,
+                          color: const Color(0xffffffff),
+                          //fontWeight: FontWeight.w500,
+                        ),
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: const Color(0xff23243b),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x80000000),
-                            offset: Offset(4, 4),
-                            blurRadius: 8,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          //PHOTO
-                          Container(
-                            height:
-                                (MediaQuery.of(context).size.width - 40) * 0.4,
-                            width:
-                                (MediaQuery.of(context).size.width - 40) * 0.4,
+                    )
+                  : ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (_, index) {
+                        return TouchableOpacity(
+                          onTap: () {
+                            _cardOnTap(
+                                snapshot.data[index].data()['propertyName'],
+                                DateFormat('dd MMMM yyy')
+                                    .format(snapshot.data[index]
+                                        .data()['tanggal']
+                                        .toDate())
+                                    .toString());
+                          },
+                          child: Container(
+                            //height: 30,
+                            margin: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              bottom: 10,
+                              top: 10,
+                            ),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10.0),
-                                bottomLeft: Radius.circular(10),
-                              ),
-                              image: DecorationImage(
-                                image: NetworkImage(snapshot.data[index]
-                                    .data()['propertyPhotoURL']),
-                                fit: BoxFit.cover,
-                              ),
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: const Color(0xff23243b),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0x80000000),
+                                  offset: Offset(4, 4),
+                                  blurRadius: 8,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                //PHOTO
+                                Container(
+                                  height:
+                                      (MediaQuery.of(context).size.width - 40) *
+                                          0.4,
+                                  width:
+                                      (MediaQuery.of(context).size.width - 40) *
+                                          0.4,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.0),
+                                      bottomLeft: Radius.circular(10),
+                                    ),
+                                    image: DecorationImage(
+                                      image: NetworkImage(snapshot.data[index]
+                                          .data()['propertyPhotoURL']),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                //Nama dan Tanggal
+                                Column(
+                                  children: [
+                                    //TANGGAL
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      width:
+                                          (MediaQuery.of(context).size.width -
+                                                  40) *
+                                              0.6,
+                                      child: Text(
+                                        DateFormat('dd MMMM yyy')
+                                            .format(snapshot.data[index]
+                                                .data()['tanggal']
+                                                .toDate())
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontFamily: 'Rubik',
+                                          fontSize: 15,
+                                          color: const Color(0xffffffff),
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    //NAMA
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      width:
+                                          (MediaQuery.of(context).size.width -
+                                                  40) *
+                                              0.6,
+                                      child: Text(
+                                        snapshot.data[index]
+                                            .data()['propertyName'],
+                                        style: TextStyle(
+                                          fontFamily: 'Rubik',
+                                          fontSize: 18,
+                                          color: const Color(0xffffffff),
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        maxLines: 4,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          //Nama dan Tanggal
-                          Column(
-                            children: [
-                              //TANGGAL
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                width:
-                                    (MediaQuery.of(context).size.width - 40) *
-                                        0.6,
-                                child: Text(
-                                  DateFormat('dd MMMM yyy')
-                                      .format(snapshot.data[index]
-                                          .data()['tanggal']
-                                          .toDate())
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 15,
-                                    color: const Color(0xffffffff),
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              //NAMA
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                width:
-                                    (MediaQuery.of(context).size.width - 40) *
-                                        0.6,
-                                child: Text(
-                                  snapshot.data[index].data()['propertyName'],
-                                  style: TextStyle(
-                                    fontFamily: 'Rubik',
-                                    fontSize: 18,
-                                    color: const Color(0xffffffff),
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  maxLines: 4,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                  // return ListTile(
-                  //   title: Text(
-                  //     snapshot.data[index].data()['propertyName'],
-                  //     style: TextStyle(color: Colors.amber),
-                  //   ),
-                  // );
-                },
-              );
+                        );
+                        // return ListTile(
+                        //   title: Text(
+                        //     snapshot.data[index].data()['propertyName'],
+                        //     style: TextStyle(color: Colors.amber),
+                        //   ),
+                        // );
+                      },
+                    );
             }
           },
         ),

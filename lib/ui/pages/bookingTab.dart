@@ -45,208 +45,223 @@ class _BookingTabsState extends State<BookingTabs> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             } else {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (_, index) {
-                  return TouchableOpacity(
-                    onTap: () {
-                      showBarModalBottomSheet(
-                        context: context,
-                        expand: true,
-                        builder: (context) => Pembayaran(
-                          durasiMenginap: snapshot.data[index].data()['durasi'],
-                          propertyHarga: snapshot.data[index].data()['harga'],
-                          propertyNama:
-                              snapshot.data[index].data()['propertyName'],
-                          propertyRoomTypeNama:
-                              snapshot.data[index].data()['tipeKamar'],
-                          tanggal: DateFormat('dd MMMM yyy')
-                              .format(snapshot.data[index]
-                                  .data()['tanggal']
-                                  .toDate())
-                              .toString(),
+              return (snapshot.data.length == 0)
+                  ? Center(
+                      child: Text(
+                        'Tidak ada property yang Anda Booking',
+                        style: TextStyle(
+                          fontFamily: 'Rubik',
+                          fontSize: 14,
+                          color: const Color(0xffffffff),
+                          //fontWeight: FontWeight.w500,
                         ),
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        bottom: 10,
-                        top: 10,
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14.0),
-                        color: const Color(0xff23243b),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x80000000),
-                            offset: Offset(4, 4),
-                            blurRadius: 8,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //Text(dataProperti[i].photo),
-                          //FOTO
-                          Container(
-                            height: 200,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(14.0),
-                                topRight: Radius.circular(14.0),
-                              ),
-                              image: DecorationImage(
-                                image: NetworkImage(snapshot.data[index]
-                                    .data()['propertyPhotoURL']),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          //STATUS
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              color: Color(0xffAF8D19),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            margin: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 10,
-                            ),
-                            child: Text(
-                              (snapshot.data[index].data()['status']),
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 12,
-                                color: const Color(0xffffffff),
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          //NAMA
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 10,
-                              bottom: 10,
-                            ),
-                            child: Text(
-                              snapshot.data[index].data()['propertyName'],
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 25,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          //TIPE KAMAR
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 10,
-                            ),
-                            child: Text(
-                              ('Tipe Kamar : ' +
-                                  snapshot.data[index].data()['tipeKamar']),
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 17,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          //TANGGAL
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 10,
-                            ),
-                            child: Text(
-                              ('Mulai Menginap : ' +
-                                  DateFormat('dd MMMM yyy')
-                                      .format(snapshot.data[index]
-                                          .data()['tanggal']
-                                          .toDate())
-                                      .toString()),
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 17,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          //DURASI
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 10,
-                            ),
-                            child: Text(
-                              ('Durasi Menginap : ' +
-                                  snapshot.data[index].data()['durasi']),
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 17,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          //HARGA
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 10,
-                              bottom: 20,
-                            ),
-                            child: Text(
-                              ('Harga : ' +
-                                  NumberFormat.currency(
-                                    locale: 'id',
-                                    decimalDigits: 0,
-                                    symbol: 'Rp ',
-                                  ).format(
+                    )
+                  : ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (_, index) {
+                        return TouchableOpacity(
+                          onTap: () {
+                            showBarModalBottomSheet(
+                              context: context,
+                              expand: true,
+                              builder: (context) => Pembayaran(
+                                durasiMenginap:
+                                    snapshot.data[index].data()['durasi'],
+                                propertyHarga:
                                     snapshot.data[index].data()['harga'],
-                                  )),
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                fontSize: 17,
-                                color: const Color(0xffffffff),
-                                fontWeight: FontWeight.w500,
+                                propertyNama:
+                                    snapshot.data[index].data()['propertyName'],
+                                propertyRoomTypeNama:
+                                    snapshot.data[index].data()['tipeKamar'],
+                                tanggal: DateFormat('dd MMMM yyy')
+                                    .format(snapshot.data[index]
+                                        .data()['tanggal']
+                                        .toDate())
+                                    .toString(),
                               ),
-                              textAlign: TextAlign.left,
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              bottom: 10,
+                              top: 10,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(14.0),
+                              color: const Color(0xff23243b),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(0x80000000),
+                                  offset: Offset(4, 4),
+                                  blurRadius: 8,
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                //Text(dataProperti[i].photo),
+                                //FOTO
+                                Container(
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(14.0),
+                                      topRight: Radius.circular(14.0),
+                                    ),
+                                    image: DecorationImage(
+                                      image: NetworkImage(snapshot.data[index]
+                                          .data()['propertyPhotoURL']),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                //STATUS
+                                Container(
+                                  padding: EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffAF8D19),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Text(
+                                    (snapshot.data[index].data()['status']),
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 12,
+                                      color: const Color(0xffffffff),
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                //NAMA
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                    bottom: 10,
+                                  ),
+                                  child: Text(
+                                    snapshot.data[index].data()['propertyName'],
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 25,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                //TIPE KAMAR
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Text(
+                                    ('Tipe Kamar : ' +
+                                        snapshot.data[index]
+                                            .data()['tipeKamar']),
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 17,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                //TANGGAL
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Text(
+                                    ('Mulai Menginap : ' +
+                                        DateFormat('dd MMMM yyy')
+                                            .format(snapshot.data[index]
+                                                .data()['tanggal']
+                                                .toDate())
+                                            .toString()),
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 17,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                //DURASI
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                  ),
+                                  child: Text(
+                                    ('Durasi Menginap : ' +
+                                        snapshot.data[index].data()['durasi']),
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 17,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                //HARGA
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 10,
+                                    bottom: 20,
+                                  ),
+                                  child: Text(
+                                    ('Harga : ' +
+                                        NumberFormat.currency(
+                                          locale: 'id',
+                                          decimalDigits: 0,
+                                          symbol: 'Rp ',
+                                        ).format(
+                                          snapshot.data[index].data()['harga'],
+                                        )),
+                                    style: TextStyle(
+                                      fontFamily: 'Rubik',
+                                      fontSize: 17,
+                                      color: const Color(0xffffffff),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  );
-                  // return ListTile(
-                  //   title: Text(
-                  //     snapshot.data[index].data()['propertyName'],
-                  //     style: TextStyle(color: Colors.amber),
-                  //   ),
-                  // );
-                },
-              );
+                        );
+                        // return ListTile(
+                        //   title: Text(
+                        //     snapshot.data[index].data()['propertyName'],
+                        //     style: TextStyle(color: Colors.amber),
+                        //   ),
+                        // );
+                      },
+                    );
             }
           },
         ),
